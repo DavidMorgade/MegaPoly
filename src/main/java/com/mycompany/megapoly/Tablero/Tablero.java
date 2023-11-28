@@ -29,8 +29,15 @@ public class Tablero {
   }
 
   public void crearTablero() {
-    for (int i = 0; i < casillas.length; i++) {
-      casillas[i] = new Casilla(i, 'N');
-    }
+    casillas[0] = new Casilla(0, 'S');
+    casillas[1] = new Propiedad(1, 'F', 100);
+    casillas[2] = new Propiedad(2, 'F', 150);
+    casillas[3] = new Propiedad(3, 'F', 250);
+    casillas[4] = new Propiedad(4, 'G', 300);
+    casillas[5] = new Propiedad(5, 'G', 400);
+    casillas[6] = new Propiedad(6, 'G', 500);
+    casillas[7] = new StartUp(7, 'E', 500, 50);
+    casillas[8] = new Propiedad(8, 'A', 600);
+    casillas[9] = new Propiedad(9, 'A', 700);
   }
 }

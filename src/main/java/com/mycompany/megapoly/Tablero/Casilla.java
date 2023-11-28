@@ -18,4 +18,8 @@ public class Casilla {
   public void setTipo(char tipo) {
     this.tipo = tipo;
   }
+
+  public int getPosicion() {
+    return this.posicion;
+  }
 }
