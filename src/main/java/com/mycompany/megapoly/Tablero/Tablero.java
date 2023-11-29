@@ -35,7 +35,26 @@ public class Tablero {
           (i == 0 || i == tamanioLado - 1 || j == 0 || j == tamanioLado - 1) &&
           !(i > 0 && i < tamanioLado - 1 && j > 0 && j < tamanioLado - 1)
         ) {
-          if (indice == fichaRoja.getPosicion()) {
+          if (
+            fichaRoja.getPosicion() == fichaAzul.getPosicion() &&
+            indice == fichaRoja.getPosicion()
+          ) {
+            System.out.print(
+              "\u001B[32m" + // Cambié a verde (32)
+              " " +
+              casillas[indice].getTipo() +
+              " " +
+              "\u001B[0m"
+            );
+          } else if (indice == fichaAzul.getPosicion()) {
+            System.out.print(
+              "\u001B[34m" +
+              " " +
+              casillas[indice].getTipo() +
+              " " +
+              "\u001B[0m"
+            );
+          } else if (indice == fichaRoja.getPosicion()) {
             System.out.print(
               "\u001B[31m" +
               " " +

@@ -23,6 +23,8 @@ public class MegaPoly {
 
     fichaRoja.avanzar(tablero, 5);
 
+    fichaAzul.avanzar(tablero, 4);
+
     tablero.mostrarTablero();
   }
 }
