@@ -8,8 +8,8 @@ public class StartUp extends Casilla {
 
   private int rentabilidad;
 
-  public StartUp(int posicion, char tipo, int precio, int rentabilidad) {
-    super(posicion, tipo);
+  public StartUp(char tipo, int precio, int rentabilidad) {
+    super(tipo);
     this.precio = precio;
     this.rentabilidad = rentabilidad;
   }

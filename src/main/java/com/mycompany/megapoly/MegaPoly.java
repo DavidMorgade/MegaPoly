@@ -13,9 +13,15 @@ import com.mycompany.megapoly.Tablero.Tablero;
 public class MegaPoly {
 
   public static void main(String[] args) {
-    Tablero tablero = new Tablero(25);
+    Ficha fichaRoja = new Ficha();
+    Ficha fichaAzul = new Ficha();
+    Tablero tablero = new Tablero(5, fichaRoja, fichaAzul);
 
     tablero.crearTablero();
+
+    tablero.mostrarTablero();
+
+    fichaRoja.avanzar(tablero, 5);
 
     tablero.mostrarTablero();
   }

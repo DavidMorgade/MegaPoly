@@ -1,27 +1,53 @@
 package com.mycompany.megapoly.Tablero;
 
-public class Tablero {
+import com.mycompany.megapoly.Ficha;
 
-  private int numeroCasillas;
+public class Tablero {
 
   private Casilla[] casillas;
 
-  private int longitud;
+  private Ficha fichaRoja;
 
-  public Tablero(int numeroCasillas) {
-    this.longitud = (int) Math.ceil(Math.sqrt(numeroCasillas));
-    this.casillas = new Casilla[numeroCasillas];
+  private Ficha fichaAzul;
+
+  private int tamanioLado;
+
+  public Tablero(int tamanioLado, Ficha fichaRoja, Ficha fichaAzul) {
+    this.tamanioLado = tamanioLado;
+    this.casillas = new Casilla[tamanioLado * tamanioLado];
+    this.fichaRoja = fichaRoja;
+    this.fichaAzul = fichaAzul;
+  }
+
+  public int getTamanioLado() {
+    return this.tamanioLado;
+  }
+
+  public Casilla[] getCasillas() {
+    return this.casillas;
   }
 
   public void mostrarTablero() {
-    for (int i = 0; i < longitud; i++) {
-      for (int j = 0; j < longitud; j++) {
-        if (i == 0 || i == longitud - 1 || j == 0 || j == longitud - 1) {
-          // Imprimir letras solo en los bordes
-          System.out.print(" " + casillas[i].getTipo() + " ");
+    for (int i = 0; i < tamanioLado; i++) {
+      for (int j = 0; j < tamanioLado; j++) {
+        int indice = i * tamanioLado + j;
+        if (
+          (i == 0 || i == tamanioLado - 1 || j == 0 || j == tamanioLado - 1) &&
+          !(i > 0 && i < tamanioLado - 1 && j > 0 && j < tamanioLado - 1)
+        ) {
+          if (indice == fichaRoja.getPosicion()) {
+            System.out.print(
+              "\u001B[31m" +
+              " " +
+              casillas[indice].getTipo() +
+              " " +
+              "\u001B[0m"
+            );
+          } else {
+            System.out.print(" " + casillas[indice].getTipo() + " ");
+          }
         } else {
-          // Imprimir espacio en el centro
-          System.out.print("   ");
+          System.out.print("   "); // Espacio para las casillas del centro
         }
       }
       System.out.println();
@@ -29,15 +55,45 @@ public class Tablero {
   }
 
   public void crearTablero() {
-    casillas[0] = new Casilla(0, 'S');
-    casillas[1] = new Propiedad(1, 'F', 100);
-    casillas[2] = new Propiedad(2, 'F', 150);
-    casillas[3] = new Propiedad(3, 'F', 250);
-    casillas[4] = new Propiedad(4, 'G', 300);
-    casillas[5] = new Propiedad(5, 'G', 400);
-    casillas[6] = new Propiedad(6, 'G', 500);
-    casillas[7] = new StartUp(7, 'E', 500, 50);
-    casillas[8] = new Propiedad(8, 'A', 600);
-    casillas[9] = new Propiedad(9, 'A', 700);
+    // Esquinas
+    // Superior izquierda
+    casillas[0] = new CasillaSalida('I');
+    // Superior derecha
+    casillas[4] = new Carcel('C');
+    // Inferior derecha
+    casillas[24] = new StartUp('-', 400, 50);
+    // Inferior izquierda
+    casillas[20] = new Carcel('C');
+
+    // lado superior
+    casillas[1] = new Propiedad('F', 100);
+    casillas[2] = new Propiedad('F', 150);
+    casillas[3] = new Suerte('S');
+
+    // lado derecho
+    casillas[9] = new Propiedad('F', 200);
+    casillas[14] = new Propiedad('G', 250);
+    casillas[19] = new Propiedad('G', 350);
+
+    // lado inferior
+    casillas[23] = new Propiedad('G', 450);
+    casillas[22] = new Propiedad('N', 2000);
+    casillas[21] = new Propiedad('N', 2000);
+
+    // lado izquierdo
+    casillas[15] = new StartUp('-', 400, 50);
+    casillas[10] = new Suerte('S');
+    casillas[5] = new Propiedad('T', 500000);
+
+    // Centro (dejamos vacías)
+    casillas[6] = new Casilla(' ');
+    casillas[7] = new Casilla(' ');
+    casillas[8] = new Casilla(' ');
+    casillas[11] = new Casilla(' ');
+    casillas[12] = new Casilla(' ');
+    casillas[13] = new Casilla(' ');
+    casillas[16] = new Casilla(' ');
+    casillas[17] = new Casilla(' ');
+    casillas[18] = new Casilla(' ');
   }
 }

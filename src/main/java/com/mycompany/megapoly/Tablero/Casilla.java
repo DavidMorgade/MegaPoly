@@ -2,12 +2,9 @@ package com.mycompany.megapoly.Tablero;
 
 public class Casilla {
 
-  private int posicion;
-
   private char tipo;
 
-  public Casilla(int posicion, char tipo) {
-    this.posicion = posicion;
+  public Casilla(char tipo) {
     this.tipo = tipo;
   }
 
@@ -17,9 +14,5 @@ public class Casilla {
 
   public void setTipo(char tipo) {
     this.tipo = tipo;
-  }
-
-  public int getPosicion() {
-    return this.posicion;
   }
 }

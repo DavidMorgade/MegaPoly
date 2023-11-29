@@ -8,8 +8,8 @@ public class Propiedad extends Casilla {
 
   Empresa empresa;
 
-  public Propiedad(int posicion, char tipo, int precio) {
-    super(posicion, tipo);
+  public Propiedad(char tipo, int precio) {
+    super(tipo);
     this.precio = precio;
   }
 }
