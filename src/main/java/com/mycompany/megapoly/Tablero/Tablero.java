@@ -2,10 +2,10 @@ package com.mycompany.megapoly.Tablero;
 
 import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSalida;
+import com.mycompany.megapoly.Casillas.CasillaStartUp;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
-import com.mycompany.megapoly.Casillas.Propiedad;
-import com.mycompany.megapoly.Casillas.StartUp;
 import com.mycompany.megapoly.Materiales.Ficha;
 
 public class Tablero {
@@ -90,29 +90,29 @@ public class Tablero {
     // Superior derecha
     casillas[4] = new Carcel('C');
     // Inferior derecha
-    casillas[24] = new StartUp('-', 400, 50);
+    casillas[24] = new CasillaStartUp('-', 20, 5);
     // Inferior izquierda
     casillas[20] = new Carcel('C');
 
     // lado superior
-    casillas[1] = new Propiedad('F', 100, 5);
-    casillas[2] = new Propiedad('F', 150, 5);
+    casillas[1] = new CasillaPropiedad('F', 10, 2);
+    casillas[2] = new CasillaPropiedad('F', 12, 3);
     casillas[3] = new CasillaSuerte('S');
 
     // lado derecho
-    casillas[9] = new Propiedad('F', 200, 15);
-    casillas[14] = new Propiedad('G', 250);
-    casillas[19] = new Propiedad('G', 350);
+    casillas[9] = new CasillaPropiedad('F', 15, 5);
+    casillas[14] = new CasillaPropiedad('G', 15, 5);
+    casillas[19] = new CasillaPropiedad('G', 25, 10);
 
     // lado inferior
-    casillas[23] = new Propiedad('G', 450);
-    casillas[22] = new Propiedad('N', 2000);
-    casillas[21] = new Propiedad('N', 2000);
+    casillas[23] = new CasillaPropiedad('G', 30, 15);
+    casillas[22] = new CasillaPropiedad('N', 35, 15);
+    casillas[21] = new CasillaPropiedad('N', 40, 20);
 
     // lado izquierdo
-    casillas[15] = new StartUp('-', 400, 50);
+    casillas[15] = new CasillaStartUp('-', 20, 5);
     casillas[10] = new CasillaSuerte('S');
-    casillas[5] = new Propiedad('T', 500000);
+    casillas[5] = new CasillaPropiedad('T', 80, 30);
 
     // Centro (dejamos vacías)
     casillas[6] = new Casilla(' ');

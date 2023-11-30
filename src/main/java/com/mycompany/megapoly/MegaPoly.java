@@ -4,6 +4,8 @@
 
 package com.mycompany.megapoly;
 
+import com.mycompany.megapoly.Interfaz.MenuInicio;
+import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
 import com.mycompany.megapoly.Tablero.Tablero;
 
@@ -14,18 +16,13 @@ import com.mycompany.megapoly.Tablero.Tablero;
 public class MegaPoly {
 
   public static void main(String[] args) {
-    Ficha fichaRoja = new Ficha();
-    Ficha fichaAzul = new Ficha();
+    Ficha fichaUno = new Ficha();
+    Ficha fichaDos = new Ficha();
+
+    Jugador jugador1 = new Jugador(fichaUno);
+    Jugador jugador2 = new Jugador(fichaDos);
+
+    MenuInicio menuInicio = new MenuInicio(jugador1, jugador2);
     
-
-    Tablero tablero = new Tablero(5, fichaRoja, fichaAzul);
-
-    tablero.crearTablero();
-
-    tablero.mostrarTablero();
-
-    fichaRoja.avanzar(tablero, 5);
-
-    fichaAzul.avanzar(tablero, 4);
   }
 }

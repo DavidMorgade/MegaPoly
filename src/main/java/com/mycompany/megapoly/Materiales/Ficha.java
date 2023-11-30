@@ -7,6 +7,8 @@ public class Ficha {
 
   private int posicion;
 
+  private String colorFicha;
+
   private Jugador jugador;
 
   public Ficha() {
@@ -28,6 +30,14 @@ public class Ficha {
 
   public void setPosicion(int posicion) {
     this.posicion = posicion;
+  }
+
+  public String getColorFicha() {
+    return this.colorFicha;
+  }
+
+  public void setColorFicha(String colorFicha) {
+    this.colorFicha = colorFicha;
   }
 
   public void avanzar(Tablero tablero, int posiciones) {
