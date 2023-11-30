@@ -85,43 +85,43 @@ public class Tablero {
   public void crearTablero() {
     // Esquinas
     // Superior izquierda
-    casillas[0] = new CasillaSalida('I');
+    casillas[0] = new CasillaSalida('I', "Inicio");
     // Superior derecha
-    casillas[4] = new Carcel('C');
+    casillas[4] = new Carcel('C', "Carcel");
     // Inferior derecha
-    casillas[24] = new CasillaStartUp('-', 20, 5);
+    casillas[24] = new CasillaStartUp('-', "StartUp", 20, 5);
     // Inferior izquierda
-    casillas[20] = new Carcel('C');
+    casillas[20] = new Carcel('C', "Carcel");
 
     // lado superior
-    casillas[1] = new CasillaPropiedad('F', 10, 2);
-    casillas[2] = new CasillaPropiedad('F', 12, 3);
-    casillas[3] = new CasillaSuerte('S');
+    casillas[1] = new CasillaPropiedad('F', "Facebook", 10, 2);
+    casillas[2] = new CasillaPropiedad('F', "Facebook", 12, 3);
+    casillas[3] = new CasillaSuerte('S', "Suerte");
 
     // lado derecho
-    casillas[9] = new CasillaPropiedad('F', 15, 5);
-    casillas[14] = new CasillaPropiedad('G', 15, 5);
-    casillas[19] = new CasillaPropiedad('G', 25, 10);
+    casillas[9] = new CasillaPropiedad('F', "Facebook", 15, 5);
+    casillas[14] = new CasillaPropiedad('G', "Google", 15, 5);
+    casillas[19] = new CasillaPropiedad('G', "Google", 25, 10);
 
     // lado inferior
-    casillas[23] = new CasillaPropiedad('G', 30, 15);
-    casillas[22] = new CasillaPropiedad('N', 35, 15);
-    casillas[21] = new CasillaPropiedad('N', 40, 20);
+    casillas[23] = new CasillaPropiedad('G', "Google", 30, 15);
+    casillas[22] = new CasillaPropiedad('N', "Netflix", 35, 15);
+    casillas[21] = new CasillaPropiedad('N', "Netflix", 40, 20);
 
     // lado izquierdo
-    casillas[15] = new CasillaStartUp('-', 20, 5);
-    casillas[10] = new CasillaSuerte('S');
-    casillas[5] = new CasillaPropiedad('T', 80, 30);
+    casillas[15] = new CasillaStartUp('-', "StartUp", 20, 5);
+    casillas[10] = new CasillaSuerte('S', "Suerte");
+    casillas[5] = new CasillaPropiedad('T', "Twitter", 80, 30);
 
     // Centro (dejamos vacías)
-    casillas[6] = new Casilla(' ');
-    casillas[7] = new Casilla(' ');
-    casillas[8] = new Casilla(' ');
-    casillas[11] = new Casilla(' ');
-    casillas[12] = new Casilla(' ');
-    casillas[13] = new Casilla(' ');
-    casillas[16] = new Casilla(' ');
-    casillas[17] = new Casilla(' ');
-    casillas[18] = new Casilla(' ');
+    casillas[6] = new Casilla(' ', "");
+    casillas[7] = new Casilla(' ', "");
+    casillas[8] = new Casilla(' ', "");
+    casillas[11] = new Casilla(' ', "");
+    casillas[12] = new Casilla(' ', "");
+    casillas[13] = new Casilla(' ', "");
+    casillas[16] = new Casilla(' ', "");
+    casillas[17] = new Casilla(' ', "");
+    casillas[18] = new Casilla(' ', "");
   }
 }

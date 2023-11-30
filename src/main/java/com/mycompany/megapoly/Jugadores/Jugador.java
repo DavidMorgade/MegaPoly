@@ -29,6 +29,7 @@ public class Jugador {
 
   public Jugador(Ficha ficha) {
     this.ficha = ficha;
+    this.megaMonedas = 100;
   }
 
   public String getNombre() {

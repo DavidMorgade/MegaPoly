@@ -1,5 +1,6 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
@@ -23,15 +24,25 @@ public class MenuJuego {
     while (!salir) {
       Jugador jugadorTurno = this.determinarTurno(jugador1, jugador2);
       this.mostrarTurno(jugadorTurno);
-      this.mostrarOpciones();
+      this.mostrarOpciones(jugadorTurno);
       this.mostrarCartasOTirarDado(jugadorTurno, tablero);
+      Casilla casillaActual = this.obtenerCasilla(tablero, jugadorTurno);
+      this.mostrarCasilla(casillaActual);
       this.cambiarTurno(jugador1, jugador2);
     }
   }
 
   private void mostrarTurno(Jugador jugadorTurno) {}
 
-  private void mostrarOpciones() {
+  private void mostrarOpciones(Jugador jugadorTurno) {
+    System.out.println(
+      "Jugador: " +
+      jugadorTurno.getNombre() +
+      " Ficha: " +
+      jugadorTurno.getFicha().getColorFicha() +
+      " Saldo actual: " +
+      jugadorTurno.getMegaMonedas()
+    );
     System.out.println("1. Tirar dado");
     System.out.println("2. Ver cartas de suerte");
     System.out.println("3. Salir");
@@ -74,5 +85,14 @@ public class MenuJuego {
   private void cambiarTurno(Jugador jugador1, Jugador jugador2) {
     jugador1.setTurno(!jugador1.getTurno());
     jugador2.setTurno(!jugador2.getTurno());
+  }
+
+  private Casilla obtenerCasilla(Tablero tablero, Jugador jugador) {
+    int posicion = jugador.getFicha().getPosicion();
+    return tablero.getCasillas()[posicion];
+  }
+
+  private void mostrarCasilla(Casilla casilla) {
+    System.out.println("Has caido en la casilla: " + casilla.getNombre());
   }
 }

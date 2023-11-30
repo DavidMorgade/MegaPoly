@@ -6,10 +6,8 @@ public class CasillaPropiedad extends Casilla {
 
   private int alquiler;
 
-  private String propietario;
-
-  public CasillaPropiedad(char tipo, int precio, int alquiler) {
-    super(tipo);
+  public CasillaPropiedad(char tipo, String nombre, int precio, int alquiler) {
+    super(tipo, nombre);
     this.precio = precio;
     this.alquiler = alquiler;
   }
@@ -20,14 +18,6 @@ public class CasillaPropiedad extends Casilla {
 
   public int getAlquiler() {
     return this.alquiler;
-  }
-
-  public String getPropietario() {
-    return this.propietario;
-  }
-
-  public void setPropietario(String propietario) {
-    this.propietario = propietario;
   }
 
   public void alquilerConTresPropiedades() {

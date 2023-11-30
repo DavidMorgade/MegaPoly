@@ -4,12 +4,15 @@ public class CasillaStartUp extends Casilla {
 
   private int precio;
 
-  private String propietario;
-
   private int rentabilidad;
 
-  public CasillaStartUp(char tipo, int precio, int rentabilidad) {
-    super(tipo);
+  public CasillaStartUp(
+    char tipo,
+    String nombre,
+    int precio,
+    int rentabilidad
+  ) {
+    super(tipo, nombre);
     this.precio = precio;
     this.rentabilidad = rentabilidad;
   }
@@ -18,15 +21,7 @@ public class CasillaStartUp extends Casilla {
     return this.precio;
   }
 
-  public String getPropietario() {
-    return this.propietario;
-  }
-
   public int getRentabilidad() {
     return this.rentabilidad;
-  }
-
-  public void setPropietario(String propietario) {
-    this.propietario = propietario;
   }
 }

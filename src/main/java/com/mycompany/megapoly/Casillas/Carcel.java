@@ -6,8 +6,8 @@ public class Carcel extends Casilla {
 
   private String descripcion;
 
-  public Carcel(char tipo) {
-    super(tipo);
+  public Carcel(char tipo, String nombre) {
+    super(tipo, nombre);
     this.nombre = "Carcel";
     this.descripcion = "Estas de visita en la carcel, no te toca pagar nada";
   }

@@ -11,8 +11,8 @@ public class CasillaSuerte extends Casilla {
 
   private CartaSuerte carta;
 
-  public CasillaSuerte(char tipo) {
-    super(tipo);
+  public CasillaSuerte(char tipo, String nombre) {
+    super(tipo, nombre);
   }
 
   public CartaSuerte getCarta() {
