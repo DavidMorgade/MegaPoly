@@ -1,4 +1,4 @@
-package com.mycompany.megapoly.Tablero;
+package com.mycompany.megapoly.Casillas;
 
 public class Casilla {
 

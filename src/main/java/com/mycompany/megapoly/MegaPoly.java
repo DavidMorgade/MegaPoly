@@ -4,6 +4,7 @@
 
 package com.mycompany.megapoly;
 
+import com.mycompany.megapoly.Materiales.Ficha;
 import com.mycompany.megapoly.Tablero.Tablero;
 
 /**
@@ -15,6 +16,8 @@ public class MegaPoly {
   public static void main(String[] args) {
     Ficha fichaRoja = new Ficha();
     Ficha fichaAzul = new Ficha();
+    
+
     Tablero tablero = new Tablero(5, fichaRoja, fichaAzul);
 
     tablero.crearTablero();
@@ -24,7 +27,5 @@ public class MegaPoly {
     fichaRoja.avanzar(tablero, 5);
 
     fichaAzul.avanzar(tablero, 4);
-
-    tablero.mostrarTablero();
   }
 }

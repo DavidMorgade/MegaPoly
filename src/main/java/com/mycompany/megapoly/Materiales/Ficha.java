@@ -1,20 +1,25 @@
-package com.mycompany.megapoly;
+package com.mycompany.megapoly.Materiales;
 
-import com.mycompany.megapoly.Tablero.Casilla;
+import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Tablero.Tablero;
 
 public class Ficha {
 
   private int posicion;
 
-  private String inversor;
-
   private Jugador jugador;
 
   public Ficha() {
     this.posicion = 0;
-    this.inversor = "";
     this.jugador = null;
+  }
+
+  public Jugador getJugador() {
+    return this.jugador;
+  }
+
+  public void setJugador(Jugador jugador) {
+    this.jugador = jugador;
   }
 
   public int getPosicion() {
@@ -66,5 +71,8 @@ public class Ficha {
     }
 
     this.setPosicion(indicesValidos[nuevoIndice]);
+
+    // Mostramos el tablero
+    tablero.mostrarTablero();
   }
 }

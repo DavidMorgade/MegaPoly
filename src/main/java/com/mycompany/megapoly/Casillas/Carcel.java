@@ -1,4 +1,4 @@
-package com.mycompany.megapoly.Tablero;
+package com.mycompany.megapoly.Casillas;
 
 public class Carcel extends Casilla {
 
@@ -10,5 +10,13 @@ public class Carcel extends Casilla {
     super(tipo);
     this.nombre = "Carcel";
     this.descripcion = "Estas de visita en la carcel, no te toca pagar nada";
+  }
+
+  public String getNombre() {
+    return this.nombre;
+  }
+
+  public String getDescripcion() {
+    return this.descripcion;
   }
 }

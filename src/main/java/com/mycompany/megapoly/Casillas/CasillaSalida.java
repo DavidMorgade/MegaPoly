@@ -1,4 +1,4 @@
-package com.mycompany.megapoly.Tablero;
+package com.mycompany.megapoly.Casillas;
 
 public class CasillaSalida extends Casilla {
 
@@ -6,6 +6,10 @@ public class CasillaSalida extends Casilla {
 
   public CasillaSalida(char tipo) {
     super(tipo);
-    this.recompensa = 1000;
+    this.recompensa = 20;
+  }
+
+  public int getRecompensa() {
+    return this.recompensa;
   }
 }

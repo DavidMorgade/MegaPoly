@@ -1,6 +1,12 @@
 package com.mycompany.megapoly.Tablero;
 
-import com.mycompany.megapoly.Ficha;
+import com.mycompany.megapoly.Casillas.Carcel;
+import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaSalida;
+import com.mycompany.megapoly.Casillas.CasillaSuerte;
+import com.mycompany.megapoly.Casillas.Propiedad;
+import com.mycompany.megapoly.Casillas.StartUp;
+import com.mycompany.megapoly.Materiales.Ficha;
 
 public class Tablero {
 
@@ -25,6 +31,10 @@ public class Tablero {
 
   public Casilla[] getCasillas() {
     return this.casillas;
+  }
+
+  public char getTipoCasilla(int posicion) {
+    return this.casillas[posicion].getTipo();
   }
 
   public void mostrarTablero() {
@@ -85,12 +95,12 @@ public class Tablero {
     casillas[20] = new Carcel('C');
 
     // lado superior
-    casillas[1] = new Propiedad('F', 100);
-    casillas[2] = new Propiedad('F', 150);
-    casillas[3] = new Suerte('S');
+    casillas[1] = new Propiedad('F', 100, 5);
+    casillas[2] = new Propiedad('F', 150, 5);
+    casillas[3] = new CasillaSuerte('S');
 
     // lado derecho
-    casillas[9] = new Propiedad('F', 200);
+    casillas[9] = new Propiedad('F', 200, 15);
     casillas[14] = new Propiedad('G', 250);
     casillas[19] = new Propiedad('G', 350);
 
@@ -101,7 +111,7 @@ public class Tablero {
 
     // lado izquierdo
     casillas[15] = new StartUp('-', 400, 50);
-    casillas[10] = new Suerte('S');
+    casillas[10] = new CasillaSuerte('S');
     casillas[5] = new Propiedad('T', 500000);
 
     // Centro (dejamos vacías)
