@@ -1,4 +1,4 @@
-package com.mycompany.megapoly.Tablero;
+package com.mycompany.megapoly.Materiales;
 
 import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
@@ -6,7 +6,6 @@ import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSalida;
 import com.mycompany.megapoly.Casillas.CasillaStartUp;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
-import com.mycompany.megapoly.Materiales.Ficha;
 
 public class Tablero {
 

@@ -1,7 +1,6 @@
 package com.mycompany.megapoly.Materiales;
 
 import com.mycompany.megapoly.Jugadores.Jugador;
-import com.mycompany.megapoly.Tablero.Tablero;
 
 public class Ficha {
 

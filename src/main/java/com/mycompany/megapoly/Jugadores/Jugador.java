@@ -2,6 +2,8 @@ package com.mycompany.megapoly.Jugadores;
 
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
 import com.mycompany.megapoly.Materiales.Ficha;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
@@ -13,7 +15,7 @@ public class Jugador {
   private int megaMonedas;
 
   // lista de cartas de suerte de cada jugador
-  private List<CartaSuerte> cartas;
+  private List<CartaSuerte> cartas = new ArrayList<CartaSuerte>();
 
   Ficha ficha;
 
@@ -22,6 +24,7 @@ public class Jugador {
     this.turno = turno;
     this.megaMonedas = 100;
     this.ficha = ficha;
+    this.cartas = new ArrayList<CartaSuerte>();
   }
 
   public Jugador(Ficha ficha) {
@@ -36,8 +39,12 @@ public class Jugador {
     this.nombre = nombre;
   }
 
-  public boolean isTurno() {
+  public boolean getTurno() {
     return this.turno;
+  }
+
+  public void setTurno(boolean turno) {
+    this.turno = turno;
   }
 
   public int getMegaMonedas() {
@@ -52,8 +59,8 @@ public class Jugador {
     if (this.cartas.isEmpty()) {
       System.out.println("No tienes cartas de suerte");
     } else {
+      System.out.println("Tus cartas de suerte son: ");
       for (CartaSuerte carta : this.cartas) {
-        System.out.println("Tus cartas de suerte son: ");
         System.out.println("Nombre: " + carta.getNombre());
         System.out.println("Descripcion: " + carta.getDescripcion());
         System.out.println(" ");

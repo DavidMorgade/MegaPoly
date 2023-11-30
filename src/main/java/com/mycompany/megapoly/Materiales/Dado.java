@@ -12,7 +12,7 @@ public class Dado {
     return this.numero;
   }
 
-  public void setNumero() {
+  public void setNumeroAleatorio() {
     this.numero = this.generarNumero();
   }
 

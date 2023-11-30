@@ -5,9 +5,10 @@
 package com.mycompany.megapoly;
 
 import com.mycompany.megapoly.Interfaz.MenuInicio;
+import com.mycompany.megapoly.Interfaz.MenuJuego;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
-import com.mycompany.megapoly.Tablero.Tablero;
+import com.mycompany.megapoly.Materiales.Tablero;
 
 /**
  *
@@ -22,7 +23,10 @@ public class MegaPoly {
     Jugador jugador1 = new Jugador(fichaUno);
     Jugador jugador2 = new Jugador(fichaDos);
 
+    Tablero tablero = new Tablero(5, fichaUno, fichaDos);
+
     MenuInicio menuInicio = new MenuInicio(jugador1, jugador2);
-    
+
+    MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, tablero);
   }
 }
