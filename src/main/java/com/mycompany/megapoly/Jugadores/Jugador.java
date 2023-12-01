@@ -5,6 +5,7 @@ import com.mycompany.megapoly.Materiales.Ficha;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jugador {
 
@@ -56,17 +57,40 @@ public class Jugador {
     return this.ficha;
   }
 
-  public void getCartas() {
+  public void mostrarCartas() {
     if (this.cartas.isEmpty()) {
       System.out.println("No tienes cartas de suerte");
     } else {
       System.out.println("Tus cartas de suerte son: ");
       for (CartaSuerte carta : this.cartas) {
+        int index = this.cartas.indexOf(carta);
+        System.out.println("Carta " + index + ": ");
+        System.out.println(" ");
         System.out.println("Nombre: " + carta.getNombre());
+        System.out.println(" ");
         System.out.println("Descripcion: " + carta.getDescripcion());
         System.out.println(" ");
       }
     }
+  }
+
+  public boolean usarCartas(Scanner scanner) {
+    System.out.println(
+      "Ingrese el numero de la carta que desea usar (-1 para no usar ninguna): "
+    );
+    int index = scanner.nextInt();
+    if (index == -1) {
+      System.out.println("No se usara ninguna carta, se seguira con el juego:");
+      System.out.println(" ");
+    } else {
+      this.cartas.get(index).efecto(this);
+      this.cartas.remove(index);
+    }
+    return true;
+  }
+
+  public void setCartas(CartaSuerte carta) {
+    this.cartas.add(carta);
   }
 
   public void usarCarta(int index) {

@@ -1,6 +1,8 @@
 package com.mycompany.megapoly.Interfaz;
 
 import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaPropiedad;
+import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
@@ -12,6 +14,8 @@ public class MenuJuego {
 
   private boolean salir = false;
 
+  private boolean usaCartas = false;
+
   private int opcion;
 
   private Dado dado = new Dado();
@@ -22,30 +26,39 @@ public class MenuJuego {
 
     tablero.crearTablero();
     while (!salir) {
-      Jugador jugadorTurno = this.determinarTurno(jugador1, jugador2);
-      this.mostrarTurno(jugadorTurno);
-      this.mostrarOpciones(jugadorTurno);
-      this.mostrarCartasOTirarDado(jugadorTurno, tablero);
-      Casilla casillaActual = this.obtenerCasilla(tablero, jugadorTurno);
-      this.mostrarCasilla(casillaActual);
-      this.cambiarTurno(jugador1, jugador2);
+      this.comenzarPartida(jugador1, jugador2, tablero);
     }
   }
 
-  private void mostrarTurno(Jugador jugadorTurno) {}
+  private void comenzarPartida(
+    Jugador jugador1,
+    Jugador jugador2,
+    Tablero tablero
+  ) {
+    Jugador jugadorTurno = this.determinarTurno(jugador1, jugador2);
+    this.mostrarTurno(jugadorTurno);
+    do {
+      this.mostrarOpciones(jugadorTurno);
+      this.mostrarCartasOTirarDado(jugadorTurno, tablero);
+    } while (usaCartas);
+    Casilla casillaActual = this.obtenerCasilla(tablero, jugadorTurno);
+    this.mostrarCasilla(casillaActual, jugadorTurno);
+    this.cambiarTurno(jugador1, jugador2);
+  }
+
+  private void mostrarTurno(Jugador jugadorTurno) {
+    System.out.println("Turno de: " + jugadorTurno.getNombre());
+    System.out.println("Ficha: " + jugadorTurno.getFicha().getColorFicha());
+    System.out.println("Mega monedas: " + jugadorTurno.getMegaMonedas());
+    System.out.println(" ");
+  }
 
   private void mostrarOpciones(Jugador jugadorTurno) {
-    System.out.println(
-      "Jugador: " +
-      jugadorTurno.getNombre() +
-      " Ficha: " +
-      jugadorTurno.getFicha().getColorFicha() +
-      " Saldo actual: " +
-      jugadorTurno.getMegaMonedas()
-    );
+    System.out.println("Opciones: ");
     System.out.println("1. Tirar dado");
     System.out.println("2. Ver cartas de suerte");
     System.out.println("3. Salir");
+    System.out.println(" ");
     opcion = scanner.nextInt();
   }
 
@@ -53,27 +66,21 @@ public class MenuJuego {
     dado.setNumeroAleatorio();
   }
 
-  private void mostrarCartas(Jugador jugador, Tablero tablero) {
-    System.out.println("Cartas de suerte: ");
-    jugador.getCartas();
-    System.out.println(" ");
-    tablero.mostrarTablero();
-  }
-
   private void mostrarCartasOTirarDado(Jugador jugadorTurno, Tablero tablero) {
     switch (this.opcion) {
       case 1:
         this.tirarDado();
         jugadorTurno.getFicha().avanzar(tablero, dado.getNumero());
+        usaCartas = false;
         break;
       case 2:
-        this.mostrarCartas(jugadorTurno, tablero);
+        jugadorTurno.mostrarCartas();
+        usaCartas = jugadorTurno.usarCartas(scanner);
         break;
       case 3:
         salir = true;
         return;
       default:
-        System.out.println("Opcion no valida");
         break;
     }
   }
@@ -92,7 +99,27 @@ public class MenuJuego {
     return tablero.getCasillas()[posicion];
   }
 
-  private void mostrarCasilla(Casilla casilla) {
+  private void mostrarCasilla(Casilla casilla, Jugador jugadorActual) {
     System.out.println("Has caido en la casilla: " + casilla.getNombre());
+    if (casilla instanceof CasillaPropiedad) {
+      System.out.println("Precio: " + ((CasillaPropiedad) casilla).getPrecio());
+      if (((CasillaPropiedad) casilla).getPropietario() == null) {
+        System.out.println("No tiene dueño");
+      } else {
+        System.out.println(
+          "Dueño: " + ((CasillaPropiedad) casilla).getPropietario().getNombre()
+        );
+      }
+    }
+    if (casilla instanceof CasillaSuerte) {
+      CasillaSuerte casillaSuerte = (CasillaSuerte) casilla;
+      casillaSuerte.setCarta();
+      System.out.println(
+        "Carta de suerte: " +
+        casillaSuerte.getCarta().getNombre() +
+        " se agrega en tu inventario de cartas."
+      );
+      jugadorActual.setCartas(casillaSuerte.getCarta());
+    }
   }
 }

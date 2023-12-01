@@ -13,6 +13,7 @@ public class Casilla {
   public Casilla(char tipo, String nombre) {
     this.tipo = tipo;
     this.nombre = nombre;
+    this.propietario = null;
   }
 
   public char getTipo() {

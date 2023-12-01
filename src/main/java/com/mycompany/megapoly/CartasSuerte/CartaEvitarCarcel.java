@@ -6,7 +6,7 @@ public class CartaEvitarCarcel extends CartaSuerte {
     super("Evitar Carcel", "Si estas en la carcel, sales de ella");
   }
 
-  public void evitarCarcel() {
+  public void efecto() {
     System.out.println(
       "Sobornas al guardia con un par de cajetillas de malboro de contrabando y sales de la carcel"
     );
