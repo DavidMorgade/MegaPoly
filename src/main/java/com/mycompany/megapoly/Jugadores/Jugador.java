@@ -2,13 +2,13 @@ package com.mycompany.megapoly.Jugadores;
 
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
 import com.mycompany.megapoly.Comprables.Comprable;
-import com.mycompany.megapoly.Comprables.Propiedad;
 import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Jugador {
+
 
   private String nombre;
 

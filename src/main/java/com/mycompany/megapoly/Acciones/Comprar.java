@@ -12,7 +12,7 @@ public class Comprar extends CompraVenta {
       jugador.getMegaMonedas() >= propiedad.getPrecioCompra() &&
       propiedad.getPropietario() == null
     ) {
-      propiedad.setPropietario(jugador.getNombre());
+      propiedad.setPropietario(jugador);
       jugador.setMegaMonedas(
         jugador.getMegaMonedas() - propiedad.getPrecioCompra()
       );

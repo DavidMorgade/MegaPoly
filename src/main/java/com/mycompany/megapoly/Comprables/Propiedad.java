@@ -2,8 +2,13 @@ package com.mycompany.megapoly.Comprables;
 
 public class Propiedad extends Comprable {
 
-  public Propiedad(int precio, int alquiler, String nombreComprable) {
-    super(precio, alquiler, nombreComprable);
+  public Propiedad(
+    int precio,
+    int alquiler,
+    String nombreComprable,
+    String descripcion
+  ) {
+    super(precio, alquiler, nombreComprable, descripcion);
   }
 
   public void alquilerConTresPropiedades() {

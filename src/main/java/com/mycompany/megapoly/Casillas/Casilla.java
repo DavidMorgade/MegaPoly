@@ -8,12 +8,11 @@ public class Casilla {
 
   private String nombre;
 
-  private Jugador propietario;
+  private Jugador propietario = new Jugador("Banco", false, null);
 
   public Casilla(char tipo, String nombre) {
     this.tipo = tipo;
     this.nombre = nombre;
-    this.propietario = null;
   }
 
   public char getTipo() {

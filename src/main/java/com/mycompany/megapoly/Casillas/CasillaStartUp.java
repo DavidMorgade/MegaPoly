@@ -1,27 +1,17 @@
 package com.mycompany.megapoly.Casillas;
 
+import com.mycompany.megapoly.Comprables.Comprable;
+
 public class CasillaStartUp extends Casilla {
 
-  private int precio;
+  private Comprable startUp;
 
-  private int rentabilidad;
-
-  public CasillaStartUp(
-    char tipo,
-    String nombre,
-    int precio,
-    int rentabilidad
-  ) {
+  public CasillaStartUp(char tipo, String nombre, Comprable startUp) {
     super(tipo, nombre);
-    this.precio = precio;
-    this.rentabilidad = rentabilidad;
+    this.startUp = startUp;
   }
 
-  public int getPrecio() {
-    return this.precio;
-  }
-
-  public int getRentabilidad() {
-    return this.rentabilidad;
+  public Comprable getStartUp() {
+    return this.startUp;
   }
 }

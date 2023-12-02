@@ -1,22 +1,30 @@
 package com.mycompany.megapoly.Comprables;
 
+import com.mycompany.megapoly.Jugadores.Jugador;
+
 public class Comprable {
 
-  private String propietario;
+  private Jugador propietario;
+  private String nombreComprable;
+  private String descripcion;
 
   private int precioCompra;
 
   private int precioVenta;
 
-  private String nombreComprable;
-
   protected int alquiler;
 
-  public Comprable(int precioCompra, int alquiler, String nombreComprable) {
+  public Comprable(
+    int precioCompra,
+    int alquiler,
+    String nombreComprable,
+    String descripcion
+  ) {
     this.precioCompra = precioCompra;
     this.precioVenta = precioCompra / 2;
     this.alquiler = alquiler;
     this.nombreComprable = nombreComprable;
+    this.descripcion = descripcion;
   }
 
   public int getPrecioCompra() {
@@ -31,7 +39,7 @@ public class Comprable {
     return this.alquiler;
   }
 
-  public String getPropietario() {
+  public Jugador getPropietario() {
     return this.propietario;
   }
 
@@ -39,7 +47,7 @@ public class Comprable {
     return this.nombreComprable;
   }
 
-  public void setPropietario(String propietario) {
+  public void setPropietario(Jugador propietario) {
     this.propietario = propietario;
   }
 }
