@@ -1,8 +1,9 @@
 package com.mycompany.megapoly.Jugadores;
 
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
+import com.mycompany.megapoly.Comprables.Comprable;
+import com.mycompany.megapoly.Comprables.Propiedad;
 import com.mycompany.megapoly.Materiales.Ficha;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +19,8 @@ public class Jugador {
   // lista de cartas de suerte de cada jugador
   private List<CartaSuerte> cartas = new ArrayList<CartaSuerte>();
 
+  private List<Comprable> comprables = new ArrayList<Comprable>();
+
   Ficha ficha;
 
   public Jugador(String nombre, boolean turno, Ficha ficha) {
@@ -26,6 +29,7 @@ public class Jugador {
     this.megaMonedas = 100;
     this.ficha = ficha;
     this.cartas = new ArrayList<CartaSuerte>();
+    this.comprables = new ArrayList<Comprable>();
   }
 
   public Jugador(Ficha ficha) {
@@ -51,6 +55,10 @@ public class Jugador {
 
   public int getMegaMonedas() {
     return this.megaMonedas;
+  }
+
+  public void setMegaMonedas(int megaMonedas) {
+    this.megaMonedas = megaMonedas;
   }
 
   public Ficha getFicha() {
@@ -79,7 +87,7 @@ public class Jugador {
       "Ingrese el numero de la carta que desea usar (-1 para no usar ninguna): "
     );
     int index = scanner.nextInt();
-    if (index == -1) {
+    if (index != -1) {
       System.out.println("No se usara ninguna carta, se seguira con el juego:");
       System.out.println(" ");
     } else {
@@ -108,5 +116,13 @@ public class Jugador {
 
   public void sumarMegaMonedas(int cantidad) {
     this.megaMonedas += cantidad;
+  }
+
+  public void setPropiedades(Comprable propiedad) {
+    this.comprables.add(propiedad);
+  }
+
+  public List<Comprable> getPropiedades() {
+    return this.comprables;
   }
 }

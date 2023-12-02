@@ -102,7 +102,10 @@ public class MenuJuego {
   private void mostrarCasilla(Casilla casilla, Jugador jugadorActual) {
     System.out.println("Has caido en la casilla: " + casilla.getNombre());
     if (casilla instanceof CasillaPropiedad) {
-      System.out.println("Precio: " + ((CasillaPropiedad) casilla).getPrecio());
+      System.out.println(
+        "Precio: " +
+        ((CasillaPropiedad) casilla).getPropiedad().getPrecioCompra()
+      );
       if (((CasillaPropiedad) casilla).getPropietario() == null) {
         System.out.println("No tiene dueño");
       } else {

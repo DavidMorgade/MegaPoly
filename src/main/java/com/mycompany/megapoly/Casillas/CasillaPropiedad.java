@@ -1,26 +1,17 @@
 package com.mycompany.megapoly.Casillas;
 
+import com.mycompany.megapoly.Comprables.Propiedad;
+
 public class CasillaPropiedad extends Casilla {
 
-  private int precio;
+  private Propiedad propiedad;
 
-  private int alquiler;
-
-  public CasillaPropiedad(char tipo, String nombre, int precio, int alquiler) {
+  public CasillaPropiedad(char tipo, String nombre, Propiedad propiedad) {
     super(tipo, nombre);
-    this.precio = precio;
-    this.alquiler = alquiler;
+    this.propiedad = propiedad;
   }
 
-  public int getPrecio() {
-    return this.precio;
-  }
-
-  public int getAlquiler() {
-    return this.alquiler;
-  }
-
-  public void alquilerConTresPropiedades() {
-    this.alquiler = this.alquiler * 3;
+  public Propiedad getPropiedad() {
+    return this.propiedad;
   }
 }
