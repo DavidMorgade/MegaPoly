@@ -10,7 +10,7 @@ public class Comprar extends CompraVenta {
   public void comprarPropiedad(Jugador jugador, Comprable propiedad) {
     if (
       jugador.getMegaMonedas() >= propiedad.getPrecioCompra() &&
-      propiedad.getPropietario() == null
+      propiedad.getPropietario().getNombre().equals("Banco")
     ) {
       propiedad.setPropietario(jugador);
       jugador.setMegaMonedas(

@@ -55,7 +55,13 @@ public class MenuJuego {
     this.mostrarCasilla(casillaActual, jugadorTurno);
     if (casillaActual instanceof CasillaPropiedad) {
       CasillaPropiedad casillaPropiedad = (CasillaPropiedad) casillaActual;
-      if (casillaPropiedad.getPropietario().getNombre().equals("Banco")) {
+      if (
+        casillaPropiedad
+          .getPropiedad()
+          .getPropietario()
+          .getNombre()
+          .equals("Banco")
+      ) {
         this.comprarPropiedad(jugadorTurno, casillaPropiedad);
       }
     }
@@ -150,11 +156,19 @@ public class MenuJuego {
         "Precio: " +
         ((CasillaPropiedad) casilla).getPropiedad().getPrecioCompra()
       );
-      if (((CasillaPropiedad) casilla).getPropietario() == null) {
+      if (
+        ((CasillaPropiedad) casilla).getPropiedad()
+          .getPropietario()
+          .getNombre()
+          .equals("Banco")
+      ) {
         System.out.println("No tiene dueño");
       } else {
         System.out.println(
-          "Dueño: " + ((CasillaPropiedad) casilla).getPropietario().getNombre()
+          "Dueño: " +
+          ((CasillaPropiedad) casilla).getPropiedad()
+            .getPropietario()
+            .getNombre()
         );
       }
     }

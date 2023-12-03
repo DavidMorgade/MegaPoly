@@ -25,7 +25,12 @@ public class MegaPoly {
 
     Tablero tablero = new Tablero(5, fichaUno, fichaDos);
 
-    MenuInicio menuInicio = new MenuInicio(jugador1, jugador2);
+    MenuInicio menuInicio = new MenuInicio(
+      jugador1,
+      jugador2,
+      fichaUno,
+      fichaDos
+    );
 
     MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, tablero);
   }

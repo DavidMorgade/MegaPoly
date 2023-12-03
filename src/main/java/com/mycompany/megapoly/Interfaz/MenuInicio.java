@@ -1,6 +1,7 @@
 package com.mycompany.megapoly.Interfaz;
 
 import com.mycompany.megapoly.Jugadores.Jugador;
+import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.Scanner;
 
 public class MenuInicio {
@@ -11,11 +12,16 @@ public class MenuInicio {
 
   Scanner scanner = new Scanner(System.in);
 
-  public MenuInicio(Jugador jugador1, Jugador jugador2) {
+  public MenuInicio(
+    Jugador jugador1,
+    Jugador jugador2,
+    Ficha fichaRoja,
+    Ficha fichaAzul
+  ) {
     menuInicio();
     switch (opcion) {
       case 1:
-        preguntarNombres(jugador1, jugador2);
+        preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
         break;
       case 2:
         System.out.println("Gracias por jugar");
@@ -35,7 +41,12 @@ public class MenuInicio {
     opcion = scanner.nextInt();
   }
 
-  private void preguntarNombres(Jugador jugador1, Jugador jugador2) {
+  private void preguntarNombres(
+    Jugador jugador1,
+    Jugador jugador2,
+    Ficha fichaRoja,
+    Ficha fichaAzul
+  ) {
     System.out.println("Ingrese el nombre del jugador 1");
     jugador1.setNombre(scanner.next());
     System.out.println(" ");
@@ -43,7 +54,7 @@ public class MenuInicio {
     System.out.println("1. Ficha Roja");
     System.out.println("2. Ficha Azul");
     opcionColor = scanner.nextInt();
-    setColorFicha(opcionColor, jugador1, jugador2);
+    setColorFicha(opcionColor, jugador1, jugador2, fichaRoja, fichaAzul);
     System.out.println("Ingrese el nombre del jugador 2");
     jugador2.setNombre(scanner.next());
     System.out.println(" ");
@@ -61,14 +72,20 @@ public class MenuInicio {
   private void setColorFicha(
     int opcionColor,
     Jugador jugador1,
-    Jugador jugador2
+    Jugador jugador2,
+    Ficha fichaRoja,
+    Ficha fichaAzul
   ) {
     if (opcionColor == 1) {
       jugador1.getFicha().setColorFicha("Rojo");
+      fichaRoja.setJugador(jugador1);
       jugador2.getFicha().setColorFicha("Azul");
+      fichaAzul.setJugador(jugador2);
     } else if (opcionColor == 2) {
       jugador1.getFicha().setColorFicha("Azul");
+      fichaAzul.setJugador(jugador1);
       jugador2.getFicha().setColorFicha("Rojo");
+      fichaRoja.setJugador(jugador2);
     } else {
       System.out.println("Opción no válida");
     }

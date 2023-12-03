@@ -4,7 +4,7 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Comprable {
 
-  private Jugador propietario;
+  private Jugador propietario = new Jugador("Banco", false, null);
   private String nombreComprable;
   private String descripcion;
 

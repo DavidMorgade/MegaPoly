@@ -8,6 +8,7 @@ import com.mycompany.megapoly.Casillas.CasillaStartUp;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Comprables.Propiedad;
 import com.mycompany.megapoly.Comprables.StartUp;
+import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Tablero {
 
@@ -73,26 +74,29 @@ public class Tablero {
               " " +
               "\u001B[0m"
             );
-          } else if (
-            casillas[indice].getPropietario().equals(fichaRoja.getJugador())
-          ) {
-            System.out.print(
-              "\u001B[31m" +
-              " " +
-              casillas[indice].getTipo() +
-              " " +
-              "\u001B[0m"
-            );
-          } else if (
-            casillas[indice].getPropietario().equals(fichaAzul.getJugador())
-          ) {
-            System.out.print(
-              "\u001B[34m" +
-              " " +
-              casillas[indice].getTipo() +
-              " " +
-              "\u001B[0m"
-            );
+          } else if (casillas[indice] instanceof CasillaPropiedad) {
+            Jugador propietario =
+              ((CasillaPropiedad) casillas[indice]).getPropiedad()
+                .getPropietario();
+            if (propietario.getNombre().equals("Banco")) {
+              System.out.print(" " + casillas[indice].getTipo() + " ");
+            } else if (propietario.equals(fichaRoja.getJugador())) {
+              System.out.print(
+                "\u001B[31m" +
+                " " +
+                casillas[indice].getTipo() +
+                " " +
+                "\u001B[0m"
+              );
+            } else if (propietario.equals(fichaAzul.getJugador())) {
+              System.out.print(
+                "\u001B[34m" +
+                " " +
+                casillas[indice].getTipo() +
+                " " +
+                "\u001B[0m"
+              );
+            }
           } else {
             System.out.print(" " + casillas[indice].getTipo() + " ");
           }

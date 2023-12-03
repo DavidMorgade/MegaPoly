@@ -8,8 +8,6 @@ public class Casilla {
 
   private String nombre;
 
-  private Jugador propietario = new Jugador("Banco", false, null);
-
   public Casilla(char tipo, String nombre) {
     this.tipo = tipo;
     this.nombre = nombre;
@@ -21,14 +19,6 @@ public class Casilla {
 
   public void setTipo(char tipo) {
     this.tipo = tipo;
-  }
-
-  public Jugador getPropietario() {
-    return this.propietario;
-  }
-
-  public void setPropietario(Jugador propietario) {
-    this.propietario = propietario;
   }
 
   public String getNombre() {
