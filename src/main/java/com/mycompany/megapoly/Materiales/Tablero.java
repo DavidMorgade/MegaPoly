@@ -40,68 +40,54 @@ public class Tablero {
   }
 
   public void mostrarTablero() {
+    int posicionRoja = fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
+    int posicionAzul = fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
+    boolean mismaPosicion = fichaRoja.getPosicion() == fichaAzul.getPosicion(); // Boolean que comprueba si las fichas estan en la misma posicion
+
     for (int i = 0; i < tamanioLado; i++) {
       for (int j = 0; j < tamanioLado; j++) {
+        // Calculamos el indice de la casilla
         int indice = i * tamanioLado + j;
+        // Obtenemos la casilla
+        Casilla casilla = casillas[indice];
+        // Obtenemos el tipo de casilla
+        char tipoCasilla = casilla.getTipo();
+        // Imprimimos la casilla para que forme un cuadrado en forma de tablero
         if (
           (i == 0 || i == tamanioLado - 1 || j == 0 || j == tamanioLado - 1) &&
           !(i > 0 && i < tamanioLado - 1 && j > 0 && j < tamanioLado - 1)
         ) {
-          if (
-            fichaRoja.getPosicion() == fichaAzul.getPosicion() &&
-            indice == fichaRoja.getPosicion()
-          ) {
-            System.out.print(
-              "\u001B[32m" + // Cambié a verde (32)
-              " " +
-              casillas[indice].getTipo() +
-              " " +
-              "\u001B[0m"
-            );
-          } else if (indice == fichaAzul.getPosicion()) {
-            System.out.print(
-              "\u001B[34m" +
-              " " +
-              casillas[indice].getTipo() +
-              " " +
-              "\u001B[0m"
-            );
-          } else if (indice == fichaRoja.getPosicion()) {
-            System.out.print(
-              "\u001B[31m" +
-              " " +
-              casillas[indice].getTipo() +
-              " " +
-              "\u001B[0m"
-            );
-          } else if (casillas[indice] instanceof CasillaPropiedad) {
+          // Si la ficha roja y azul están en la misma posición, la imprimimos de color verde
+          if (mismaPosicion && indice == fichaRoja.getPosicion()) {
+            this.imprimirCasillaVerde(tipoCasilla);
+            // Si esta la ficha azul solamente la imprimimos de color azul
+          } else if (indice == posicionAzul) {
+            this.imprimirCasillaAzul(tipoCasilla);
+            // Si esta la ficha roja solamente la imprimimos de color rojo
+          } else if (indice == posicionRoja) {
+            this.imprimirCasillaRoja(tipoCasilla);
+            // Si la casilla es una propiedad
+          } else if (casilla instanceof CasillaPropiedad) {
+            // Obtenemos el propietario de la propiedad
             Jugador propietario =
-              ((CasillaPropiedad) casillas[indice]).getPropiedad()
-                .getPropietario();
+              ((CasillaPropiedad) casilla).getPropiedad().getPropietario();
+            // Si el propietario es el banco, la imprimimos normal
             if (propietario.getNombre().equals("Banco")) {
-              System.out.print(" " + casillas[indice].getTipo() + " ");
+              this.imprimirCasillaNormal(tipoCasilla);
+              // Si el propietario es el jugador rojo, la imprimimos de color rojo
             } else if (propietario.equals(fichaRoja.getJugador())) {
-              System.out.print(
-                "\u001B[31m" +
-                " " +
-                casillas[indice].getTipo() +
-                " " +
-                "\u001B[0m"
-              );
+              this.imprimirCasillaRoja(tipoCasilla);
+              // Si el propietario es el jugador azul, la imprimimos de color azul
             } else if (propietario.equals(fichaAzul.getJugador())) {
-              System.out.print(
-                "\u001B[34m" +
-                " " +
-                casillas[indice].getTipo() +
-                " " +
-                "\u001B[0m"
-              );
+              this.imprimirCasillaAzul(tipoCasilla);
             }
+            // Si no se cumple ninguna condicion anterior se imprime normal
           } else {
-            System.out.print(" " + casillas[indice].getTipo() + " ");
+            this.imprimirCasillaNormal(tipoCasilla);
           }
+          // Espacio para las casillas del centro
         } else {
-          System.out.print("   "); // Espacio para las casillas del centro
+          System.out.print("       ");
         }
       }
       System.out.println();
@@ -259,5 +245,21 @@ public class Tablero {
     casillas[16] = new Casilla(' ', "");
     casillas[17] = new Casilla(' ', "");
     casillas[18] = new Casilla(' ', "");
+  }
+
+  private void imprimirCasillaNormal(char tipoCasilla) {
+    System.out.print("   " + tipoCasilla + "   ");
+  }
+
+  private void imprimirCasillaVerde(char tipoCasilla) {
+    System.out.print("\u001B[32m" + "   " + tipoCasilla + "   " + "\u001B[0m");
+  }
+
+  private void imprimirCasillaAzul(char tipoCasilla) {
+    System.out.print("\u001B[34m" + "   " + tipoCasilla + "   " + "\u001B[0m");
+  }
+
+  private void imprimirCasillaRoja(char tipoCasilla) {
+    System.out.print("\u001B[31m" + "   " + tipoCasilla + "   " + "\u001B[0m");
   }
 }
