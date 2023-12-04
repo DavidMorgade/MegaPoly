@@ -1,6 +1,5 @@
 package com.mycompany.megapoly.Casillas;
 
-import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Casilla {
 

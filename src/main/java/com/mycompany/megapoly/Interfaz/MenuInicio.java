@@ -4,13 +4,13 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.Scanner;
 
-public class MenuInicio {
+public class MenuInicio extends Menu {
 
-  int opcion;
+  private int opcion;
 
-  int opcionColor;
+  private int opcionColor;
 
-  Scanner scanner = new Scanner(System.in);
+  private Scanner scanner = new Scanner(System.in);
 
   public MenuInicio(
     Jugador jugador1,
@@ -24,20 +24,24 @@ public class MenuInicio {
         preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
         break;
       case 2:
-        System.out.println("Gracias por jugar");
+        System.out.println(this.centrarFrase + "Gracias por jugar");
         System.exit(0);
         break;
       default:
-        System.out.println("Opción no válida");
+        System.out.println(this.centrarFrase + "Opción no válida");
         break;
     }
   }
 
   private void menuInicio() {
-    System.out.println("Bienvenido a MegaPoly");
-    System.out.println("1. Jugar");
-    System.out.println("2. Salir");
-    System.out.println("Seleccione una opción");
+    System.out.println(this.centrarFrase + "Bienvenido a MegaPoly");
+    System.out.println("");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "Seleccione una opción");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "1. Jugar");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "2. Salir");
     opcion = scanner.nextInt();
   }
 
@@ -47,18 +51,27 @@ public class MenuInicio {
     Ficha fichaRoja,
     Ficha fichaAzul
   ) {
-    System.out.println("Ingrese el nombre del jugador 1");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "Ingrese el nombre del jugador 1");
     jugador1.setNombre(scanner.next());
     System.out.println(" ");
-    System.out.println("Seleccione una ficha para el jugador 1:");
-    System.out.println("1. Ficha Roja");
-    System.out.println("2. Ficha Azul");
+    System.out.println(
+      this.centrarFrase + "Seleccione una ficha para el jugador 1:"
+    );
+    System.out.println("");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "1. Ficha Roja");
+    System.out.println("");
+    System.out.println(this.centrarFrase + "2. Ficha Azul");
+    System.out.println("");
+    System.out.println("");
     opcionColor = scanner.nextInt();
     setColorFicha(opcionColor, jugador1, jugador2, fichaRoja, fichaAzul);
-    System.out.println("Ingrese el nombre del jugador 2");
+    System.out.println(this.centrarFrase + "Ingrese el nombre del jugador 2");
     jugador2.setNombre(scanner.next());
     System.out.println(" ");
     System.out.println(
+      this.centrarFrase +
       jugador1.getNombre() +
       " (jugador 1) adquirió la ficha " +
       jugador1.getFicha().getColorFicha() +
@@ -87,7 +100,7 @@ public class MenuInicio {
       jugador2.getFicha().setColorFicha("Rojo");
       fichaRoja.setJugador(jugador2);
     } else {
-      System.out.println("Opción no válida");
+      System.out.println(this.centrarFrase + "Opción no válida");
     }
   }
 }

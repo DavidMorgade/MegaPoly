@@ -47,6 +47,10 @@ public class Comprable {
     return this.nombreComprable;
   }
 
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+
   public void setPropietario(Jugador propietario) {
     this.propietario = propietario;
   }

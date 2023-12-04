@@ -79,6 +79,7 @@ public class Ficha {
       nuevoIndice += indicesValidos.length;
     }
 
+    // Actualizar la posición de la ficha
     this.setPosicion(indicesValidos[nuevoIndice]);
 
     // Mostramos el tablero

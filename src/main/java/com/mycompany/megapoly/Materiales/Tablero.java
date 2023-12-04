@@ -90,7 +90,9 @@ public class Tablero {
           System.out.print("       ");
         }
       }
-      System.out.println();
+      System.out.println("");
+      System.out.println("");
+      System.out.println("");
     }
   }
 

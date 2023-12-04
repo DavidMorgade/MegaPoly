@@ -1,12 +1,10 @@
 package com.mycompany.megapoly.Interfaz;
 
-import com.mycompany.megapoly.Acciones.CompraVenta;
 import com.mycompany.megapoly.Acciones.Comprar;
 import com.mycompany.megapoly.Acciones.Venta;
 import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
-import com.mycompany.megapoly.Comprables.Comprable;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
@@ -77,8 +75,12 @@ public class MenuJuego {
 
   private void mostrarOpciones(Jugador jugadorTurno) {
     System.out.println("Opciones: ");
+    System.out.println("");
+    System.out.println("");
     System.out.println("1. Tirar dado");
+    System.out.println("");
     System.out.println("2. Ver cartas de suerte");
+    System.out.println("");
     System.out.println("3. Salir");
     System.out.println(" ");
     opcion = scanner.nextInt();
