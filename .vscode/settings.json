@@ -1,3 +1,7 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.referencedLibraries": [
+        "./Libraries/commons-lang3-3.9.jar",
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

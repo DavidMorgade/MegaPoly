@@ -6,9 +6,11 @@ import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.commons.lang3.StringUtils;
 
 public class Jugador {
 
+  private static final int w = 100;
 
   private String nombre;
 
@@ -67,16 +69,22 @@ public class Jugador {
 
   public void mostrarCartas() {
     if (this.cartas.isEmpty()) {
-      System.out.println("No tienes cartas de suerte");
+      System.out.println("");
+      System.out.println(StringUtils.center("No tienes cartas de suerte", w));
+      System.out.println("");
     } else {
-      System.out.println("Tus cartas de suerte son: ");
+      System.out.println(StringUtils.center("Tus cartas de suerte son: ", w));
       for (CartaSuerte carta : this.cartas) {
         int index = this.cartas.indexOf(carta);
-        System.out.println("Carta " + index + ": ");
+        System.out.println(StringUtils.center("Carta " + index + ": ", w));
         System.out.println(" ");
-        System.out.println("Nombre: " + carta.getNombre());
+        System.out.println(
+          StringUtils.center("Nombre: " + carta.getNombre(), w)
+        );
         System.out.println(" ");
-        System.out.println("Descripcion: " + carta.getDescripcion());
+        System.out.println(
+          StringUtils.center("Descripcion: " + carta.getDescripcion(), w)
+        );
         System.out.println(" ");
       }
     }
@@ -84,11 +92,19 @@ public class Jugador {
 
   public boolean usarCartas(Scanner scanner) {
     System.out.println(
-      "Ingrese el numero de la carta que desea usar (-1 para no usar ninguna): "
+      StringUtils.center(
+        "Ingrese el numero de la carta que desea usar (-1 para no usar ninguna): ",
+        w
+      )
     );
     int index = scanner.nextInt();
     if (index != -1) {
-      System.out.println("No se usara ninguna carta, se seguira con el juego:");
+      System.out.println(
+        StringUtils.center(
+          "No se usara ninguna carta, se seguira con el juego:",
+          w
+        )
+      );
       System.out.println(" ");
     } else {
       this.cartas.get(index).efecto(this);

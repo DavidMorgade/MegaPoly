@@ -87,10 +87,9 @@ public class Tablero {
           }
           // Espacio para las casillas del centro
         } else {
-          System.out.print("       ");
+          System.out.print("                     ");
         }
       }
-      System.out.println("");
       System.out.println("");
       System.out.println("");
     }
@@ -250,18 +249,24 @@ public class Tablero {
   }
 
   private void imprimirCasillaNormal(char tipoCasilla) {
-    System.out.print("   " + tipoCasilla + "   ");
+    System.out.print("          " + tipoCasilla + "          ");
   }
 
   private void imprimirCasillaVerde(char tipoCasilla) {
-    System.out.print("\u001B[32m" + "   " + tipoCasilla + "   " + "\u001B[0m");
+    System.out.print(
+      "\u001B[32m" + "          " + tipoCasilla + "          " + "\u001B[0m"
+    );
   }
 
   private void imprimirCasillaAzul(char tipoCasilla) {
-    System.out.print("\u001B[34m" + "   " + tipoCasilla + "   " + "\u001B[0m");
+    System.out.print(
+      "\u001B[34m" + "          " + tipoCasilla + "          " + "\u001B[0m"
+    );
   }
 
   private void imprimirCasillaRoja(char tipoCasilla) {
-    System.out.print("\u001B[31m" + "   " + tipoCasilla + "   " + "\u001B[0m");
+    System.out.print(
+      "\u001B[31m" + "          " + tipoCasilla + "       " + "\u001B[0m"
+    );
   }
 }

@@ -10,7 +10,7 @@ import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
 
-public class MenuJuego {
+public class MenuJuego extends Menu {
 
   Scanner scanner = new Scanner(System.in);
 
@@ -67,30 +67,38 @@ public class MenuJuego {
   }
 
   private void mostrarTurno(Jugador jugadorTurno) {
-    System.out.println("Turno de: " + jugadorTurno.getNombre());
-    System.out.println("Ficha: " + jugadorTurno.getFicha().getColorFicha());
-    System.out.println("Mega monedas: " + jugadorTurno.getMegaMonedas());
-    System.out.println(" ");
+    this.printCentradoEnConsola("Turno de: " + jugadorTurno.getNombre());
+    this.printCentradoEnConsola(
+        "Ficha: " + jugadorTurno.getFicha().getColorFicha()
+      );
+    this.printCentradoEnConsola(
+        "Mega monedas: " + jugadorTurno.getMegaMonedas()
+      );
+    this.printCentradoEnConsola(" ");
   }
 
   private void mostrarOpciones(Jugador jugadorTurno) {
-    System.out.println("Opciones: ");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("1. Tirar dado");
-    System.out.println("");
-    System.out.println("2. Ver cartas de suerte");
-    System.out.println("");
-    System.out.println("3. Salir");
-    System.out.println(" ");
+    this.printCentradoEnConsola("Opciones: ");
+    this.printCentradoEnConsola("");
+    this.printCentradoEnConsola("");
+    this.printCentradoEnConsola("1. Tirar dado");
+    this.printCentradoEnConsola("");
+    this.printCentradoEnConsola("2. Ver cartas de suerte");
+    this.printCentradoEnConsola("");
+    this.printCentradoEnConsola("3. Salir");
+    this.printCentradoEnConsola(" ");
     opcion = scanner.nextInt();
   }
 
   private void mostrarOpcionesCompra(Jugador jugadorTurno) {
-    System.out.println("Opciones: ");
-    System.out.println("1. Comprar");
-    System.out.println("2. No comprar");
-    System.out.println(" ");
+    this.printCentradoEnConsola("Opciones: ");
+    System.out.println("");
+    System.out.println("");
+    this.printCentradoEnConsola("1. Comprar");
+    System.out.println("");
+    this.printCentradoEnConsola("2. No comprar");
+    this.printCentradoEnConsola(" ");
+    System.out.println("");
     opcionCompra = scanner.nextInt();
   }
 
@@ -98,16 +106,17 @@ public class MenuJuego {
     Jugador jugadorTurno,
     CasillaPropiedad casillaPropiedad
   ) {
-    System.out.println("Desea comprar la propiedad?");
+    System.out.println("");
+    this.printCentradoEnConsola("Desea comprar la propiedad?");
     this.mostrarOpcionesCompra(jugadorTurno);
     switch (this.opcionCompra) {
       case 1:
         comprar.comprarPropiedad(jugadorTurno, casillaPropiedad.getPropiedad());
         break;
       case 2:
-        System.out.println(
-          "No se compro la propiedad, se seguira con el juego"
-        );
+        this.printCentradoEnConsola(
+            "No se compro la propiedad, se seguira con el juego"
+          );
         break;
       default:
         break;
@@ -152,36 +161,43 @@ public class MenuJuego {
   }
 
   private void mostrarCasilla(Casilla casilla, Jugador jugadorActual) {
-    System.out.println("Has caido en la casilla: " + casilla.getNombre());
-    if (casilla instanceof CasillaPropiedad) {
-      System.out.println(
-        "Precio: " +
-        ((CasillaPropiedad) casilla).getPropiedad().getPrecioCompra()
+    this.printCentradoEnConsola(
+        "Has caido en la casilla: " + casilla.getNombre()
       );
+    if (casilla instanceof CasillaPropiedad) {
+      System.out.println(" ");
+      this.printCentradoEnConsola(
+          "Precio: " +
+          ((CasillaPropiedad) casilla).getPropiedad().getPrecioCompra()
+        );
       if (
         ((CasillaPropiedad) casilla).getPropiedad()
           .getPropietario()
           .getNombre()
           .equals("Banco")
       ) {
-        System.out.println("No tiene dueño");
+        System.out.println(" ");
+        this.printCentradoEnConsola("No tiene dueño");
+        System.out.println(" ");
       } else {
-        System.out.println(
-          "Dueño: " +
-          ((CasillaPropiedad) casilla).getPropiedad()
-            .getPropietario()
-            .getNombre()
-        );
+        System.out.println("");
+        this.printCentradoEnConsola(
+            "Dueño: " +
+            ((CasillaPropiedad) casilla).getPropiedad()
+              .getPropietario()
+              .getNombre()
+          );
       }
     }
     if (casilla instanceof CasillaSuerte) {
       CasillaSuerte casillaSuerte = (CasillaSuerte) casilla;
       casillaSuerte.setCarta();
-      System.out.println(
-        "Carta de suerte: " +
-        casillaSuerte.getCarta().getNombre() +
-        " se agrega en tu inventario de cartas."
-      );
+      System.out.println("");
+      this.printCentradoEnConsola(
+          "Carta de suerte: " +
+          casillaSuerte.getCarta().getNombre() +
+          " se agrega en tu inventario de cartas."
+        );
       jugadorActual.setCartas(casillaSuerte.getCarta());
     }
   }
