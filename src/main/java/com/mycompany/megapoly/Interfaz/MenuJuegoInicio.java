@@ -4,7 +4,13 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class MenuJuegoInicio extends Menu {
 
-  public MenuJuegoInicio(Jugador jugador1, Jugador jugador2) {}
+  Jugador jugador1;
+  Jugador jugador2;
+
+  public MenuJuegoInicio(Jugador jugador1, Jugador jugador2) {
+    this.jugador1 = jugador1;
+    this.jugador2 = jugador2;
+  }
 
   public void mostrarTurno(Jugador jugadorTurno) {
     this.printCentradoEnConsola("Turno de: " + jugadorTurno.getNombre());
@@ -17,7 +23,7 @@ public class MenuJuegoInicio extends Menu {
     this.printCentradoEnConsola(" ");
   }
 
-  public Jugador determinarTurno(Jugador jugador1, Jugador jugador2) {
-    return jugador1.getTurno() ? jugador1 : jugador2;
+  public Jugador determinarTurno() {
+    return this.jugador1.getTurno() ? this.jugador1 : this.jugador2;
   }
 }
