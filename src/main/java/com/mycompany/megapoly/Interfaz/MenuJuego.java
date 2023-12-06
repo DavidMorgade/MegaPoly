@@ -4,7 +4,6 @@ import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Jugadores.Jugador;
-import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
 
@@ -15,10 +14,6 @@ public class MenuJuego extends Menu {
   private boolean salir = false;
 
   private boolean usaCartas = false;
-
-  private int opcion;
-
-  private Dado dado = new Dado();
 
   public MenuJuego(Jugador jugador1, Jugador jugador2, Tablero tablero) {
     jugador1.setTurno(true);
@@ -36,12 +31,15 @@ public class MenuJuego extends Menu {
     Tablero tablero
   ) {
     MenuJuegoInicio Inicio = new MenuJuegoInicio(jugador1, jugador2);
-
     Jugador jugadorTurno = Inicio.determinarTurno();
     Inicio.mostrarTurno(jugadorTurno);
+    MenuJuegoOpcionesPrincipales OpcionesPrincipales = new MenuJuegoOpcionesPrincipales(
+      jugadorTurno,
+      scanner,
+      tablero
+    );
     do {
-      this.mostrarOpciones(jugadorTurno);
-      this.mostrarCartasOTirarDado(jugadorTurno, tablero);
+      usaCartas = OpcionesPrincipales.mostrarCartasOTirarDado();
     } while (usaCartas);
     Casilla casillaActual = this.obtenerCasilla(tablero, jugadorTurno);
     this.mostrarCasilla(casillaActual, jugadorTurno);
@@ -55,42 +53,6 @@ public class MenuJuego extends Menu {
       opcionesCompra.menuCompraPropiedad();
     }
     this.cambiarTurno(jugador1, jugador2);
-  }
-
-  private void mostrarOpciones(Jugador jugadorTurno) {
-    this.printCentradoEnConsola("Opciones: ");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("1. Tirar dado");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("2. Ver cartas de suerte");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("3. Salir");
-    this.printCentradoEnConsola(" ");
-    opcion = scanner.nextInt();
-  }
-
-  private void tirarDado() {
-    dado.setNumeroAleatorio();
-  }
-
-  private void mostrarCartasOTirarDado(Jugador jugadorTurno, Tablero tablero) {
-    switch (this.opcion) {
-      case 1:
-        this.tirarDado();
-        jugadorTurno.getFicha().avanzar(tablero, dado.getNumero());
-        usaCartas = false;
-        break;
-      case 2:
-        jugadorTurno.mostrarCartas();
-        usaCartas = jugadorTurno.usarCartas(scanner);
-        break;
-      case 3:
-        salir = true;
-        return;
-      default:
-        break;
-    }
   }
 
   private void cambiarTurno(Jugador jugador1, Jugador jugador2) {

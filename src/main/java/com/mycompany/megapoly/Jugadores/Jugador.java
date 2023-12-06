@@ -98,7 +98,7 @@ public class Jugador {
       )
     );
     int index = scanner.nextInt();
-    if (index != -1) {
+    if (index == -1) {
       System.out.println(
         StringUtils.center(
           "No se usara ninguna carta, se seguira con el juego:",
