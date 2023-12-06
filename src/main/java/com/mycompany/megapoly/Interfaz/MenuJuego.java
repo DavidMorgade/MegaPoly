@@ -1,7 +1,5 @@
 package com.mycompany.megapoly.Interfaz;
 
-import com.mycompany.megapoly.Acciones.Comprar;
-import com.mycompany.megapoly.Acciones.Venta;
 import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
@@ -20,13 +18,7 @@ public class MenuJuego extends Menu {
 
   private int opcion;
 
-  private int opcionCompra;
-
   private Dado dado = new Dado();
-
-  private Comprar comprar = new Comprar();
-
-  private Venta venta = new Venta();
 
   public MenuJuego(Jugador jugador1, Jugador jugador2, Tablero tablero) {
     jugador1.setTurno(true);
@@ -45,7 +37,7 @@ public class MenuJuego extends Menu {
   ) {
     MenuJuegoInicio Inicio = new MenuJuegoInicio(jugador1, jugador2);
 
-    Jugador jugadorTurno = Inicio.determinarTurno(jugador1, jugador2);
+    Jugador jugadorTurno = Inicio.determinarTurno();
     Inicio.mostrarTurno(jugadorTurno);
     do {
       this.mostrarOpciones(jugadorTurno);
@@ -55,15 +47,12 @@ public class MenuJuego extends Menu {
     this.mostrarCasilla(casillaActual, jugadorTurno);
     if (casillaActual instanceof CasillaPropiedad) {
       CasillaPropiedad casillaPropiedad = (CasillaPropiedad) casillaActual;
-      if (
+      MenuJuegoOpcionesCompra opcionesCompra = new MenuJuegoOpcionesCompra(
+        scanner,
+        jugadorTurno,
         casillaPropiedad
-          .getPropiedad()
-          .getPropietario()
-          .getNombre()
-          .equals("Banco")
-      ) {
-        this.comprarPropiedad(jugadorTurno, casillaPropiedad);
-      }
+      );
+      opcionesCompra.menuCompraPropiedad();
     }
     this.cambiarTurno(jugador1, jugador2);
   }
@@ -79,39 +68,6 @@ public class MenuJuego extends Menu {
     this.printCentradoEnConsola("3. Salir");
     this.printCentradoEnConsola(" ");
     opcion = scanner.nextInt();
-  }
-
-  private void mostrarOpcionesCompra(Jugador jugadorTurno) {
-    this.printCentradoEnConsola("Opciones: ");
-    System.out.println("");
-    System.out.println("");
-    this.printCentradoEnConsola("1. Comprar");
-    System.out.println("");
-    this.printCentradoEnConsola("2. No comprar");
-    this.printCentradoEnConsola(" ");
-    System.out.println("");
-    opcionCompra = scanner.nextInt();
-  }
-
-  private void comprarPropiedad(
-    Jugador jugadorTurno,
-    CasillaPropiedad casillaPropiedad
-  ) {
-    System.out.println("");
-    this.printCentradoEnConsola("Desea comprar la propiedad?");
-    this.mostrarOpcionesCompra(jugadorTurno);
-    switch (this.opcionCompra) {
-      case 1:
-        comprar.comprarPropiedad(jugadorTurno, casillaPropiedad.getPropiedad());
-        break;
-      case 2:
-        this.printCentradoEnConsola(
-            "No se compro la propiedad, se seguira con el juego"
-          );
-        break;
-      default:
-        break;
-    }
   }
 
   private void tirarDado() {
