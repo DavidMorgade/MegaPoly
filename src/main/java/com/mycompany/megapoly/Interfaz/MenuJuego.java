@@ -43,8 +43,10 @@ public class MenuJuego extends Menu {
     Jugador jugador2,
     Tablero tablero
   ) {
-    Jugador jugadorTurno = this.determinarTurno(jugador1, jugador2);
-    this.mostrarTurno(jugadorTurno);
+    MenuJuegoInicio Inicio = new MenuJuegoInicio(jugador1, jugador2);
+
+    Jugador jugadorTurno = Inicio.determinarTurno(jugador1, jugador2);
+    Inicio.mostrarTurno(jugadorTurno);
     do {
       this.mostrarOpciones(jugadorTurno);
       this.mostrarCartasOTirarDado(jugadorTurno, tablero);
@@ -64,17 +66,6 @@ public class MenuJuego extends Menu {
       }
     }
     this.cambiarTurno(jugador1, jugador2);
-  }
-
-  private void mostrarTurno(Jugador jugadorTurno) {
-    this.printCentradoEnConsola("Turno de: " + jugadorTurno.getNombre());
-    this.printCentradoEnConsola(
-        "Ficha: " + jugadorTurno.getFicha().getColorFicha()
-      );
-    this.printCentradoEnConsola(
-        "Mega monedas: " + jugadorTurno.getMegaMonedas()
-      );
-    this.printCentradoEnConsola(" ");
   }
 
   private void mostrarOpciones(Jugador jugadorTurno) {
@@ -144,10 +135,6 @@ public class MenuJuego extends Menu {
       default:
         break;
     }
-  }
-
-  private Jugador determinarTurno(Jugador jugador1, Jugador jugador2) {
-    return jugador1.getTurno() ? jugador1 : jugador2;
   }
 
   private void cambiarTurno(Jugador jugador1, Jugador jugador2) {
