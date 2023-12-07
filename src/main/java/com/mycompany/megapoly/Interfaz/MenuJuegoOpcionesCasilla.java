@@ -69,6 +69,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
       System.out.println(" ");
       this.printCentradoEnConsola("Dueño: " + propietario);
       System.out.println(" ");
+      this.menuPagasPorCasilla();
     }
   }
 
@@ -81,6 +82,17 @@ public class MenuJuegoOpcionesCasilla extends Menu {
         casillaPropiedad
       );
       opcionesCompra.menuCompraPropiedad();
+    }
+  }
+
+  private void menuPagasPorCasilla() {
+    if (this.casillaActual instanceof CasillaPropiedad) {
+      CasillaPropiedad casillaPropiedad = (CasillaPropiedad) this.casillaActual;
+      MenuJuegoOpcionesAlquiler opcionesAlquiler = new MenuJuegoOpcionesAlquiler(
+        this.jugadorActual,
+        casillaPropiedad
+      );
+      opcionesAlquiler.pagasAlquiler();
     }
   }
 
