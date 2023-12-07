@@ -95,6 +95,8 @@ public class MenuJuegoOpcionesCasilla extends Menu {
         nombreCarta +
         " se agrega en tu inventario de cartas."
       );
+    System.out.println(" ");
+    System.out.println(" ");
     jugadorActual.setCartas(cartaConseguida);
   }
 }
