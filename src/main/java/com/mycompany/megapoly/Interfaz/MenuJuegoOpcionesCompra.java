@@ -35,7 +35,6 @@ public class MenuJuegoOpcionesCompra extends Menu {
         .equals("Banco")
     ) {
       System.out.println("");
-      this.printCentradoEnConsola("Desea comprar la propiedad?");
       this.mostrarOpcionesCompra();
       switch (this.opcionCompra) {
         case 1:
@@ -48,6 +47,7 @@ public class MenuJuegoOpcionesCompra extends Menu {
           this.printCentradoEnConsola(
               "No se compro la propiedad, se seguira con el juego"
             );
+          System.out.println(" ");
           break;
         default:
           break;

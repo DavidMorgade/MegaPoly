@@ -1,6 +1,5 @@
 package com.mycompany.megapoly.Casillas;
 
-
 public class Casilla {
 
   private char tipo;
