@@ -69,6 +69,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
       System.out.println(" ");
       this.printCentradoEnConsola("Dueño: " + propietario);
       System.out.println(" ");
+      this.menuPagasPorCasilla();
     }
   }
 
@@ -84,6 +85,17 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     }
   }
 
+  private void menuPagasPorCasilla() {
+    if (this.casillaActual instanceof CasillaPropiedad) {
+      CasillaPropiedad casillaPropiedad = (CasillaPropiedad) this.casillaActual;
+      MenuJuegoOpcionesAlquiler opcionesAlquiler = new MenuJuegoOpcionesAlquiler(
+        this.jugadorActual,
+        casillaPropiedad
+      );
+      opcionesAlquiler.pagasAlquiler();
+    }
+  }
+
   private void casillaSuerte() {
     CasillaSuerte casillaSuerte = (CasillaSuerte) this.casillaActual;
     casillaSuerte.setCarta();
@@ -95,6 +107,8 @@ public class MenuJuegoOpcionesCasilla extends Menu {
         nombreCarta +
         " se agrega en tu inventario de cartas."
       );
+    System.out.println(" ");
+    System.out.println(" ");
     jugadorActual.setCartas(cartaConseguida);
   }
 }

@@ -33,6 +33,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
       case 1:
         int numeroDado = this.tirarDado();
         this.jugadorTurno.getFicha().avanzar(this.tablero, numeroDado);
+        this.mostrarTiradaDado(numeroDado);
         return false;
       case 2:
         this.jugadorTurno.mostrarCartas();
@@ -43,6 +44,12 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
       default:
         return false;
     }
+  }
+
+  private void mostrarTiradaDado(int numeroDado) {
+    System.out.println(" ");
+    this.printCentradoEnConsola("Has sacado un " + numeroDado);
+    System.out.println(" ");
   }
 
   private void mostrarOpciones() {
