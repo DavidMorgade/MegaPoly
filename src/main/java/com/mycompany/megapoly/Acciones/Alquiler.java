@@ -34,12 +34,12 @@ public class Alquiler extends CompraVenta {
         );
       System.out.println(" ");
       System.out.println(
-        StringUtils.center("Has caido en la empresa de" + nombrePropietario, w)
+        StringUtils.center("Has caido en la empresa de " + nombrePropietario, w)
       );
       System.out.println(
         StringUtils.center(
           nombreJugadorActual +
-          "paga la cantidad de " +
+          " paga la cantidad de " +
           precioAlquiler +
           " al jugador " +
           nombrePropietario +
