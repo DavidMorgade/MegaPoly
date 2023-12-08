@@ -2,6 +2,8 @@ package com.mycompany.megapoly.Materiales;
 
 import com.mycompany.megapoly.Acciones.RecompensaSalida;
 import com.mycompany.megapoly.Jugadores.Jugador;
+import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
 
 public class Ficha {
 
@@ -91,10 +93,22 @@ public class Ficha {
       System.out.println(" ");
       System.out.println(" ");
       System.out.println(
-        "Consigues una recompensa de " +
-        recompensa +
-        " MegaMonedas al pasar por la casilla de salida"
+        StringUtils.center(
+          "Consigues una recompensa de " +
+          recompensa +
+          " MegaMonedas al pasar por la casilla de salida",
+          100
+        )
       );
+      System.out.println(" ");
+      System.out.println(
+        StringUtils.center("Presione enter para continuar...", 100)
+      );
+      try {
+        System.in.read();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 }

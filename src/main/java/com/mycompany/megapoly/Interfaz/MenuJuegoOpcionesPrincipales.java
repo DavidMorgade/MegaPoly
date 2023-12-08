@@ -28,6 +28,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
   }
 
   public boolean mostrarCartasOTirarDado() {
+    tablero.mostrarTablero();
     this.mostrarOpciones();
     switch (this.opcion) {
       case 1:

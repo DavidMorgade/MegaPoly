@@ -40,6 +40,7 @@ public class Tablero {
   }
 
   public void mostrarTablero() {
+    System.out.print("\033\143"); // Limpiamos la consola
     int posicionRoja = fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
     int posicionAzul = fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
     boolean mismaPosicion = fichaRoja.getPosicion() == fichaAzul.getPosicion(); // Boolean que comprueba si las fichas estan en la misma posicion

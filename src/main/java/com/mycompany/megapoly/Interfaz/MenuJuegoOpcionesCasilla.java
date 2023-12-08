@@ -29,10 +29,12 @@ public class MenuJuegoOpcionesCasilla extends Menu {
   }
 
   public void opcionesSuerteCompraPropiedad() {
+    tablero.mostrarTablero();
     this.mostrarCasillas();
   }
 
   private void mostrarCasillas() {
+    tablero.mostrarTablero();
     this.obtenerCasilla();
     System.out.println(" ");
     this.printCentradoEnConsola(
