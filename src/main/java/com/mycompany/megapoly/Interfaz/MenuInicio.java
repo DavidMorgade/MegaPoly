@@ -34,6 +34,7 @@ public class MenuInicio extends Menu {
   }
 
   private void menuInicio() {
+    System.out.print("\033\143"); // Limpiamos la consola
     this.printCentradoEnConsola("Bienvenido a Megapoly");
     System.out.println("");
     System.out.println("");
@@ -47,6 +48,7 @@ public class MenuInicio extends Menu {
     System.out.println("");
     this.printCentradoEnConsola("2. Salir");
     opcion = scanner.nextInt();
+    System.out.print("\033\143"); // Limpiamos la consola
   }
 
   private void preguntarNombres(
@@ -58,6 +60,7 @@ public class MenuInicio extends Menu {
     System.out.println("");
     this.printCentradoEnConsola("Ingrese el nombre del jugador 1");
     jugador1.setNombre(scanner.next());
+    System.out.print("\033\143"); // Limpiamos la consola
     System.out.println(" ");
     this.printCentradoEnConsola("Seleccione una ficha para el jugador 1:");
     System.out.println("");
@@ -68,9 +71,11 @@ public class MenuInicio extends Menu {
     System.out.println("");
     System.out.println("");
     opcionColor = scanner.nextInt();
+    System.out.print("\033\143"); // Limpiamos la consola
     setColorFicha(opcionColor, jugador1, jugador2, fichaRoja, fichaAzul);
     this.printCentradoEnConsola("Ingrese el nombre del jugador 2:");
     jugador2.setNombre(scanner.next());
+    System.out.print("\033\143"); // Limpiamos la consola
     System.out.println(" ");
     this.printCentradoEnConsola(
         jugador1.getNombre() +
@@ -83,6 +88,12 @@ public class MenuInicio extends Menu {
       );
     System.out.println("");
     System.out.println("");
+    this.printCentradoEnConsola("Presione enter para continuar...");
+    try {
+      System.in.read();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private void setColorFicha(

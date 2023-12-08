@@ -87,6 +87,7 @@ public class Ficha {
 
     // Si caemos en la casilla de salida, obtenemos una recompensa
     if ((indiceActual >= 10 || indiceActual == 5) && this.getPosicion() <= 9) {
+      tablero.mostrarTablero();
       RecompensaSalida recompensaSalida = new RecompensaSalida();
       int recompensa = recompensaSalida.getRecompensa();
       this.jugador.setMegaMonedas(this.jugador.getMegaMonedas() + recompensa);
