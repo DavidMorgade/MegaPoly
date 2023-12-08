@@ -30,6 +30,8 @@ public class MenuJuego extends Menu {
     Tablero tablero
   ) {
     MenuJuegoInicio Inicio = new MenuJuegoInicio(jugador1, jugador2);
+    // Mostramos el tablero
+    tablero.mostrarTablero();
     this.jugadorTurno = Inicio.determinarTurno();
     Inicio.mostrarTurno(this.jugadorTurno);
 
@@ -47,6 +49,8 @@ public class MenuJuego extends Menu {
       tablero
     );
     opcionesCasilla.opcionesSuerteCompraPropiedad();
+    // Mostramos el tablero
+    tablero.mostrarTablero();
     this.cambiarTurno(jugador1, jugador2);
   }
 

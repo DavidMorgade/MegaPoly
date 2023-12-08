@@ -1,5 +1,6 @@
 package com.mycompany.megapoly.Materiales;
 
+import com.mycompany.megapoly.Acciones.RecompensaSalida;
 import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Ficha {
@@ -82,7 +83,18 @@ public class Ficha {
     // Actualizar la posición de la ficha
     this.setPosicion(indicesValidos[nuevoIndice]);
 
-    // Mostramos el tablero
-    tablero.mostrarTablero();
+    // Si caemos en la casilla de salida, obtenemos una recompensa
+    if ((indiceActual >= 10 || indiceActual == 5) && this.getPosicion() <= 9) {
+      RecompensaSalida recompensaSalida = new RecompensaSalida();
+      int recompensa = recompensaSalida.getRecompensa();
+      this.jugador.setMegaMonedas(this.jugador.getMegaMonedas() + recompensa);
+      System.out.println(" ");
+      System.out.println(" ");
+      System.out.println(
+        "Consigues una recompensa de " +
+        recompensa +
+        " MegaMonedas al pasar por la casilla de salida"
+      );
+    }
   }
 }

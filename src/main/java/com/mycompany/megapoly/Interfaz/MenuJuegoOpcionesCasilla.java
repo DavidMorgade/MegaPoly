@@ -34,6 +34,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
 
   private void mostrarCasillas() {
     this.obtenerCasilla();
+    System.out.println(" ");
     this.printCentradoEnConsola(
         "Has caido en la casilla: " + this.casillaActual.getNombre()
       );
