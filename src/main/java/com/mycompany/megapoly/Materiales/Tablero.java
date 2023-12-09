@@ -9,6 +9,7 @@ import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Comprables.Propiedad;
 import com.mycompany.megapoly.Comprables.StartUp;
 import com.mycompany.megapoly.ConsoleHelpers.ColoresCasillas;
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Tablero {
@@ -41,7 +42,7 @@ public class Tablero {
   }
 
   public void mostrarTablero() {
-    System.out.print("\033\143"); // Limpiamos la consola
+    ConsoleHelpers.limpiarConsola();
     int posicionRoja = fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
     int posicionAzul = fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
     boolean mismaPosicion = fichaRoja.getPosicion() == fichaAzul.getPosicion(); // Boolean que comprueba si las fichas estan en la misma posicion
