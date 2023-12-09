@@ -10,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Jugador {
 
+  private boolean carcel = false;
+
   private static final int w = 100;
 
   private String nombre;
@@ -136,6 +138,14 @@ public class Jugador {
 
   public void setPropiedades(Comprable propiedad) {
     this.comprables.add(propiedad);
+  }
+
+  public void setCarcel(boolean carcel) {
+    this.carcel = carcel;
+  }
+
+  public boolean getCarcel() {
+    return this.carcel;
   }
 
   public List<Comprable> getPropiedades() {

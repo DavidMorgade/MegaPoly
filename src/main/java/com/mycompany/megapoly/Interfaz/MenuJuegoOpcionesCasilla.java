@@ -1,6 +1,8 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.Acciones.EntradaSalidaCarcel;
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
+import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
@@ -37,14 +39,21 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     tablero.mostrarTablero();
     this.obtenerCasilla();
     System.out.println(" ");
-    this.printCentradoEnConsola(
-        "Has caido en la casilla: " + this.casillaActual.getNombre()
-      );
+
     if (this.casillaActual instanceof CasillaPropiedad) {
-      this.casillaPropiedad(scanner);
+      this.printCentradoEnConsola(
+          "Has caido en la casilla: " + this.casillaActual.getNombre()
+        );
+      this.casillaPropiedad();
     }
     if (this.casillaActual instanceof CasillaSuerte) {
+      this.printCentradoEnConsola(
+          "Has caido en la casilla: " + this.casillaActual.getNombre()
+        );
       this.casillaSuerte();
+    }
+    if (this.casillaActual instanceof Carcel) {
+      this.casillaCarcel();
     }
   }
 
@@ -53,7 +62,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     this.casillaActual = this.tablero.getCasillas()[posicion];
   }
 
-  private void casillaPropiedad(Scanner scanner) {
+  private void casillaPropiedad() {
     String propietario =
       ((CasillaPropiedad) casillaActual).getPropiedad()
         .getPropietario()
@@ -74,6 +83,11 @@ public class MenuJuegoOpcionesCasilla extends Menu {
       System.out.println(" ");
       this.menuPagasPorCasilla();
     }
+  }
+
+  private void casillaCarcel() {
+    EntradaSalidaCarcel.entrarCarcel(this.jugadorActual);
+    System.out.println(" ");
   }
 
   private void menuComprarCasilla() {

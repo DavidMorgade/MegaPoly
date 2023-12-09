@@ -1,22 +1,11 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.Scanner;
 
 public class MenuInicio extends Menu {
-
-  private String mensajeBienvenida =
-    "\r\n" + //
-    "\r\n" + //
-    "                                                                                 \r\n" + //
-    " _____ _                     _   _               _____                     _     \r\n" + //
-    "| __  |_|___ ___ _ _ ___ ___|_|_| |___    ___   |     |___ ___ ___ ___ ___| |_ _ \r\n" + //
-    "| __ -| | -_|   | | | -_|   | | . | . |  | .'|  | | | | -_| . | .'| . | . | | | |\r\n" + //
-    "|_____|_|___|_|_|\\_/|___|_|_|_|___|___|  |__,|  |_|_|_|___|_  |__,|  _|___|_|_  |\r\n" + //
-    "                                                          |___|   |_|       |___|\r\n" + //
-    "\r\n" + //
-    "";
 
   private int opcion;
 
@@ -36,7 +25,8 @@ public class MenuInicio extends Menu {
         preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
         break;
       case 2:
-        this.printCentradoEnConsola("Gracias por jugar");
+        ConsoleHelpers.limpiarConsola();
+        this.printCentradoEnConsola(this.mensajeDespedida);
         System.exit(0);
         break;
       default:

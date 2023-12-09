@@ -1,5 +1,7 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.Acciones.EntradaSalidaCarcel;
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
@@ -33,17 +35,39 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     switch (this.opcion) {
       case 1:
         int numeroDado = this.tirarDado();
-        this.jugadorTurno.getFicha().avanzar(this.tablero, numeroDado);
-        this.mostrarTiradaDado(numeroDado);
+        this.avanzarFicha(numeroDado);
         return false;
       case 2:
         this.jugadorTurno.mostrarCartas();
         return this.jugadorTurno.usarCartas(this.scanner);
       case 3:
+        ConsoleHelpers.limpiarConsola();
         this.salirDelJuego();
         return false;
       default:
         return false;
+    }
+  }
+
+  private void avanzarFicha(int numeroDado) {
+    if (this.jugadorTurno.getCarcel()) {
+      if (numeroDado == 5) {
+        EntradaSalidaCarcel.salirCarcel(this.jugadorTurno);
+        System.out.println("");
+        this.printCentradoEnConsola("Has sacado un 5, sales de la carcel.");
+        System.out.println("");
+        ConsoleHelpers.presionaEnterParaContinuar();
+        this.jugadorTurno.getFicha().avanzar(this.tablero, numeroDado);
+      } else {
+        this.mostrarTiradaDado(numeroDado);
+        this.printCentradoEnConsola(
+            "No has sacado un 5, no sales de la carcel."
+          );
+        ConsoleHelpers.presionaEnterParaContinuar();
+      }
+    } else {
+      this.jugadorTurno.getFicha().avanzar(this.tablero, numeroDado);
+      this.mostrarTiradaDado(numeroDado);
     }
   }
 
@@ -72,7 +96,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
   }
 
   private void salirDelJuego() {
-    this.printCentradoEnConsola("Gracias por jugar");
+    this.printCentradoEnConsola(this.mensajeDespedida);
     System.exit(0);
   }
 }
