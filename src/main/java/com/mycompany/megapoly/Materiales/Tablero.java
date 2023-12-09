@@ -8,6 +8,7 @@ import com.mycompany.megapoly.Casillas.CasillaStartUp;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Comprables.Propiedad;
 import com.mycompany.megapoly.Comprables.StartUp;
+import com.mycompany.megapoly.ConsoleHelpers.ColoresCasillas;
 import com.mycompany.megapoly.Jugadores.Jugador;
 
 public class Tablero {
@@ -60,13 +61,13 @@ public class Tablero {
         ) {
           // Si la ficha roja y azul están en la misma posición, la imprimimos de color verde
           if (mismaPosicion && indice == fichaRoja.getPosicion()) {
-            this.imprimirCasillaVerde(tipoCasilla);
+            ColoresCasillas.imprimirCasillaVerde(tipoCasilla);
             // Si esta la ficha azul solamente la imprimimos de color azul
           } else if (indice == posicionAzul) {
-            this.imprimirCasillaAzul(tipoCasilla);
+            ColoresCasillas.imprimirCasillaAzul(tipoCasilla);
             // Si esta la ficha roja solamente la imprimimos de color rojo
           } else if (indice == posicionRoja) {
-            this.imprimirCasillaRoja(tipoCasilla);
+            ColoresCasillas.imprimirCasillaRoja(tipoCasilla);
             // Si la casilla es una propiedad
           } else if (casilla instanceof CasillaPropiedad) {
             // Obtenemos el propietario de la propiedad
@@ -74,26 +75,28 @@ public class Tablero {
               ((CasillaPropiedad) casilla).getPropiedad().getPropietario();
             // Si el propietario es el banco, la imprimimos normal
             if (propietario.getNombre().equals("Banco")) {
-              this.imprimirCasillaNormal(tipoCasilla);
+              ColoresCasillas.imprimirPropiedadBanco(tipoCasilla);
               // Si el propietario es el jugador rojo, la imprimimos de color rojo
             } else if (propietario.equals(fichaRoja.getJugador())) {
-              this.imprimirCasillaRoja(tipoCasilla);
+              ColoresCasillas.imprimirCasillaFondoRojo(tipoCasilla);
               // Si el propietario es el jugador azul, la imprimimos de color azul
             } else if (propietario.equals(fichaAzul.getJugador())) {
-              this.imprimirCasillaAzul(tipoCasilla);
+              ColoresCasillas.imprimirCasilaFondoAzul(tipoCasilla);
             }
             // Si no se cumple ninguna condicion anterior se imprime normal
           } else {
-            this.imprimirCasillaNormal(tipoCasilla);
+            ColoresCasillas.imprimirCasillaNormal(tipoCasilla);
           }
           // Espacio para las casillas del centro
         } else {
-          System.out.print("                     ");
+          System.out.print("                       ");
         }
       }
       System.out.println("");
       System.out.println("");
     }
+    System.out.println("");
+    System.out.println("");
   }
 
   public void crearTablero() {
@@ -247,27 +250,5 @@ public class Tablero {
     casillas[16] = new Casilla(' ', "");
     casillas[17] = new Casilla(' ', "");
     casillas[18] = new Casilla(' ', "");
-  }
-
-  private void imprimirCasillaNormal(char tipoCasilla) {
-    System.out.print("          " + tipoCasilla + "          ");
-  }
-
-  private void imprimirCasillaVerde(char tipoCasilla) {
-    System.out.print(
-      "\u001B[32m" + "          " + tipoCasilla + "          " + "\u001B[0m"
-    );
-  }
-
-  private void imprimirCasillaAzul(char tipoCasilla) {
-    System.out.print(
-      "\u001B[34m" + "          " + tipoCasilla + "          " + "\u001B[0m"
-    );
-  }
-
-  private void imprimirCasillaRoja(char tipoCasilla) {
-    System.out.print(
-      "\u001B[31m" + "          " + tipoCasilla + "       " + "\u001B[0m"
-    );
   }
 }

@@ -6,6 +6,18 @@ import java.util.Scanner;
 
 public class MenuInicio extends Menu {
 
+  private String mensajeBienvenida =
+    "\r\n" + //
+    "\r\n" + //
+    "                                                                                 \r\n" + //
+    " _____ _                     _   _               _____                     _     \r\n" + //
+    "| __  |_|___ ___ _ _ ___ ___|_|_| |___    ___   |     |___ ___ ___ ___ ___| |_ _ \r\n" + //
+    "| __ -| | -_|   | | | -_|   | | . | . |  | .'|  | | | | -_| . | .'| . | . | | | |\r\n" + //
+    "|_____|_|___|_|_|\\_/|___|_|_|_|___|___|  |__,|  |_|_|_|___|_  |__,|  _|___|_|_  |\r\n" + //
+    "                                                          |___|   |_|       |___|\r\n" + //
+    "\r\n" + //
+    "";
+
   private int opcion;
 
   private int opcionColor;
@@ -35,7 +47,7 @@ public class MenuInicio extends Menu {
 
   private void menuInicio() {
     System.out.print("\033\143"); // Limpiamos la consola
-    this.printCentradoEnConsola("Bienvenido a Megapoly");
+    this.printCentradoEnConsola(this.mensajeBienvenida);
     System.out.println("");
     System.out.println("");
     this.seleccionarOpcionesAlInicio();
