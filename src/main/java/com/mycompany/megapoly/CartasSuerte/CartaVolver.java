@@ -1,5 +1,6 @@
 package com.mycompany.megapoly.CartasSuerte;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,7 +13,7 @@ public class CartaVolver extends CartaSuerte {
     this.recompensa = 40;
   }
 
-  public void efecto(Jugador jugadorEnPosesion) {
+  public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
     int w = 100;
     System.out.println(" ");
     System.out.println(
@@ -22,6 +23,7 @@ public class CartaVolver extends CartaSuerte {
       )
     );
     System.out.println(" ");
+    ConsoleHelpers.presionaEnterParaContinuar();
     jugadorEnPosesion.sumarMegaMonedas(this.recompensa);
     jugadorEnPosesion.getFicha().setPosicion(0);
   }

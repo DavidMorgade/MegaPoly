@@ -21,5 +21,5 @@ public class CartaSuerte {
     return this.descripcion;
   }
 
-  public void efecto(Jugador jugador) {}
+  public void efecto(Jugador jugador, Jugador jugadorEnemigo) {}
 }

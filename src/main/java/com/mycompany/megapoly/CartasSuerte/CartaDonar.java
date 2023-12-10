@@ -1,6 +1,8 @@
 package com.mycompany.megapoly.CartasSuerte;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
+import org.apache.commons.lang3.StringUtils;
 
 public class CartaDonar extends CartaSuerte {
 
@@ -17,12 +19,16 @@ public class CartaDonar extends CartaSuerte {
 
   public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
     System.out.println(
-      jugadorEnemigo.getNombre() +
-      " Se acuerda de ti y que no te dio un regalo en tu boda y te dona " +
-      this.getCantidad() +
-      " de MegaMonedas por que se siente culpable"
+      StringUtils.center(
+        jugadorEnemigo.getNombre() +
+        " Se acuerda de ti y que no te dio un regalo en tu boda y te dona " +
+        this.getCantidad() +
+        " de MegaMonedas por que se siente culpable",
+        100
+      )
     );
     jugadorEnemigo.restarMegaMonedas(this.getCantidad());
     jugadorEnPosesion.sumarMegaMonedas(this.getCantidad());
+    ConsoleHelpers.presionaEnterParaContinuar();
   }
 }

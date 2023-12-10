@@ -1,13 +1,15 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuJuego extends Menu {
 
   private Jugador jugadorTurno;
+
+  private Jugador jugadorEnemigo;
 
   private Scanner scanner = new Scanner(System.in);
 
@@ -38,9 +40,11 @@ public class MenuJuego extends Menu {
       scanner
     );
     this.jugadorTurno = Inicio.determinarTurno();
+    this.determinarEnemigo(jugador1, jugador2);
     Inicio.mostrarTurno(this.jugadorTurno);
     MenuJuegoOpcionesPrincipales OpcionesPrincipales = new MenuJuegoOpcionesPrincipales(
       this.jugadorTurno,
+      this.jugadorEnemigo,
       this.scanner,
       tablero
     );
@@ -60,12 +64,14 @@ public class MenuJuego extends Menu {
   private void cambiarTurno(Jugador jugador1, Jugador jugador2) {
     jugador1.setTurno(!jugador1.getTurno());
     jugador2.setTurno(!jugador2.getTurno());
-    this.printCentradoEnConsola("Presione enter para continuar...");
-    try {
-      System.in.read();
-    } catch (IOException e) {
-      e.printStackTrace();
+    ConsoleHelpers.presionaEnterParaContinuar();
+  }
+
+  private void determinarEnemigo(Jugador jugador1, Jugador jugador2) {
+    if (jugador1.getTurno()) {
+      this.jugadorEnemigo = jugador2;
+    } else {
+      this.jugadorEnemigo = jugador1;
     }
-    scanner.nextLine();
   }
 }

@@ -53,6 +53,9 @@ public class MenuJuegoOpcionesCasilla extends Menu {
       this.casillaSuerte();
     }
     if (this.casillaActual instanceof Carcel) {
+      this.printCentradoEnConsola(
+          "Estas en alcalameco, saca un 5 para salir. "
+        );
       this.casillaCarcel();
     }
   }

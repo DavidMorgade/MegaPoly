@@ -1,8 +1,8 @@
 package com.mycompany.megapoly.Interfaz;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuJuegoInicio extends Menu {
@@ -34,12 +34,7 @@ public class MenuJuegoInicio extends Menu {
         "Mega monedas: " + jugadorTurno.getMegaMonedas()
       );
     this.printCentradoEnConsola(" ");
-    this.printCentradoEnConsola("Presione enter para continuar...");
-    try {
-      System.in.read();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    ConsoleHelpers.presionaEnterParaContinuar();
   }
 
   public Jugador determinarTurno() {

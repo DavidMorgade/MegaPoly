@@ -92,7 +92,7 @@ public class Jugador {
     }
   }
 
-  public boolean usarCartas(Scanner scanner) {
+  public boolean usarCartas(Scanner scanner, Jugador jugadorEnemigo) {
     System.out.println(
       StringUtils.center(
         "Ingrese el numero de la carta que desea usar (-1 para no usar ninguna): ",
@@ -109,8 +109,7 @@ public class Jugador {
       );
       System.out.println(" ");
     } else {
-      this.cartas.get(index).efecto(this);
-      this.cartas.remove(index);
+      this.usarCarta(index, jugadorEnemigo);
     }
     return true;
   }
@@ -119,8 +118,8 @@ public class Jugador {
     this.cartas.add(carta);
   }
 
-  public void usarCarta(int index) {
-    this.cartas.get(index).efecto(this);
+  public void usarCarta(int index, Jugador jugadorEnemigo) {
+    this.cartas.get(index).efecto(this, jugadorEnemigo);
     this.cartas.remove(index);
   }
 

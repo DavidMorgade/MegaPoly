@@ -11,6 +11,8 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
 
   Jugador jugadorTurno;
 
+  Jugador jugadorEnemigo;
+
   Scanner scanner;
 
   Tablero tablero;
@@ -21,10 +23,12 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
 
   public MenuJuegoOpcionesPrincipales(
     Jugador jugadorTurno,
+    Jugador jugadorEnemigo,
     Scanner scanner,
     Tablero tablero
   ) {
     this.jugadorTurno = jugadorTurno;
+    this.jugadorEnemigo = jugadorEnemigo;
     this.scanner = scanner;
     this.tablero = tablero;
   }
@@ -39,7 +43,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
         return false;
       case 2:
         this.jugadorTurno.mostrarCartas();
-        return this.jugadorTurno.usarCartas(this.scanner);
+        return this.jugadorTurno.usarCartas(this.scanner, this.jugadorEnemigo);
       case 3:
         ConsoleHelpers.limpiarConsola();
         this.salirDelJuego();
@@ -87,7 +91,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     this.printCentradoEnConsola("");
     this.printCentradoEnConsola("3. Salir");
     this.printCentradoEnConsola(" ");
-    opcion = this.scanner.nextInt();
+    this.opcion = this.scanner.nextInt();
   }
 
   private int tirarDado() {

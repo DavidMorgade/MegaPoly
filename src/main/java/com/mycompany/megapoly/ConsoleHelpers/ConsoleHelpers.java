@@ -1,5 +1,6 @@
 package com.mycompany.megapoly.ConsoleHelpers;
 
+import java.util.Scanner;
 import org.apache.commons.lang3.StringUtils;
 
 public class ConsoleHelpers {
@@ -17,5 +18,7 @@ public class ConsoleHelpers {
     } catch (Exception e) {
       e.printStackTrace();
     }
+    Scanner sc = new Scanner(System.in);
+    sc.nextLine();
   }
 }
