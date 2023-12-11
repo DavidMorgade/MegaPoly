@@ -12,6 +12,10 @@ import com.mycompany.megapoly.ConsoleHelpers.ColoresCasillas;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 
+/*
+ * Clase que se encarga de crear el tablero del juego
+
+ */
 public class Tablero {
 
   private Casilla[] casillas;
@@ -22,6 +26,12 @@ public class Tablero {
 
   private int tamanioLado;
 
+  /*
+   * Constructor de la clase
+   * @param tamanioLado Tamaño del tablero
+   * @param fichaRoja Ficha del jugador rojo
+   * @param fichaAzul Ficha del jugador azul
+   */
   public Tablero(int tamanioLado, Ficha fichaRoja, Ficha fichaAzul) {
     this.tamanioLado = tamanioLado;
     this.casillas = new Casilla[tamanioLado * tamanioLado];
@@ -41,6 +51,10 @@ public class Tablero {
     return this.casillas[posicion].getTipo();
   }
 
+  /*
+   * Metodo que se encarga de mostrar el tablero por consola en forma de cuadrado
+   * @return void
+   */
   public void mostrarTablero() {
     ConsoleHelpers.limpiarConsola();
     int posicionRoja = fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
@@ -100,6 +114,10 @@ public class Tablero {
     System.out.println("");
   }
 
+  /*
+   * Metodo que se encarga de crear el tablero
+   * @return void
+   */
   public void crearTablero() {
     // Esquinas
     // Superior izquierda

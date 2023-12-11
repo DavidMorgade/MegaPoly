@@ -5,6 +5,10 @@ import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import java.util.Scanner;
 
+/*
+ * Clase que se encarga de crear el menu de opciones de compra
+ * @see Menu
+ */
 public class MenuJuegoOpcionesCompra extends Menu {
 
   Scanner scanner;
@@ -17,6 +21,12 @@ public class MenuJuegoOpcionesCompra extends Menu {
 
   private int opcionCompra;
 
+  /*
+   * Constructor de la clase
+   * @param jugadorTurno Jugador actual
+   * @param casillaPropiedad Casilla de propiedad
+   * @param scanner Scanner para leer datos por consola
+   */
   public MenuJuegoOpcionesCompra(
     Scanner scanner,
     Jugador jugadorTurno,
@@ -27,6 +37,11 @@ public class MenuJuegoOpcionesCompra extends Menu {
     this.casillaPropiedad = casillaPropiedad;
   }
 
+  /*
+   * Metodo que muestra el menu de compra de propiedad
+   * @see Menu
+   * @return void
+   */
   public void menuCompraPropiedad() {
     if (
       this.casillaPropiedad.getPropiedad()
@@ -55,6 +70,10 @@ public class MenuJuegoOpcionesCompra extends Menu {
     }
   }
 
+  /*
+   * Metodo que imprime las opciones de compra
+   * @return void
+   */
   private void mostrarOpcionesCompra() {
     this.printCentradoEnConsola("Opciones: ");
     System.out.println("");

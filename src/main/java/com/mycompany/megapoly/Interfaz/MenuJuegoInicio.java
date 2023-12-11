@@ -5,6 +5,10 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
 
+/*
+ * Clase que se encarga de mostrar el menu del juego al inicio de una ronda
+ * @see Menu
+ */
 public class MenuJuegoInicio extends Menu {
 
   Jugador jugador1;
@@ -12,6 +16,13 @@ public class MenuJuegoInicio extends Menu {
   Tablero tablero;
   Scanner scanner;
 
+  /*
+   * Constructor de la clase
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param tablero Tablero del juego
+   * @param scanner Scanner para leer datos por consola
+   */
   public MenuJuegoInicio(
     Jugador jugador1,
     Jugador jugador2,
@@ -24,6 +35,15 @@ public class MenuJuegoInicio extends Menu {
     this.scanner = scanner;
   }
 
+  /*
+   * Metodo principal que se encarga de comenzar la partida
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param tablero Tablero del juego
+   * @param scanner Scanner para leer datos por consola
+   * @see Menu
+   * @see ConsoleHelpers
+   */
   public void mostrarTurno(Jugador jugadorTurno) {
     tablero.mostrarTablero();
     this.printCentradoEnConsola("Turno de: " + jugadorTurno.getNombre());
@@ -37,6 +57,10 @@ public class MenuJuegoInicio extends Menu {
     ConsoleHelpers.presionaEnterParaContinuar();
   }
 
+  /*
+   * Metodo que determina el turno de los jugadores
+   * @return Jugador que tiene el turno
+   */
   public Jugador determinarTurno() {
     return this.jugador1.getTurno() ? this.jugador1 : this.jugador2;
   }

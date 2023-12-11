@@ -5,6 +5,10 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 
+/*
+ * Clase que se encarga de crear las fichas
+ * @see Jugador
+ */
 public class Ficha {
 
   private int posicion;
@@ -13,6 +17,10 @@ public class Ficha {
 
   private Jugador jugador;
 
+  /*
+   * Constructor de la clase
+   * @param posicion Posición de la ficha
+   */
   public Ficha() {
     this.posicion = 0;
     this.jugador = null;
@@ -42,6 +50,13 @@ public class Ficha {
     this.colorFicha = colorFicha;
   }
 
+  /*
+   * Metodo que se encarga de avanzar la ficha
+   * @param tablero Tablero del juego
+   * @param posiciones Posiciones que se van a avanzar
+   * @see Tablero
+   * @return void
+   */
   public void avanzar(Tablero tablero, int posiciones) {
     int posicionActual = this.getPosicion();
 

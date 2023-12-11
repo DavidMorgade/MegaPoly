@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 import org.apache.commons.lang3.StringUtils;
 
+/*
+ * Clase que se encarga de crear los jugadores
+ * @see Ficha
+ * @see CartaSuerte
+ * @see Comprable
+ *
+ */
 public class Jugador {
 
   private boolean carcel = false;
@@ -23,10 +30,18 @@ public class Jugador {
   // lista de cartas de suerte de cada jugador
   private List<CartaSuerte> cartas = new ArrayList<CartaSuerte>();
 
+  // lista de propiedades de cada jugador
   private List<Comprable> comprables = new ArrayList<Comprable>();
 
-  Ficha ficha;
+  // ficha de cada jugador
+  private Ficha ficha;
 
+  /*
+   * Constructor de la clase
+   * @param nombre Nombre del jugador
+   * @param turno Turno del jugador
+   * @param ficha Ficha del jugador
+   */
   public Jugador(String nombre, boolean turno, Ficha ficha) {
     this.nombre = nombre;
     this.turno = turno;
@@ -36,6 +51,11 @@ public class Jugador {
     this.comprables = new ArrayList<Comprable>();
   }
 
+  /*
+   * Constructor de la clase
+   * @param ficha Ficha del jugador
+   * @see Ficha
+   */
   public Jugador(Ficha ficha) {
     this.ficha = ficha;
     this.megaMonedas = 100;
@@ -69,6 +89,10 @@ public class Jugador {
     return this.ficha;
   }
 
+  /*
+   * Metodo que se encarga de mostrar las cartas de suerte de cada jugador
+   * @see CartaSuerte
+   */
   public void mostrarCartas() {
     if (this.cartas.isEmpty()) {
       System.out.println("");
@@ -92,6 +116,12 @@ public class Jugador {
     }
   }
 
+  /*
+   * Metodo que se encarga de usar las cartas de suerte de cada jugador
+   * @param scanner Scanner
+   * @param jugadorEnemigo Jugador enemigo
+   * @return boolean
+   */
   public boolean usarCartas(Scanner scanner, Jugador jugadorEnemigo) {
     System.out.println(
       StringUtils.center(
@@ -100,6 +130,7 @@ public class Jugador {
       )
     );
     int index = scanner.nextInt();
+    // Si el jugador no quiere usar ninguna carta
     if (index == -1) {
       System.out.println(
         StringUtils.center(
@@ -108,6 +139,7 @@ public class Jugador {
         )
       );
       System.out.println(" ");
+      // Si el jugador quiere usar una carta
     } else {
       this.usarCarta(index, jugadorEnemigo);
     }
@@ -118,6 +150,13 @@ public class Jugador {
     this.cartas.add(carta);
   }
 
+  /*
+   * Metodo que se encarga de usar las cartas de suerte de cada jugador
+   * @param index Indice de la carta
+   * @param jugadorEnemigo Jugador enemigo
+   * @see CartaSuerte
+   * @see Jugador
+   */
   public void usarCarta(int index, Jugador jugadorEnemigo) {
     this.cartas.get(index).efecto(this, jugadorEnemigo);
     this.cartas.remove(index);

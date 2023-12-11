@@ -10,6 +10,10 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
 
+/*
+ * Clase que se encarga de crear el menu de opciones de casilla
+ * @see Menu
+ */
 public class MenuJuegoOpcionesCasilla extends Menu {
 
   private Casilla casillaActual;
@@ -20,6 +24,12 @@ public class MenuJuegoOpcionesCasilla extends Menu {
 
   private Scanner scanner;
 
+  /*
+   * Constructor de la clase
+   * @param jugadorActual Jugador actual
+   * @param scanner Scanner para leer datos por consola
+   * @param tablero Tablero del juego
+   */
   public MenuJuegoOpcionesCasilla(
     Jugador jugadorActual,
     Scanner scanner,
@@ -30,11 +40,21 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     this.tablero = tablero;
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones de la casilla o cartas de suerte
+   * @see Menu
+   * @return void
+   */
   public void opcionesSuerteCompraPropiedad() {
     tablero.mostrarTablero();
     this.mostrarCasillas();
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones de la casilla o cartas de suerte
+   * @see Menu
+   * @return void
+   */
   private void mostrarCasillas() {
     tablero.mostrarTablero();
     this.obtenerCasilla();
@@ -60,11 +80,19 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de obtener la casilla actual
+   * @return void
+   */
   private void obtenerCasilla() {
     int posicion = this.jugadorActual.getFicha().getPosicion();
     this.casillaActual = this.tablero.getCasillas()[posicion];
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones de la casilla propiedad
+   * @return void
+   */
   private void casillaPropiedad() {
     String propietario =
       ((CasillaPropiedad) casillaActual).getPropiedad()
@@ -88,11 +116,19 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones de la casilla carcel
+   * @return void
+   */
   private void casillaCarcel() {
     EntradaSalidaCarcel.entrarCarcel(this.jugadorActual);
     System.out.println(" ");
   }
 
+  /*
+   * Metodo que se encarga de comprar la casilla
+   * @return void
+   */
   private void menuComprarCasilla() {
     if (this.casillaActual instanceof CasillaPropiedad) {
       CasillaPropiedad casillaPropiedad = (CasillaPropiedad) this.casillaActual;
@@ -105,6 +141,10 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de pagar el alquiler de la casilla
+   * @return void
+   */
   private void menuPagasPorCasilla() {
     if (this.casillaActual instanceof CasillaPropiedad) {
       CasillaPropiedad casillaPropiedad = (CasillaPropiedad) this.casillaActual;
@@ -116,6 +156,10 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones de la casilla suerte, obtener la carta y agregarla al inventario
+   * @return void
+   */
   private void casillaSuerte() {
     CasillaSuerte casillaSuerte = (CasillaSuerte) this.casillaActual;
     casillaSuerte.setCarta();
