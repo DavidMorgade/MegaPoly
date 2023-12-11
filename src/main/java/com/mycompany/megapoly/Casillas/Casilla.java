@@ -1,11 +1,19 @@
 package com.mycompany.megapoly.Casillas;
 
+/*
+ * Clase que se encarga de crear las casillas del tablero, sirve de modelo para las casillas
+ */
 public class Casilla {
 
   private char tipo;
 
   private String nombre;
 
+  /*
+   * Constructor de la clase
+   * @param tipo Tipo de casilla
+   * @param nombre Nombre de la casilla
+   */
   public Casilla(char tipo, String nombre) {
     this.tipo = tipo;
     this.nombre = nombre;

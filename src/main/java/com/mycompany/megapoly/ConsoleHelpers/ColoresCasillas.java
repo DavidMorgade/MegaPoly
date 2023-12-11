@@ -1,5 +1,10 @@
 package com.mycompany.megapoly.ConsoleHelpers;
 
+/*
+ * Clase que se encarga de imprimir las casillas con colores
+ * @see ConsoleColor
+ */
+
 public class ColoresCasillas {
 
   public static void imprimirCasillaVerde(char tipoCasilla) {

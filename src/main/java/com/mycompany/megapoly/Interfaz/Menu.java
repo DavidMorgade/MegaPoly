@@ -2,6 +2,9 @@ package com.mycompany.megapoly.Interfaz;
 
 import org.apache.commons.lang3.StringUtils;
 
+/*
+ * Clase molde para los menus del juego
+ */
 public class Menu {
 
   protected String mensajeBienvenida =

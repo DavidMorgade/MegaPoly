@@ -5,6 +5,10 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
 import java.util.Scanner;
 
+/*
+ * Clase que se encarga de mostrar el menu de inicio del juego
+ * @see Menu
+ */
 public class MenuInicio extends Menu {
 
   private int opcion;
@@ -13,18 +17,28 @@ public class MenuInicio extends Menu {
 
   private Scanner scanner = new Scanner(System.in);
 
+  /*
+   * Constructor de la clase
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param fichaRoja Ficha roja
+   * @param fichaAzul Ficha azul
+   */
   public MenuInicio(
     Jugador jugador1,
     Jugador jugador2,
     Ficha fichaRoja,
     Ficha fichaAzul
   ) {
+    // Mensaje de bienvenida
     menuInicio();
     switch (opcion) {
       case 1:
+        // Preguntamos los nombres de los jugadores
         preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
         break;
       case 2:
+        // Salimos del juego
         ConsoleHelpers.limpiarConsola();
         this.printCentradoEnConsola(this.mensajeDespedida);
         System.exit(0);
@@ -35,6 +49,11 @@ public class MenuInicio extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de mostrar el menu de inicio
+   * @see Menu
+   * @see ConsoleHelpers
+   */
   private void menuInicio() {
     System.out.print("\033\143"); // Limpiamos la consola
     this.printCentradoEnConsola(this.mensajeBienvenida);
@@ -43,6 +62,10 @@ public class MenuInicio extends Menu {
     this.seleccionarOpcionesAlInicio();
   }
 
+  /*
+   * Metodo que se encarga de mostrar las opciones del menu de inicio
+   * @see ConsoleHelpers
+   */
   private void seleccionarOpcionesAlInicio() {
     this.printCentradoEnConsola("Seleccione una opción");
     System.out.println("");
@@ -53,6 +76,16 @@ public class MenuInicio extends Menu {
     System.out.print("\033\143"); // Limpiamos la consola
   }
 
+  /*
+   * Metodo que se encarga de preguntar los nombres de los jugadores y asignar las fichas
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param fichaRoja Ficha roja
+   * @param fichaAzul Ficha azul
+   * @see Jugador
+   * @see Ficha
+   * @see ConsoleHelpers
+   */
   private void preguntarNombres(
     Jugador jugador1,
     Jugador jugador2,
@@ -98,6 +131,17 @@ public class MenuInicio extends Menu {
     }
   }
 
+  /*
+   * Metodo que se encarga de asignar el color de la ficha
+   * @param opcionColor Opcion de color
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param fichaRoja Ficha roja
+   * @param fichaAzul Ficha azul
+   * @see Jugador
+   * @see Ficha
+   * @see ConsoleHelpers
+   */
   private void setColorFicha(
     int opcionColor,
     Jugador jugador1,

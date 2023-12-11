@@ -5,12 +5,22 @@ import com.mycompany.megapoly.CartasSuerte.CartaEvitarCarcel;
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
 import com.mycompany.megapoly.CartasSuerte.CartaVolver;
 
+/*
+ * Clase que se encarga de crear las casillas de suerte del tablero
+ * @see Casilla
+ */
 public class CasillaSuerte extends Casilla {
 
+  // Numero total de cartas de suerte
   final int NUMERO_TOTAL_CARTAS = 3;
 
   private CartaSuerte carta;
 
+  /*
+   * Constructor de la clase
+   * @param tipo Tipo de casilla
+   * @param nombre Nombre de la casilla
+   */
   public CasillaSuerte(char tipo, String nombre) {
     super(tipo, nombre);
   }
@@ -23,6 +33,10 @@ public class CasillaSuerte extends Casilla {
     this.carta = setCartaDeManeraAleatoria();
   }
 
+  /*
+   * Metodo que se encarga de crear una carta de manera aleatoria
+   * @return Carta de suerte
+   */
   private CartaSuerte setCartaDeManeraAleatoria() {
     int numeroAleatorio = (int) (Math.random() * NUMERO_TOTAL_CARTAS + 1);
     switch (numeroAleatorio) {

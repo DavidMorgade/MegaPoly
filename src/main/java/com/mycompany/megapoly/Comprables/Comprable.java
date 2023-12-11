@@ -2,8 +2,13 @@ package com.mycompany.megapoly.Comprables;
 
 import com.mycompany.megapoly.Jugadores.Jugador;
 
+/*
+ * Clase que se encarga de crear los comprables del tablero, sirve de modelo para el resto de comprables
+ * @see Jugador
+ */
 public class Comprable {
 
+  // El propietario por defecto es el banco
   private Jugador propietario = new Jugador("Banco", false, null);
   private String nombreComprable;
   private String descripcion;
@@ -14,6 +19,13 @@ public class Comprable {
 
   protected int alquiler;
 
+  /*
+   * Constructor de la clase
+   * @param precioCompra Precio de compra del comprable
+   * @param alquiler Precio de alquiler del comprable
+   * @param nombreComprable Nombre del comprable
+   * @param descripcion Descripcion del comprable
+   */
   public Comprable(
     int precioCompra,
     int alquiler,

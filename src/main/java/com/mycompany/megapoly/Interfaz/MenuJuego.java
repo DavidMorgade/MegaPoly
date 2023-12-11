@@ -5,6 +5,10 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
 
+/*
+ * Clase que se encarga de mostrar el menu del juego
+ * @see Menu
+ */
 public class MenuJuego extends Menu {
 
   private Jugador jugadorTurno;
@@ -17,6 +21,12 @@ public class MenuJuego extends Menu {
 
   private boolean usaCartas = false;
 
+  /*
+   * Constructor de la clase
+   * @param jugador1 Jugador 1
+   * @param jugador2 Jugador 2
+   * @param tablero Tablero del juego
+   */
   public MenuJuego(Jugador jugador1, Jugador jugador2, Tablero tablero) {
     jugador1.setTurno(true);
     jugador2.setTurno(false);

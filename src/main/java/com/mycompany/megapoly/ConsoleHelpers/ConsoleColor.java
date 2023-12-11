@@ -1,5 +1,10 @@
 package com.mycompany.megapoly.ConsoleHelpers;
 
+/*
+ * Enum con los colores que se pueden usar en la consola
+ * @see ColoresCasillas
+ */
+
 public enum ConsoleColor {
   //Color end string, color reset
   RESET("\033[0m"),
