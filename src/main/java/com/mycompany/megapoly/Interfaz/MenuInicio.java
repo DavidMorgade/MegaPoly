@@ -32,20 +32,32 @@ public class MenuInicio extends Menu {
   ) {
     // Mensaje de bienvenida
     menuInicio();
-    switch (opcion) {
-      case 1:
-        // Preguntamos los nombres de los jugadores
-        preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
-        break;
-      case 2:
-        // Salimos del juego
-        ConsoleHelpers.limpiarConsola();
-        ConsoleHelpers.printCentrado(this.mensajeDespedida);
-        System.exit(0);
-        break;
-      default:
-        ConsoleHelpers.printCentrado("Opción no válida");
-        break;
+    boolean seguirMenuInicio = true;
+    while (seguirMenuInicio) {
+      switch (opcion) {
+        case 1:
+          // Preguntamos los nombres de los jugadores
+          preguntarNombres(jugador1, jugador2, fichaRoja, fichaAzul);
+          seguirMenuInicio = false;
+          break;
+        case 2:
+          // Mostramos las reglas del juego
+          ReglasJuego reglasJuego = new ReglasJuego();
+          reglasJuego.mostrarReglas();
+          menuInicio();
+          break;
+        case 3:
+          // Salimos del juego
+          ConsoleHelpers.limpiarConsola();
+          ConsoleHelpers.printCentrado(this.mensajeDespedida);
+          seguirMenuInicio = false;
+          System.exit(0);
+          break;
+        default:
+          ConsoleHelpers.printCentrado("Opción no válida");
+          menuInicio();
+          break;
+      }
     }
   }
 
@@ -55,7 +67,7 @@ public class MenuInicio extends Menu {
    * @see ConsoleHelpers
    */
   private void menuInicio() {
-    System.out.print("\033\143"); // Limpiamos la consola
+    ConsoleHelpers.limpiarConsola();
     ConsoleHelpers.printCentrado(this.mensajeBienvenida);
     System.out.println("");
     System.out.println("");
@@ -71,9 +83,11 @@ public class MenuInicio extends Menu {
     System.out.println("");
     ConsoleHelpers.printCentrado("1. Jugar");
     System.out.println("");
-    ConsoleHelpers.printCentrado("2. Salir");
+    ConsoleHelpers.printCentrado("2. Reglas");
+    System.out.println("");
+    ConsoleHelpers.printCentrado("3. Salir");
     opcion = scanner.nextInt();
-    System.out.print("\033\143"); // Limpiamos la consola
+    ConsoleHelpers.limpiarConsola();
   }
 
   /*
