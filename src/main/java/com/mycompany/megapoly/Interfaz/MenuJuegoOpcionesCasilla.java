@@ -6,6 +6,7 @@ import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
 import java.util.Scanner;
@@ -61,21 +62,21 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     System.out.println(" ");
 
     if (this.casillaActual instanceof CasillaPropiedad) {
-      this.printCentradoEnConsola(
-          "Has caido en la casilla: " + this.casillaActual.getNombre()
-        );
+      ConsoleHelpers.printCentrado(
+        "Has caido en la casilla: " + this.casillaActual.getNombre()
+      );
       this.casillaPropiedad();
     }
     if (this.casillaActual instanceof CasillaSuerte) {
-      this.printCentradoEnConsola(
-          "Has caido en la casilla: " + this.casillaActual.getNombre()
-        );
+      ConsoleHelpers.printCentrado(
+        "Has caido en la casilla: " + this.casillaActual.getNombre()
+      );
       this.casillaSuerte();
     }
     if (this.casillaActual instanceof Carcel) {
-      this.printCentradoEnConsola(
-          "Estas en alcalameco, saca un 5 para salir. "
-        );
+      ConsoleHelpers.printCentrado(
+        "Estas en alcalameco, saca un 5 para salir. "
+      );
       this.casillaCarcel();
     }
   }
@@ -103,14 +104,14 @@ public class MenuJuegoOpcionesCasilla extends Menu {
       ((CasillaPropiedad) casillaActual).getPropiedad().getPrecioCompra();
     System.out.println(" ");
     if (esDelBanco) {
-      this.printCentradoEnConsola("Precio: " + precio);
+      ConsoleHelpers.printCentrado("Precio: " + precio);
       System.out.println(" ");
-      this.printCentradoEnConsola("No tiene dueño");
+      ConsoleHelpers.printCentrado("No tiene dueño");
       System.out.println(" ");
       this.menuComprarCasilla();
     } else {
       System.out.println(" ");
-      this.printCentradoEnConsola("Dueño: " + propietario);
+      ConsoleHelpers.printCentrado("Dueño: " + propietario);
       System.out.println(" ");
       this.menuPagasPorCasilla();
     }
@@ -166,11 +167,11 @@ public class MenuJuegoOpcionesCasilla extends Menu {
     CartaSuerte cartaConseguida = casillaSuerte.getCarta();
     String nombreCarta = cartaConseguida.getNombre();
     System.out.println("");
-    this.printCentradoEnConsola(
-        "Carta de suerte: " +
-        nombreCarta +
-        " se agrega en tu inventario de cartas."
-      );
+    ConsoleHelpers.printCentrado(
+      "Carta de suerte: " +
+      nombreCarta +
+      " se agrega en tu inventario de cartas."
+    );
     System.out.println(" ");
     System.out.println(" ");
     jugadorActual.setCartas(cartaConseguida);

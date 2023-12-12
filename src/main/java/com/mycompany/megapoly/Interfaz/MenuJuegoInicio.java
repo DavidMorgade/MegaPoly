@@ -46,14 +46,14 @@ public class MenuJuegoInicio extends Menu {
    */
   public void mostrarTurno(Jugador jugadorTurno) {
     tablero.mostrarTablero();
-    this.printCentradoEnConsola("Turno de: " + jugadorTurno.getNombre());
-    this.printCentradoEnConsola(
-        "Ficha: " + jugadorTurno.getFicha().getColorFicha()
-      );
-    this.printCentradoEnConsola(
-        "Mega monedas: " + jugadorTurno.getMegaMonedas()
-      );
-    this.printCentradoEnConsola(" ");
+    ConsoleHelpers.printCentrado("Turno de: " + jugadorTurno.getNombre());
+    ConsoleHelpers.printCentrado(
+      "Ficha: " + jugadorTurno.getFicha().getColorFicha()
+    );
+    ConsoleHelpers.printCentrado(
+      "Mega monedas: " + jugadorTurno.getMegaMonedas()
+    );
+    ConsoleHelpers.printCentrado(" ");
     ConsoleHelpers.presionaEnterParaContinuar();
   }
 

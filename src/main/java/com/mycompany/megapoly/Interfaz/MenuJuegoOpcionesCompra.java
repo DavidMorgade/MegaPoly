@@ -2,6 +2,7 @@ package com.mycompany.megapoly.Interfaz;
 
 import com.mycompany.megapoly.Acciones.Comprar;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import java.util.Scanner;
 
@@ -59,9 +60,9 @@ public class MenuJuegoOpcionesCompra extends Menu {
           );
           break;
         case 2:
-          this.printCentradoEnConsola(
-              "No se compro la propiedad, se seguira con el juego"
-            );
+          ConsoleHelpers.printCentrado(
+            "No se compro la propiedad, se seguira con el juego"
+          );
           System.out.println(" ");
           break;
         default:
@@ -75,13 +76,13 @@ public class MenuJuegoOpcionesCompra extends Menu {
    * @return void
    */
   private void mostrarOpcionesCompra() {
-    this.printCentradoEnConsola("Opciones: ");
+    ConsoleHelpers.printCentrado("Opciones: ");
     System.out.println("");
     System.out.println("");
-    this.printCentradoEnConsola("1. Comprar");
+    ConsoleHelpers.printCentrado("1. Comprar");
     System.out.println("");
-    this.printCentradoEnConsola("2. No comprar");
-    this.printCentradoEnConsola(" ");
+    ConsoleHelpers.printCentrado("2. No comprar");
+    ConsoleHelpers.printCentrado(" ");
     System.out.println("");
     opcionCompra = scanner.nextInt();
   }

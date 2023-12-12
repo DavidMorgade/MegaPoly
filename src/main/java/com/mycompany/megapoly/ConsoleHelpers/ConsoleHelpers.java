@@ -30,4 +30,13 @@ public class ConsoleHelpers {
     Scanner sc = new Scanner(System.in);
     sc.nextLine();
   }
+
+  /*
+   * Metodo que imprime un texto centrado
+   * @param text Texto a imprimir
+   */
+  public static void printCentrado(String text) {
+    int w = 100;
+    System.out.println(StringUtils.center(text, w));
+  }
 }

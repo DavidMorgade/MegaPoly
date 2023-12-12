@@ -1,7 +1,5 @@
 package com.mycompany.megapoly.Interfaz;
 
-import org.apache.commons.lang3.StringUtils;
-
 /*
  * Clase molde para los menus del juego
  */
@@ -29,9 +27,4 @@ public class Menu {
     "                               |_|                      |___|        \r\n" + //
     "\r\n" + //
     "";
-
-  protected void printCentradoEnConsola(String texto) {
-    int w = 100;
-    System.out.println(StringUtils.center(texto, w));
-  }
 }

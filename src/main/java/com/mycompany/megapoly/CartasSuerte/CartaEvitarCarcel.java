@@ -3,7 +3,6 @@ package com.mycompany.megapoly.CartasSuerte;
 import com.mycompany.megapoly.Acciones.EntradaSalidaCarcel;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
-import org.apache.commons.lang3.StringUtils;
 
 /*
  * Clase que se encarga de evitar la carcel al jugador
@@ -29,11 +28,8 @@ public class CartaEvitarCarcel extends CartaSuerte {
    * @see ConsoleHelpers para ver el metodo presionaEnterParaContinuar
    */
   public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
-    System.out.println(
-      StringUtils.center(
-        "Sobornas al guardia con un par de cajetillas de malboro de contrabando y sales de la carcel",
-        100
-      )
+    ConsoleHelpers.printCentrado(
+      "Sobornas al guardia con un par de cajetillas de malboro de contrabando y sales de la carcel"
     );
     EntradaSalidaCarcel.salirCarcel(jugadorEnPosesion);
     ConsoleHelpers.presionaEnterParaContinuar();

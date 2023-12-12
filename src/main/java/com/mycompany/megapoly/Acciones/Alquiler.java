@@ -1,8 +1,8 @@
 package com.mycompany.megapoly.Acciones;
 
 import com.mycompany.megapoly.Comprables.Propiedad;
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
-import org.apache.commons.lang3.StringUtils;
 
 /*
  * Clase que se encarga de realizar el alquiler de una propiedad
@@ -10,8 +10,6 @@ import org.apache.commons.lang3.StringUtils;
  *
  */
 public class Alquiler extends CompraVenta {
-
-  private int w = 100;
 
   /*
    * Constructor de la clase Alquiler
@@ -37,11 +35,8 @@ public class Alquiler extends CompraVenta {
     String nombrePropietario = propietario.getNombre();
     // Si el jugador actual es el propietario de la propiedad
     if (nombreJugadorActual.equals(nombrePropietario)) {
-      System.out.println(
-        StringUtils.center(
-          "Estas en tu empresa, la gente te vitorea, Bienvenido!",
-          w
-        )
+      ConsoleHelpers.printCentrado(
+        "Estas en tu empresa, la gente te vitorea, Bienvenido!"
       );
       System.out.println(" ");
       // Si el jugador actual no es el propietario de la propiedad
@@ -54,19 +49,16 @@ public class Alquiler extends CompraVenta {
           precioAlquiler
         );
       System.out.println(" ");
-      System.out.println(
-        StringUtils.center("Has caido en la empresa de " + nombrePropietario, w)
+      ConsoleHelpers.printCentrado(
+        "Has caido en la empresa de " + nombrePropietario
       );
-      System.out.println(
-        StringUtils.center(
-          nombreJugadorActual +
-          " paga la cantidad de " +
-          precioAlquiler +
-          " al jugador " +
-          nombrePropietario +
-          " en concepto de alquiler",
-          w
-        )
+      ConsoleHelpers.printCentrado(
+        nombreJugadorActual +
+        " paga la cantidad de " +
+        precioAlquiler +
+        " al jugador " +
+        nombrePropietario +
+        " en concepto de alquiler"
       );
       System.out.println(" ");
     }

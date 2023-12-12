@@ -2,7 +2,6 @@ package com.mycompany.megapoly.CartasSuerte;
 
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
-import org.apache.commons.lang3.StringUtils;
 
 /*
  * Clase que se encarga de volver a la casilla de salida y recibir X MegaMonedas
@@ -32,13 +31,9 @@ public class CartaVolver extends CartaSuerte {
    * @see ConsoleHelpers para ver el metodo presionaEnterParaContinuar
    */
   public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
-    int w = 100;
     System.out.println(" ");
-    System.out.println(
-      StringUtils.center(
-        "Vuelve a la casilla de salida y recibes 40 MegaMonedas en vez de 20",
-        w
-      )
+    ConsoleHelpers.printCentrado(
+      "Vuelve a la casilla de salida y recibes 40 MegaMonedas en vez de 20"
     );
     System.out.println(" ");
     ConsoleHelpers.presionaEnterParaContinuar();

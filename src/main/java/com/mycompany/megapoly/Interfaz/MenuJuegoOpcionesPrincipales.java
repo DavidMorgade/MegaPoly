@@ -81,16 +81,16 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
       if (numeroDado == 5) {
         EntradaSalidaCarcel.salirCarcel(this.jugadorTurno);
         System.out.println("");
-        this.printCentradoEnConsola("Has sacado un 5, sales de la carcel.");
+        ConsoleHelpers.printCentrado("Has sacado un 5, sales de la carcel.");
         System.out.println("");
         ConsoleHelpers.presionaEnterParaContinuar();
         this.jugadorTurno.getFicha().avanzar(this.tablero, numeroDado);
         // Si el jugador no saca un 5
       } else {
         this.mostrarTiradaDado(numeroDado);
-        this.printCentradoEnConsola(
-            "No has sacado un 5, no sales de la carcel."
-          );
+        ConsoleHelpers.printCentrado(
+          "No has sacado un 5, no sales de la carcel."
+        );
         ConsoleHelpers.presionaEnterParaContinuar();
       }
       // Si el jugador no esta en la carcel
@@ -107,7 +107,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
    */
   private void mostrarTiradaDado(int numeroDado) {
     System.out.println(" ");
-    this.printCentradoEnConsola("Has sacado un " + numeroDado);
+    ConsoleHelpers.printCentrado("Has sacado un " + numeroDado);
     System.out.println(" ");
   }
 
@@ -117,15 +117,15 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
    * @return void
    */
   private void mostrarOpciones() {
-    this.printCentradoEnConsola("Opciones: ");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("1. Tirar dado");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("2. Ver cartas de suerte");
-    this.printCentradoEnConsola("");
-    this.printCentradoEnConsola("3. Salir");
-    this.printCentradoEnConsola(" ");
+    ConsoleHelpers.printCentrado("Opciones: ");
+    ConsoleHelpers.printCentrado("");
+    ConsoleHelpers.printCentrado("");
+    ConsoleHelpers.printCentrado("1. Tirar dado");
+    ConsoleHelpers.printCentrado("");
+    ConsoleHelpers.printCentrado("2. Ver cartas de suerte");
+    ConsoleHelpers.printCentrado("");
+    ConsoleHelpers.printCentrado("3. Salir");
+    ConsoleHelpers.printCentrado(" ");
     this.opcion = this.scanner.nextInt();
   }
 
@@ -143,7 +143,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
    * @return void
    */
   private void salirDelJuego() {
-    this.printCentradoEnConsola(this.mensajeDespedida);
+    ConsoleHelpers.printCentrado(this.mensajeDespedida);
     System.exit(0);
   }
 }
