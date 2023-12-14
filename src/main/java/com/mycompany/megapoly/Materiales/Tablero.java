@@ -4,10 +4,8 @@ import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSalida;
-import com.mycompany.megapoly.Casillas.CasillaStartUp;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.Comprables.Propiedad;
-import com.mycompany.megapoly.Comprables.StartUp;
 import com.mycompany.megapoly.ConsoleHelpers.ColoresCasillas;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
@@ -126,14 +124,14 @@ public class Tablero {
     casillas[4] = new Carcel('C', "Carcel");
     // Inferior derecha
     casillas[24] =
-      new CasillaStartUp(
-        '-',
-        "StartUp",
-        new StartUp(
-          20,
-          5,
-          "StartUp India",
-          "StartUp que se dedica a realizar codigo de dudosa calidad"
+      new CasillaPropiedad(
+        'G',
+        "Google",
+        new Propiedad(
+          30,
+          15,
+          "Google Cadiz",
+          "Google Cadiz, los trabajadores teletrabajan desde la playa"
         )
       );
     // Inferior izquierda
@@ -151,19 +149,18 @@ public class Tablero {
           "Facebook Madrid, los trabajadores no tienen para el alquiler pero mas o menos sobreviven"
         )
       );
-    casillas[2] =
+    casillas[2] = new Casilla('P', null);
+    casillas[3] =
       new CasillaPropiedad(
         'F',
         "Facebook",
         new Propiedad(
-          12,
-          3,
-          "Facebook Barcelona",
-          "Facebook Barcelona, importa empleados desde cualquier parte del mundo"
+          15,
+          5,
+          "Facebook Cadiz",
+          "Facebook Cadiz, los trabajadores no tienen para el alquiler pero mas o menos sobreviven"
         )
       );
-    casillas[3] = new CasillaSuerte('S', "Suerte");
-
     // lado derecho
     casillas[9] =
       new CasillaPropiedad(
@@ -176,17 +173,8 @@ public class Tablero {
           "Facebook Valencia funciona bastante bien pero libran en fallas"
         )
       );
-    casillas[14] =
-      new CasillaPropiedad(
-        'G',
-        "Google",
-        new Propiedad(
-          20,
-          8,
-          "Google Madrid",
-          "Google Madrid, los trabajadores no tienen para el alquiler pero mas o menos sobreviven"
-        )
-      );
+
+    casillas[14] = new CasillaSuerte('S', "Suerte");
     casillas[19] =
       new CasillaPropiedad(
         'G',
@@ -198,7 +186,6 @@ public class Tablero {
           "Google Barcelona, importa empleados desde cualquier parte del mundo"
         )
       );
-
     // lado inferior
     casillas[23] =
       new CasillaPropiedad(
@@ -211,17 +198,8 @@ public class Tablero {
           "Google Valencia funciona bastante bien pero libran en fallas"
         )
       );
-    casillas[22] =
-      new CasillaPropiedad(
-        'N',
-        "Netflix",
-        new Propiedad(
-          35,
-          15,
-          "Netflix Madrid",
-          "Netflix Madrid, a diferencia de la competencia, los empleados tienen subscripcion a Netflix"
-        )
-      );
+
+    casillas[22] = new Casilla('P', null);
     casillas[21] =
       new CasillaPropiedad(
         'N',
@@ -233,19 +211,19 @@ public class Tablero {
           "Netflix Barcelona la mayoria de los empleados usan HBO"
         )
       );
-
     // lado izquierdo
     casillas[15] =
-      new CasillaStartUp(
-        '-',
-        "StartUp",
-        new StartUp(
-          20,
-          5,
-          "StartUp Marruecos",
-          "StartUp dedicada exclusivamente en realizar codigo en el lenguaje de programación Objective-C para aplicaciones de Apple"
+      new CasillaPropiedad(
+        'N',
+        "Netflix",
+        new Propiedad(
+          50,
+          25,
+          "Netflix Cadiz",
+          "Netflix Cadiz, ven las series piratas porque no pueden pagar la suscripcion"
         )
       );
+
     casillas[10] = new CasillaSuerte('S', "Suerte");
     casillas[5] =
       new CasillaPropiedad(
@@ -258,9 +236,9 @@ public class Tablero {
           "Twitter Ohio, no es tan malo pero el jefe es Elon Musk"
         )
       );
-
     // Centro (dejamos vacías)
     casillas[6] = new Casilla(' ', "");
+
     casillas[7] = new Casilla(' ', "");
     casillas[8] = new Casilla(' ', "");
     casillas[11] = new Casilla(' ', "");
