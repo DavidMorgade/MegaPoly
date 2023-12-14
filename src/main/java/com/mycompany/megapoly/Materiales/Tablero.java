@@ -119,21 +119,21 @@ public class Tablero {
   public void crearTablero() {
     // Esquinas
     // Superior izquierda
-    casillas[0] = new CasillaSalida('I', "Inicio");
-    // Superior derecha
-    casillas[4] = new Carcel('C', "Carcel");
-    // Inferior derecha
-    casillas[24] =
+    casillas[0] =
       new CasillaPropiedad(
-        'G',
-        "Google",
+        'T',
+        "Twitter",
         new Propiedad(
           30,
           15,
-          "Google Cadiz",
-          "Google Cadiz, los trabajadores teletrabajan desde la playa"
+          "Twitter Cadiz",
+          "Twitter Cadiz, los trabajadores teletrabajan desde la playa"
         )
       );
+    // Superior derecha
+    casillas[4] = new Carcel('C', "Carcel");
+    // Inferior derecha
+    casillas[24] = new CasillaSalida('I', "Salida");
     // Inferior izquierda
     casillas[20] = new Carcel('C', "Carcel");
 

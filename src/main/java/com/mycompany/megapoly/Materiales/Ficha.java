@@ -22,7 +22,7 @@ public class Ficha {
    * @param posicion Posición de la ficha
    */
   public Ficha() {
-    this.posicion = 0;
+    this.posicion = 24;
     this.jugador = null;
   }
 
@@ -101,7 +101,14 @@ public class Ficha {
     this.setPosicion(indicesValidos[nuevoIndice]);
 
     // Si caemos en la casilla de salida, obtenemos una recompensa
-    if ((indiceActual >= 10 || indiceActual == 5) && this.getPosicion() <= 9) {
+    if (
+      (
+        (this.getPosicion() >= 20 &&
+        this.getPosicion() <= 24) ||
+        this.getPosicion() == 15
+      ) &&
+      indiceActual <= 19
+    ) {
       tablero.mostrarTablero();
       RecompensaSalida recompensaSalida = new RecompensaSalida();
       int recompensa = recompensaSalida.getRecompensa();
