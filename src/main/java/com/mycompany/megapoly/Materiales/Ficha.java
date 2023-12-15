@@ -101,14 +101,7 @@ public class Ficha {
     this.setPosicion(indicesValidos[nuevoIndice]);
 
     // Si caemos en la casilla de salida, obtenemos una recompensa
-    if (
-      (
-        (this.getPosicion() >= 20 &&
-        this.getPosicion() <= 24) ||
-        this.getPosicion() == 15
-      ) &&
-      indiceActual <= 19
-    ) {
+    if (this.getPosicion() == 24) {
       tablero.mostrarTablero();
       RecompensaSalida recompensaSalida = new RecompensaSalida();
       int recompensa = recompensaSalida.getRecompensa();
