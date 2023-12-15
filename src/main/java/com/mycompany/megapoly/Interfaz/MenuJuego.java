@@ -34,6 +34,7 @@ public class MenuJuego extends Menu {
     tablero.crearTablero();
     while (!salir) {
       this.comenzarPartida(jugador1, jugador2, tablero, this.scanner);
+      this.finalizarPartida(jugador1, jugador2);
     }
   }
 
@@ -81,6 +82,30 @@ public class MenuJuego extends Menu {
     opcionesCasilla.opcionesSuerteCompraPropiedad();
     //Cambiamos el turno
     this.cambiarTurno(jugador1, jugador2);
+  }
+
+  private void finalizarPartida(Jugador jugador1, Jugador jugador2) {
+    if (jugador1.getMegaMonedas() <= 0) {
+      ConsoleHelpers.printCentrado(
+        "El jugador " +
+        jugador1.getNombre() +
+        " ha perdido" +
+        " el ganador es " +
+        jugador2.getNombre()
+      );
+      this.salir = true;
+      return;
+    } else if (jugador2.getMegaMonedas() <= 0) {
+      ConsoleHelpers.printCentrado(
+        "El jugador " +
+        jugador2.getNombre() +
+        " ha perdido" +
+        " el ganador es " +
+        jugador1.getNombre()
+      );
+      this.salir = true;
+      return;
+    }
   }
 
   /*
