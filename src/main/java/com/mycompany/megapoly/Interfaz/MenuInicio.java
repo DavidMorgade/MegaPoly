@@ -47,6 +47,15 @@ public class MenuInicio extends Menu {
           menuInicio();
           break;
         case 3:
+          // Cargamos la partida
+          ConsoleHelpers.printCentrado(
+            "Esta funcion aun no esta disponible :("
+          );
+          System.out.println(" ");
+          ConsoleHelpers.presionaEnterParaContinuar();
+          menuInicio();
+          break;
+        case 4:
           // Salimos del juego
           ConsoleHelpers.limpiarConsola();
           ConsoleHelpers.printCentrado(this.mensajeDespedida);
@@ -85,7 +94,9 @@ public class MenuInicio extends Menu {
     System.out.println("");
     ConsoleHelpers.printCentrado("2. Reglas");
     System.out.println("");
-    ConsoleHelpers.printCentrado("3. Salir");
+    ConsoleHelpers.printCentrado("3. Cargar partida");
+    System.out.println("");
+    ConsoleHelpers.printCentrado("4. Salir");
     opcion = scanner.nextInt();
     ConsoleHelpers.limpiarConsola();
   }

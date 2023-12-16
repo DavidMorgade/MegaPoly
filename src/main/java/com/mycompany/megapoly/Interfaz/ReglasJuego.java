@@ -44,17 +44,17 @@ public class ReglasJuego {
     System.out.println(REGLAS_JUEGO);
     System.out.println(" ");
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_CARCEL);
+    System.out.println(this.REGLA_CARCEL);
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_PASAR_POR_SALIDA);
+    System.out.println(this.REGLA_PASAR_POR_SALIDA);
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_PAGAR_ALQUILER);
+    System.out.println(this.REGLA_PAGAR_ALQUILER);
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_COMPRAR_PROPIEDAD);
+    System.out.println(this.REGLA_COMPRAR_PROPIEDAD);
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_EMPRESA_COMPLETA);
+    System.out.println(this.REGLA_EMPRESA_COMPLETA);
     System.out.println(" ");
-    ConsoleHelpers.printCentrado(this.REGLA_CARTAS_SUERTE);
+    System.out.println(this.REGLA_CARTAS_SUERTE);
     System.out.println(" ");
     ConsoleHelpers.presionaEnterParaContinuar();
   }
