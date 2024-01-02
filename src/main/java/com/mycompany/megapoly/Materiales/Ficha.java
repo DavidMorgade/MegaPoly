@@ -9,7 +9,9 @@ import org.apache.commons.lang3.StringUtils;
  * Clase que se encarga de crear las fichas
  * @see Jugador
  */
-public class Ficha {
+public class Ficha implements java.io.Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private int posicion;
 

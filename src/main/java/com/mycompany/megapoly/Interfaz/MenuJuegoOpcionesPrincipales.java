@@ -5,6 +5,8 @@ import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
+import com.mycompany.megapoly.Partidas.GuardarPartida;
+import com.mycompany.megapoly.Partidas.ManejadorRecursos;
 import java.util.Scanner;
 
 /*
@@ -61,6 +63,8 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
         this.jugadorTurno.mostrarCartas();
         return this.jugadorTurno.usarCartas(this.scanner, this.jugadorEnemigo);
       case 3:
+        return this.guardarPartida();
+      case 4:
         ConsoleHelpers.limpiarConsola();
         this.salirDelJuego();
         return false;
@@ -111,6 +115,25 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     System.out.println(" ");
   }
 
+  private boolean guardarPartida() {
+    GuardarPartida datos = new GuardarPartida(
+      this.jugadorTurno,
+      this.jugadorEnemigo
+    );
+    try {
+      ManejadorRecursos.guardar(
+        datos,
+        "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/src/guardados/partida.dat"
+      );
+      ConsoleHelpers.printCentrado("Partida guardada con exito.");
+      ConsoleHelpers.presionaEnterParaContinuar();
+    } catch (Exception e) {
+      e.printStackTrace();
+      ConsoleHelpers.presionaEnterParaContinuar();
+    }
+    return true;
+  }
+
   /*
    * Metodo que se encarga de mostrar las opciones
    * @see Menu
@@ -124,7 +147,9 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     ConsoleHelpers.printCentrado("");
     ConsoleHelpers.printCentrado("2. Ver cartas de suerte");
     ConsoleHelpers.printCentrado("");
-    ConsoleHelpers.printCentrado("3. Salir");
+    ConsoleHelpers.printCentrado("3. Guardar partida");
+    ConsoleHelpers.printCentrado("");
+    ConsoleHelpers.printCentrado("4. Salir");
     ConsoleHelpers.printCentrado(" ");
     this.opcion = this.scanner.nextInt();
   }

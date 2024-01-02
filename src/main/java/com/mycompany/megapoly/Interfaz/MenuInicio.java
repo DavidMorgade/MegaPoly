@@ -3,6 +3,8 @@ package com.mycompany.megapoly.Interfaz;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
+import com.mycompany.megapoly.Partidas.GuardarPartida;
+import com.mycompany.megapoly.Partidas.ManejadorRecursos;
 import com.mycompany.megapoly.Sonido.SonidoInicio;
 import java.util.Scanner;
 
@@ -52,10 +54,7 @@ public class MenuInicio extends Menu {
           break;
         case 3:
           // Cargamos la partida
-          ConsoleHelpers.printCentrado(
-            "Esta funcion aun no esta disponible :("
-          );
-          System.out.println(" ");
+          this.cargarPartida(jugador1, jugador2);
           ConsoleHelpers.presionaEnterParaContinuar();
           menuInicio();
           break;
@@ -86,6 +85,10 @@ public class MenuInicio extends Menu {
     System.out.println("");
     System.out.println("");
     this.seleccionarOpcionesAlInicio();
+  }
+
+  private void cargarPartida(Jugador jugadorTurno, Jugador jugadorEnemigo) {
+    ManejadorRecursos.mostrarPartidasGuardadas();
   }
 
   /*

@@ -15,7 +15,9 @@ import org.apache.commons.lang3.StringUtils;
  * @see Comprable
  *
  */
-public class Jugador {
+public class Jugador implements java.io.Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private boolean carcel = false;
 
