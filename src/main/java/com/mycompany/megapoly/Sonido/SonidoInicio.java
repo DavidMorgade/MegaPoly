@@ -4,11 +4,8 @@ package com.mycompany.megapoly.Sonido;
 
 public class SonidoInicio extends Sonidos {
 
-  String ruta =
-    "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/MusicaIntroduccion.wav";
-
   public SonidoInicio() {
     super.ruta =
-      "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/MusicaIntroduccion.wav";
+      "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/sounds/MusicaIntroduccion.wav";
   }
 }

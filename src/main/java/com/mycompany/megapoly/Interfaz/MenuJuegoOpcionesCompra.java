@@ -4,6 +4,7 @@ import com.mycompany.megapoly.Acciones.Comprar;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
+import com.mycompany.megapoly.Sonido.SonidoPropiedad;
 import java.util.Scanner;
 
 /*
@@ -11,6 +12,8 @@ import java.util.Scanner;
  * @see Menu
  */
 public class MenuJuegoOpcionesCompra extends Menu {
+
+  private SonidoPropiedad sonido = new SonidoPropiedad();
 
   Scanner scanner;
 
@@ -50,6 +53,7 @@ public class MenuJuegoOpcionesCompra extends Menu {
         .getNombre()
         .equals("Banco")
     ) {
+      sonido.reproducir();
       System.out.println("");
       this.mostrarOpcionesCompra();
       switch (this.opcionCompra) {

@@ -9,6 +9,8 @@ import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
+import com.mycompany.megapoly.Sonido.SonidoCarcel;
+import com.mycompany.megapoly.Sonido.SonidoPagar;
 import java.util.Scanner;
 
 /*
@@ -16,6 +18,10 @@ import java.util.Scanner;
  * @see Menu
  */
 public class MenuJuegoOpcionesCasilla extends Menu {
+
+  private SonidoCarcel sonido = new SonidoCarcel();
+
+  private SonidoPagar sonidoPagar = new SonidoPagar();
 
   private Casilla casillaActual;
 
@@ -122,6 +128,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
    * @return void
    */
   private void casillaCarcel() {
+    sonido.reproducir();
     EntradaSalidaCarcel.entrarCarcel(this.jugadorActual);
     System.out.println(" ");
   }
@@ -153,6 +160,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
         this.jugadorActual,
         casillaPropiedad
       );
+      sonidoPagar.reproducir();
       opcionesAlquiler.pagasAlquiler();
     }
   }

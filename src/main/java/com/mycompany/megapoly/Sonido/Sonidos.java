@@ -8,7 +8,7 @@ public class Sonidos {
 
   protected Clip sonido;
 
-  String ruta;
+  protected String ruta;
 
   public Sonidos() {}
 
