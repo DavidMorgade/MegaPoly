@@ -7,7 +7,9 @@ import com.mycompany.megapoly.Jugadores.Jugador;
  * @see Jugador donde se aplica el efecto de la carta
  * @see CartaDonar para ver un ejemplo de carta de suerte
  */
-public class CartaSuerte {
+public class CartaSuerte implements java.io.Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private String nombre;
 

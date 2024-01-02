@@ -7,6 +7,7 @@ import com.mycompany.megapoly.Materiales.Dado;
 import com.mycompany.megapoly.Materiales.Tablero;
 import com.mycompany.megapoly.Partidas.GuardarPartida;
 import com.mycompany.megapoly.Partidas.ManejadorRecursos;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /*
@@ -116,6 +117,11 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
   }
 
   private boolean guardarPartida() {
+    Scanner sc = new Scanner(System.in);
+    ConsoleHelpers.printCentrado("Ingrese el nombre de la partida: ");
+    String nombrePartida = sc.nextLine();
+    LocalDate fecha = LocalDate.now();
+    String nombreConFechaFormato = nombrePartida + " " + fecha + ".dat";
     GuardarPartida datos = new GuardarPartida(
       this.jugadorTurno,
       this.jugadorEnemigo
@@ -123,9 +129,12 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     try {
       ManejadorRecursos.guardar(
         datos,
-        "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/src/guardados/partida.dat"
+        "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/src/guardados/" +
+        nombreConFechaFormato
       );
-      ConsoleHelpers.printCentrado("Partida guardada con exito.");
+      ConsoleHelpers.printCentrado(
+        "Partida guardada con exito con el nombre: " + nombreConFechaFormato
+      );
       ConsoleHelpers.presionaEnterParaContinuar();
     } catch (Exception e) {
       e.printStackTrace();

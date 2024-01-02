@@ -1,5 +1,8 @@
 package com.mycompany.megapoly.Partidas;
 
+import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
+import com.mycompany.megapoly.Jugadores.Jugador;
+import java.io.Console;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -7,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class ManejadorRecursos {
 
@@ -38,18 +42,48 @@ public class ManejadorRecursos {
     }
   }
 
-  public static void mostrarPartidasGuardadas() {
+  public static void mostrarPartidasGuardadas(
+    Jugador jugadorTurno,
+    Jugador jugadorEnemigo
+  ) {
     File carpetaGuardado = new File(DIRECTORIO_GUARDADO);
     File[] archivosGuardados = carpetaGuardado.listFiles((dir, name) ->
       name.endsWith(".dat")
     );
 
     if (archivosGuardados.length == 0) {
-      System.out.println("No hay partidas guardadas.");
+      ConsoleHelpers.printCentrado("No hay partidas guardadas");
     } else {
-      System.out.println("Partidas guardadas:");
-      for (File archivo : archivosGuardados) {
-        System.out.println(archivo.getName());
+      ConsoleHelpers.printCentrado("Seleccione una partida: (0 para salir))");
+      for (int i = 0; i < archivosGuardados.length; i++) {
+        ConsoleHelpers.printCentrado(
+          (i + 1) + ". " + archivosGuardados[i].getName()
+        );
+      }
+      Scanner sc = new Scanner(System.in);
+      int opcion = sc.nextInt();
+      if (opcion >= 1 && opcion <= archivosGuardados.length) {
+        String nombreArchivo = archivosGuardados[opcion - 1].getName();
+        System.out.println(nombreArchivo);
+        GuardarPartida datos = (GuardarPartida) ManejadorRecursos.cargar(
+          DIRECTORIO_GUARDADO + "/" + nombreArchivo
+        );
+        jugadorTurno.setNombre(datos.jugador1.getNombre());
+        jugadorEnemigo.setNombre(datos.jugador2.getNombre());
+        jugadorTurno.setFicha(datos.jugador1.getFicha());
+        jugadorEnemigo.setFicha(datos.jugador2.getFicha());
+        jugadorTurno.setMegaMonedas(datos.jugador1.getMegaMonedas());
+        jugadorEnemigo.setMegaMonedas(datos.jugador2.getMegaMonedas());
+        jugadorTurno.setCartasTotales(datos.jugador1.getCartas());
+        jugadorEnemigo.setCartasTotales(datos.jugador2.getCartas());
+        jugadorTurno
+          .getFicha()
+          .setPosicion(datos.jugador1.getFicha().getPosicion());
+        jugadorEnemigo
+          .getFicha()
+          .setPosicion(datos.jugador2.getFicha().getPosicion());
+      } else {
+        System.out.println("No se cargara ninguna partida");
       }
     }
   }

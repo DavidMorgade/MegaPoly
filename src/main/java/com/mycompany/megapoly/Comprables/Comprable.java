@@ -6,8 +6,9 @@ import com.mycompany.megapoly.Jugadores.Jugador;
  * Clase que se encarga de crear los comprables del tablero, sirve de modelo para el resto de comprables
  * @see Jugador
  */
-public class Comprable {
+public class Comprable implements java.io.Serializable {
 
+  private static final long serialVersionUID = 1L;
   // El propietario por defecto es el banco
   private Jugador propietario = new Jugador("Banco", false, null);
   private String nombreComprable;

@@ -55,8 +55,7 @@ public class MenuInicio extends Menu {
         case 3:
           // Cargamos la partida
           this.cargarPartida(jugador1, jugador2);
-          ConsoleHelpers.presionaEnterParaContinuar();
-          menuInicio();
+          seguirMenuInicio = false;
           break;
         case 4:
           // Salimos del juego
@@ -88,7 +87,7 @@ public class MenuInicio extends Menu {
   }
 
   private void cargarPartida(Jugador jugadorTurno, Jugador jugadorEnemigo) {
-    ManejadorRecursos.mostrarPartidasGuardadas();
+    ManejadorRecursos.mostrarPartidasGuardadas(jugadorTurno, jugadorEnemigo);
   }
 
   /*

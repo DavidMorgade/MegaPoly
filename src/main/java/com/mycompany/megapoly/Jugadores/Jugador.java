@@ -91,6 +91,14 @@ public class Jugador implements java.io.Serializable {
     return this.ficha;
   }
 
+  public void setFicha(Ficha ficha) {
+    this.ficha = ficha;
+  }
+
+  public List<CartaSuerte> getCartas() {
+    return this.cartas;
+  }
+
   /*
    * Metodo que se encarga de mostrar las cartas de suerte de cada jugador
    * @see CartaSuerte
@@ -150,6 +158,12 @@ public class Jugador implements java.io.Serializable {
 
   public void setCartas(CartaSuerte carta) {
     this.cartas.add(carta);
+  }
+
+  public void setCartasTotales(List<CartaSuerte> cartas) {
+    for (CartaSuerte carta : cartas) {
+      this.cartas.add(carta);
+    }
   }
 
   /*
