@@ -3,7 +3,7 @@ package com.mycompany.megapoly.Interfaz;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
-import com.mycompany.megapoly.Sonido.Sonido;
+import com.mycompany.megapoly.Sonido.SonidoInicio;
 import java.util.Scanner;
 
 /*
@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class MenuInicio extends Menu {
 
-  private Sonido sonido = new Sonido();
+  private SonidoInicio sonido = new SonidoInicio();
 
   private int opcion;
 

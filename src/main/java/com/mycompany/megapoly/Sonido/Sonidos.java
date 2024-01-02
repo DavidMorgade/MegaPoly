@@ -1,18 +1,16 @@
 package com.mycompany.megapoly.Sonido;
 
-// Librerias necesarias para importar sonido
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Sonido {
+public class Sonidos {
 
-  String ruta =
-    "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/MusicaIntroduccion.wav";
+  protected Clip sonido;
 
-  private Clip sonido;
+  String ruta;
 
-  public Sonido() {}
+  public Sonidos() {}
 
   public void reproducir() {
     new Thread(() -> {
