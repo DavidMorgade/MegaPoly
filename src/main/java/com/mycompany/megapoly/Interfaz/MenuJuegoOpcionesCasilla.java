@@ -4,6 +4,7 @@ import com.mycompany.megapoly.Acciones.EntradaSalidaCarcel;
 import com.mycompany.megapoly.CartasSuerte.CartaSuerte;
 import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaParking;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
@@ -11,6 +12,8 @@ import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Tablero;
 import com.mycompany.megapoly.Sonido.SonidoCarcel;
 import com.mycompany.megapoly.Sonido.SonidoPagar;
+import com.mycompany.megapoly.Sonido.SonidoParking;
+import com.mycompany.megapoly.Sonido.SonidoSuerte;
 import java.util.Scanner;
 
 /*
@@ -22,6 +25,10 @@ public class MenuJuegoOpcionesCasilla extends Menu {
   private SonidoCarcel sonido = new SonidoCarcel();
 
   private SonidoPagar sonidoPagar = new SonidoPagar();
+
+  private SonidoSuerte sonidoSuerte = new SonidoSuerte();
+
+  private SonidoParking sonidoParking = new SonidoParking();
 
   private Casilla casillaActual;
 
@@ -84,6 +91,14 @@ public class MenuJuegoOpcionesCasilla extends Menu {
         "Estas en alcalameco, saca un 5 para salir. "
       );
       this.casillaCarcel();
+    }
+    if (this.casillaActual instanceof CasillaParking) {
+      sonidoParking.reproducir();
+      System.out.println(" ");
+      ConsoleHelpers.printCentrado(
+        "Has caido en la casilla: " + this.casillaActual.getNombre()
+      );
+      ConsoleHelpers.printCentrado("No ocurre nada en la casilla de Parking");
     }
   }
 
@@ -171,6 +186,7 @@ public class MenuJuegoOpcionesCasilla extends Menu {
    */
   private void casillaSuerte() {
     CasillaSuerte casillaSuerte = (CasillaSuerte) this.casillaActual;
+    sonidoSuerte.reproducir();
     casillaSuerte.setCarta();
     CartaSuerte cartaConseguida = casillaSuerte.getCarta();
     String nombreCarta = cartaConseguida.getNombre();

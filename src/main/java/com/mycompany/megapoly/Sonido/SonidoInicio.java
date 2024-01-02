@@ -1,7 +1,5 @@
 package com.mycompany.megapoly.Sonido;
 
-// Librerias necesarias para importar sonido
-
 public class SonidoInicio extends Sonidos {
 
   public SonidoInicio() {

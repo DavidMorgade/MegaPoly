@@ -2,6 +2,7 @@ package com.mycompany.megapoly.Materiales;
 
 import com.mycompany.megapoly.Casillas.Carcel;
 import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaParking;
 import com.mycompany.megapoly.Casillas.CasillaPropiedad;
 import com.mycompany.megapoly.Casillas.CasillaSalida;
 import com.mycompany.megapoly.Casillas.CasillaSuerte;
@@ -149,7 +150,7 @@ public class Tablero {
           "Facebook Madrid, los trabajadores no tienen para el alquiler pero mas o menos sobreviven"
         )
       );
-    casillas[2] = new Casilla('P', null);
+    casillas[2] = new CasillaParking('P', "Parking", "Parking, no ocurre nada");
     casillas[3] =
       new CasillaPropiedad(
         'F',
