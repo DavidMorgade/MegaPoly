@@ -194,6 +194,12 @@ public class Jugador implements java.io.Serializable {
     this.comprables.add(propiedad);
   }
 
+  public void setPropiedadesTotales(List<Comprable> propiedades) {
+    for (Comprable propiedad : propiedades) {
+      this.comprables.add(propiedad);
+    }
+  }
+
   public void setCarcel(boolean carcel) {
     this.carcel = carcel;
   }

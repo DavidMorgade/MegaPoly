@@ -31,11 +31,11 @@ public class Tablero {
    * @param fichaRoja Ficha del jugador rojo
    * @param fichaAzul Ficha del jugador azul
    */
-  public Tablero(int tamanioLado, Ficha fichaRoja, Ficha fichaAzul) {
+  public Tablero(int tamanioLado, Jugador jugadorRojo, Jugador jugadorAzul) {
     this.tamanioLado = tamanioLado;
     this.casillas = new Casilla[tamanioLado * tamanioLado];
-    this.fichaRoja = fichaRoja;
-    this.fichaAzul = fichaAzul;
+    this.fichaRoja = jugadorRojo.getFicha();
+    this.fichaAzul = jugadorAzul.getFicha();
   }
 
   public int getTamanioLado() {

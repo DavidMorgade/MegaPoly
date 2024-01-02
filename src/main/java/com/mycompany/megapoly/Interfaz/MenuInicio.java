@@ -54,7 +54,7 @@ public class MenuInicio extends Menu {
           break;
         case 3:
           // Cargamos la partida
-          this.cargarPartida(jugador1, jugador2);
+          this.cargarPartida(jugador1, jugador2, fichaRoja, fichaAzul);
           seguirMenuInicio = false;
           break;
         case 4:
@@ -86,8 +86,18 @@ public class MenuInicio extends Menu {
     this.seleccionarOpcionesAlInicio();
   }
 
-  private void cargarPartida(Jugador jugadorTurno, Jugador jugadorEnemigo) {
-    ManejadorRecursos.mostrarPartidasGuardadas(jugadorTurno, jugadorEnemigo);
+  private void cargarPartida(
+    Jugador jugadorTurno,
+    Jugador jugadorEnemigo,
+    Ficha fichaRoja,
+    Ficha fichaAzul
+  ) {
+    ManejadorRecursos.mostrarPartidasGuardadas(
+      jugadorTurno,
+      jugadorEnemigo,
+      fichaRoja,
+      fichaAzul
+    );
   }
 
   /*

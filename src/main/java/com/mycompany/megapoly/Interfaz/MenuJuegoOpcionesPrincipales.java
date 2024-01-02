@@ -129,7 +129,7 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     try {
       ManejadorRecursos.guardar(
         datos,
-        "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/src/guardados/" +
+        "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/src/guardadas/" +
         nombreConFechaFormato
       );
       ConsoleHelpers.printCentrado(
