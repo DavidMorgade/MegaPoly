@@ -18,7 +18,6 @@ public class Sonido {
     new Thread(() -> {
       try {
         File archivo = new File(this.ruta);
-        System.out.println(archivo.getCanonicalPath());
         this.sonido = AudioSystem.getClip();
         this.sonido.open(AudioSystem.getAudioInputStream(archivo));
         this.sonido.start();
