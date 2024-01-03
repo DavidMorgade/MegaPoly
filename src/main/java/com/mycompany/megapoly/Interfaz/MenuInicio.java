@@ -3,6 +3,7 @@ package com.mycompany.megapoly.Interfaz;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Ficha;
+import com.mycompany.megapoly.Materiales.Tablero;
 import com.mycompany.megapoly.Partidas.GuardarPartida;
 import com.mycompany.megapoly.Partidas.ManejadorRecursos;
 import com.mycompany.megapoly.Sonido.SonidoInicio;
@@ -33,7 +34,8 @@ public class MenuInicio extends Menu {
     Jugador jugador1,
     Jugador jugador2,
     Ficha fichaRoja,
-    Ficha fichaAzul
+    Ficha fichaAzul,
+    Tablero tablero
   ) {
     // Mensaje de bienvenida
     sonido.reproducir();
@@ -54,7 +56,7 @@ public class MenuInicio extends Menu {
           break;
         case 3:
           // Cargamos la partida
-          this.cargarPartida(jugador1, jugador2, fichaRoja, fichaAzul);
+          this.cargarPartida(jugador1, jugador2, fichaRoja, fichaAzul, tablero);
           seguirMenuInicio = false;
           break;
         case 4:
@@ -90,13 +92,15 @@ public class MenuInicio extends Menu {
     Jugador jugadorTurno,
     Jugador jugadorEnemigo,
     Ficha fichaRoja,
-    Ficha fichaAzul
+    Ficha fichaAzul,
+    Tablero tablero
   ) {
     ManejadorRecursos.mostrarPartidasGuardadas(
       jugadorTurno,
       jugadorEnemigo,
       fichaRoja,
-      fichaAzul
+      fichaAzul,
+      tablero
     );
   }
 

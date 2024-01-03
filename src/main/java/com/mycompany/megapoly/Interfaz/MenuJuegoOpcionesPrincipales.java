@@ -1,6 +1,9 @@
 package com.mycompany.megapoly.Interfaz;
 
 import com.mycompany.megapoly.Acciones.EntradaSalidaCarcel;
+import com.mycompany.megapoly.Casillas.Casilla;
+import com.mycompany.megapoly.Casillas.CasillaPropiedad;
+import com.mycompany.megapoly.Comprables.Comprable;
 import com.mycompany.megapoly.ConsoleHelpers.ConsoleHelpers;
 import com.mycompany.megapoly.Jugadores.Jugador;
 import com.mycompany.megapoly.Materiales.Dado;
@@ -8,6 +11,7 @@ import com.mycompany.megapoly.Materiales.Tablero;
 import com.mycompany.megapoly.Partidas.GuardarPartida;
 import com.mycompany.megapoly.Partidas.ManejadorRecursos;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -15,6 +19,10 @@ import java.util.Scanner;
  * @see Menu
  */
 public class MenuJuegoOpcionesPrincipales extends Menu {
+
+  private List<Comprable> comprablesJugadorTurno;
+
+  private List<Comprable> comprablesJugadorEnemigo;
 
   Jugador jugadorTurno;
 
@@ -124,7 +132,9 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
     String nombreConFechaFormato = nombrePartida + " " + fecha + ".dat";
     GuardarPartida datos = new GuardarPartida(
       this.jugadorTurno,
-      this.jugadorEnemigo
+      this.jugadorEnemigo,
+      this.comprablesJugadorTurno,
+      this.comprablesJugadorEnemigo
     );
     try {
       ManejadorRecursos.guardar(
@@ -170,6 +180,22 @@ public class MenuJuegoOpcionesPrincipales extends Menu {
   private int tirarDado() {
     this.dado.setNumeroAleatorio();
     return this.dado.getNumero();
+  }
+
+  private void casillasCompradas() {
+    Casilla[] casillas = this.tablero.getCasillas();
+    for (Casilla casilla : casillas) {
+      if (casilla instanceof CasillaPropiedad) {
+        CasillaPropiedad casillaPropiedad = (CasillaPropiedad) casilla;
+        if (
+          casillaPropiedad.getPropiedad().getPropietario() == this.jugadorTurno
+        ) {
+          this.comprablesJugadorTurno.add(casillaPropiedad.getPropiedad());
+        } else {
+          this.comprablesJugadorEnemigo.add(casillaPropiedad.getPropiedad());
+        }
+      }
+    }
   }
 
   /*

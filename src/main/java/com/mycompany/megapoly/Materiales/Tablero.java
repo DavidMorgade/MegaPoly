@@ -56,9 +56,13 @@ public class Tablero {
    */
   public void mostrarTablero() {
     ConsoleHelpers.limpiarConsola();
-    int posicionRoja = fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
-    int posicionAzul = fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
-    boolean mismaPosicion = fichaRoja.getPosicion() == fichaAzul.getPosicion(); // Boolean que comprueba si las fichas estan en la misma posicion
+
+    System.out.println(this.fichaRoja.getPosicion());
+    System.out.println(this.fichaAzul.getPosicion());
+    int posicionRoja = this.fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
+    int posicionAzul = this.fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
+    boolean mismaPosicion =
+      this.fichaRoja.getPosicion() == this.fichaAzul.getPosicion(); // Boolean que comprueba si las fichas estan en la misma posicion
 
     for (int i = 0; i < tamanioLado; i++) {
       for (int j = 0; j < tamanioLado; j++) {

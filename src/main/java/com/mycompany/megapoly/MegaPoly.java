@@ -29,9 +29,12 @@ public class MegaPoly {
       jugador1,
       jugador2,
       fichaUno,
-      fichaDos
+      fichaDos,
+      tablero
     );
 
-    MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, tablero);
+    Tablero tableroActualizado = new Tablero(5, jugador1, jugador2);
+
+    MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, tableroActualizado);
   }
 }
