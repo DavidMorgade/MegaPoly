@@ -204,7 +204,8 @@ public class Tablero {
         )
       );
 
-    casillas[22] = new Casilla('P', null);
+    casillas[22] =
+      new CasillaParking('P', "Parking", "Parking, no ocurre nada");
     casillas[21] =
       new CasillaPropiedad(
         'N',
