@@ -57,8 +57,6 @@ public class Tablero {
   public void mostrarTablero() {
     ConsoleHelpers.limpiarConsola();
 
-    System.out.println(this.fichaRoja.getPosicion());
-    System.out.println(this.fichaAzul.getPosicion());
     int posicionRoja = this.fichaRoja.getPosicion(); // Obtenemos la posicion de la ficha roja
     int posicionAzul = this.fichaAzul.getPosicion(); // Obtenemos la posicion de la ficha azul
     boolean mismaPosicion =
