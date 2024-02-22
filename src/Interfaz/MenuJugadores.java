@@ -1,10 +1,19 @@
 package Interfaz;
 
+import Jugadores.Jugador;
+import Materiales.Ficha;
+import Sonido.SonidoClick;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuJugadores extends JFrame {
 
+    private SonidoClick sonidoClick = new SonidoClick();
+    private Ficha fichaRoja = new Ficha("Rojo");
+    private Ficha fichaAzul = new Ficha("Azul");
+    private Jugador jugador1;
+    private Jugador jugador2;
     private final int[] sizes = {1600, 1200};
     private JPanel panelFondo;
     private JLabel labelFondo;
@@ -106,10 +115,16 @@ private JLabel labelNombreJugador2;
         botonJugar.setBounds(700, 900, 200, 50);
         botonJugar.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonJugar.addActionListener(e -> {
-            //sonidoInicio.parar();
-            //MenuJugadores menuJugadores = new MenuJugadores();
-            //menuJugadores.setVisible(true);
-            //dispose();
+            sonidoClick.reproducir();
+            if(nombreJugador1.getText().isEmpty() || nombreJugador2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de ambos jugadores");
+                return;
+            }
+            jugador1 = new Jugador(nombreJugador1.getText(), fichaRoja);
+            jugador2 = new Jugador(nombreJugador2.getText(), fichaAzul);
+            MenuJuego menuJuego = new MenuJuego(jugador1, jugador2);
+            menuJuego.setVisible(true);
+            dispose();
         });
         return botonJugar;
     }

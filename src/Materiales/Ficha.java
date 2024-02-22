@@ -22,9 +22,9 @@ public class Ficha implements java.io.Serializable {
    * Constructor de la clase
    * @param posicion Posición de la ficha
    */
-  public Ficha() {
-    this.posicion = 24;
-    this.jugador = null;
+  public Ficha(String colorFicha) {
+    this.posicion = 0;
+    this.colorFicha = colorFicha;
   }
 
   public Jugador getJugador() {

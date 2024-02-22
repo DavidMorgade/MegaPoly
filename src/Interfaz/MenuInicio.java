@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
 
 import javax.swing.*;
@@ -9,9 +10,11 @@ public class MenuInicio extends JFrame {
 
     private final SonidoInicio sonidoInicio = new SonidoInicio();
 
+    private SonidoClick sonidoClick = new SonidoClick();
     private ImageIcon fondoMegaPoly;
     private  JButton botonNuevaPartida;
     private JButton botonCargarPartida;
+    private JButton botonSalir;
     private JPanel panelFondo;
     private JLabel labelFondo;
     private JLabel labelTitulo;
@@ -48,6 +51,7 @@ public class MenuInicio extends JFrame {
         labelFondo.add(crearLabelTitulo());
         labelFondo.add(crearBotonNuevaPartida());
         labelFondo.add(crearBotonCargarPartida());
+        labelFondo.add(crearBotonSalir());
         return labelFondo;
     }
     private JLabel crearLabelTitulo() {
@@ -71,6 +75,7 @@ public class MenuInicio extends JFrame {
         botonNuevaPartida.setBounds(700, 700, 200, 50);
         botonNuevaPartida.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonNuevaPartida.addActionListener(e -> {
+            sonidoClick.reproducir();
             sonidoInicio.parar();
             MenuJugadores menuJugadores = new MenuJugadores();
             menuJugadores.setVisible(true);
@@ -83,8 +88,20 @@ public class MenuInicio extends JFrame {
         botonCargarPartida.setBounds(700, 800, 200, 50);
         botonCargarPartida.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonCargarPartida.addActionListener(e -> {
+            sonidoClick.reproducir();
             sonidoInicio.parar();
         });
         return botonCargarPartida;
+    }
+    private JButton crearBotonSalir() {
+        botonSalir = new JButton("Salir");
+        botonSalir.setBounds(700, 900, 200, 50);
+        botonSalir.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        botonSalir.addActionListener(e -> {
+            sonidoClick.reproducir();
+            sonidoInicio.parar();
+            System.exit(0);
+        });
+        return botonSalir;
     }
 }

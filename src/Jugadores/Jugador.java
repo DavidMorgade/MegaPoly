@@ -58,8 +58,9 @@ public class Jugador implements java.io.Serializable {
    * @param ficha Ficha del jugador
    * @see Ficha
    */
-  public Jugador(Ficha ficha) {
+  public Jugador(String nombre, Ficha ficha) {
     this.ficha = ficha;
+    this.nombre = nombre;
     this.megaMonedas = 100;
   }
 
