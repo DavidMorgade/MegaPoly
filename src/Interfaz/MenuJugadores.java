@@ -10,6 +10,11 @@ public class MenuJugadores extends JFrame {
     private JLabel labelFondo;
     private JLabel labelTitulo;
     private ImageIcon fondoMegaPoly;
+    private JTextField nombreJugador1;
+    private JTextField nombreJugador2;
+    private JLabel labelNombreJugador1;
+    private JButton botonJugar;
+private JLabel labelNombreJugador2;
 
     public static void main(String[] args) {
         MenuJugadores menu = new MenuJugadores();
@@ -48,6 +53,11 @@ public class MenuJugadores extends JFrame {
         labelFondo.setSize(sizes[0], sizes[1]);
         labelFondo.setBounds(0, 0, sizes[0], sizes[1]);
         labelFondo.add(crearLabelTitulo());
+        labelFondo.add(crearLabelNombreJugador1());
+        labelFondo.add(crearLabelNombreJugador2());
+        labelFondo.add(crearNombreJugador1());
+        labelFondo.add(crearNombreJugador2());
+        labelFondo.add(crearBotonJugar());
         return labelFondo;
     }
 
@@ -58,6 +68,50 @@ public class MenuJugadores extends JFrame {
         labelTitulo.setForeground(Color.BLACK);
         labelTitulo.setBounds(500, 100, labelWidth, 200);
         return labelTitulo;
+    }
+
+
+    private JTextField crearNombreJugador1() {
+        nombreJugador1 = new JTextField();
+        nombreJugador1.setBounds(700, 700, 200, 50);
+        nombreJugador1.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
+        return nombreJugador1;
+    }
+
+    private JTextField crearNombreJugador2() {
+        nombreJugador2 = new JTextField();
+        nombreJugador2.setBounds(700, 800, 200, 50);
+        nombreJugador2.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
+        return nombreJugador2;
+    }
+
+    private JLabel crearLabelNombreJugador1() {
+        labelNombreJugador1 = new JLabel("Nombre Jugador 1");
+        labelNombreJugador1.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
+        labelNombreJugador1.setForeground(Color.BLACK);
+        labelNombreJugador1.setBounds(700, 650, 200, 50);
+        return labelNombreJugador1;
+    }
+
+    private JLabel crearLabelNombreJugador2() {
+        labelNombreJugador2 = new JLabel("Nombre Jugador 2");
+        labelNombreJugador2.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
+        labelNombreJugador2.setForeground(Color.BLACK);
+        labelNombreJugador2.setBounds(700, 750, 200, 50);
+        return labelNombreJugador2;
+    }
+
+    private JButton crearBotonJugar() {
+        botonJugar = new JButton("Jugar");
+        botonJugar.setBounds(700, 900, 200, 50);
+        botonJugar.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        botonJugar.addActionListener(e -> {
+            //sonidoInicio.parar();
+            //MenuJugadores menuJugadores = new MenuJugadores();
+            //menuJugadores.setVisible(true);
+            //dispose();
+        });
+        return botonJugar;
     }
 
 }

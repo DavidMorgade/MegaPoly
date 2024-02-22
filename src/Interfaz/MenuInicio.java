@@ -16,7 +16,7 @@ public class MenuInicio extends JFrame {
     private JLabel labelFondo;
     private JLabel labelTitulo;
     private final int[] sizes = {1600, 1200};
-    private JPanel MenuInicio;
+
 
     public static void main(String[] args) {
         MenuInicio menu = new MenuInicio();
