@@ -1,10 +1,12 @@
 package Interfaz;
 
+import Casillas.Casilla;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class MenuJuego extends JFrame {
 
@@ -52,6 +54,7 @@ public class MenuJuego extends JFrame {
         labelFondo.add(crearMenu());
         labelFondo.add(crearNombreJugador1());
         labelFondo.add(crearNombreJugador2());
+        this.ponerTableroEnPantalla(labelFondo);
         return labelFondo;
     }
     private JComboBox crearMenu() {
@@ -76,8 +79,11 @@ public class MenuJuego extends JFrame {
         });
     }
     private JLabel crearNombreJugador1() {
+        String nombreStringJugador1 = jugador1.getNombre();
+        String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
+        int megaMonedasJugador1 = jugador1.getMegaMonedas();
         boolean esTurno = jugador1.getTurno();
-        nombreJugador1 = new JLabel(jugador1.getNombre() + " (Jugador 1) con la ficha de color" + jugador1.getFicha().getColorFicha());
+        nombreJugador1 = new JLabel(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
         nombreJugador1.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         nombreJugador1.setForeground(Color.BLACK);
         nombreJugador1.setBackground(esTurno ? Color.GREEN : Color.RED);
@@ -87,8 +93,11 @@ public class MenuJuego extends JFrame {
         return nombreJugador1;
     }
     private JLabel crearNombreJugador2() {
+        String nombreStringJugador2 = jugador2.getNombre();
+        String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
+        int megaMonedasJugador2 = jugador2.getMegaMonedas();
         boolean esTurno = jugador2.getTurno();
-        nombreJugador2 = new JLabel(jugador2.getNombre() + " (Jugador 2) con la ficha de color" + jugador2.getFicha().getColorFicha());
+        nombreJugador2 = new JLabel(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
         nombreJugador2.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         nombreJugador2.setForeground(Color.BLACK);
         nombreJugador2.setBackground(esTurno ? Color.GREEN : Color.RED);
@@ -96,4 +105,14 @@ public class MenuJuego extends JFrame {
         nombreJugador2.setBounds(800, 50, 800, 50);
         return nombreJugador2;
     }
+
+    private void ponerTableroEnPantalla(JLabel labelFondo){
+        Tablero tablero = new Tablero();
+        Map<JLabel, Casilla> valoresTablero = tablero.getTablero();
+        for (JLabel label : valoresTablero.keySet()) {
+            labelFondo.add(label);
+        }
+    }
+
+
 }
