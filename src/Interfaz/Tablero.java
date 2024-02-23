@@ -64,11 +64,173 @@ public class Tablero {
     private void StyleJLabels(){
         int i = 0;
         for (JLabel label : tablero.keySet()) {
-            i+=10;
             label.setSize(160, 120);
             label.setBounds(i, i, 160, 120);
             label.setOpaque(true);
             label.setBackground(Color.RED);
+            switch (i) {
+                case 0:
+                    label.setBackground(Color.RED);
+                    label.setBounds(1200, 1000, 70, 80);
+                    break;
+                case 1:
+                    label.setBackground(Color.BLUE);
+                    label.setBounds(1090, 1000, 60, 80);
+                    break;
+                case 2:
+                    label.setBackground(Color.GREEN);
+                    label.setBounds(1010, 1000, 60, 80);
+                    break;
+                case 3:
+                    label.setBackground(Color.YELLOW);
+                    label.setBounds(930, 1000, 60, 80);
+                    break;
+                case 4:
+                    label.setBackground(Color.ORANGE);
+                    label.setBounds(850, 1000, 60, 80);
+                    break;
+                case 5:
+                    label.setBackground(Color.PINK);
+                    label.setBounds(770, 1000, 60, 80);
+                    break;
+                case 6:
+                    label.setBackground(Color.CYAN);
+                    label.setBounds(690, 1000, 60, 80);
+                    break;
+                case 7:
+                    label.setBackground(Color.MAGENTA);
+                    label.setBounds(610, 1000, 60, 80);
+                    break;
+                case 8:
+                    label.setBackground(Color.LIGHT_GRAY);
+                    label.setBounds(530, 1000, 60, 80);
+                    break;
+                case 9:
+                    label.setBackground(Color.DARK_GRAY);
+                    label.setBounds(450, 1000, 60, 80);
+                    break;
+                case 10:
+                    label.setBackground(Color.BLACK);
+                    label.setBounds(320, 1000, 80, 80);
+                    break;
+                case 11:
+                    label.setBackground(Color.WHITE);
+                    label.setBounds(320, 890, 100, 60);
+                    break;
+                case 12:
+                    label.setBackground(Color.RED);
+                    label.setBounds(320, 810, 100, 60);
+                    break;
+                case 13:
+                    label.setBackground(Color.BLUE);
+                    label.setBounds(320, 730, 100, 60);
+                    break;
+                case 14:
+                    label.setBackground(Color.GREEN);
+                    label.setBounds(320, 650, 100, 60);
+                    break;
+                case 15:
+                    label.setBackground(Color.YELLOW);
+                    label.setBounds(320, 570, 100, 60);
+                    break;
+                case 16:
+                    label.setBackground(Color.ORANGE);
+                    label.setBounds(320, 490, 100, 60);
+                    break;
+                case 17:
+                    label.setBackground(Color.PINK);
+                    label.setBounds(320, 410, 100, 60);
+                    break;
+                case 18:
+                    label.setBackground(Color.CYAN);
+                    label.setBounds(320, 330, 100, 60);
+                    break;
+                case 19:
+                    label.setBackground(Color.MAGENTA);
+                    label.setBounds(320, 250, 100, 60);
+                    break;
+                case 20:
+                    label.setBackground(Color.LIGHT_GRAY);
+                    label.setBounds(320, 130, 100, 80);
+                    break;
+                case 21:
+                    label.setBackground(Color.DARK_GRAY);
+                    label.setBounds(450, 110, 60, 80);
+                    break;
+                case 22:
+                    label.setBackground(Color.BLACK);
+                    label.setBounds(530, 110, 60, 80);
+                    break;
+                case 23:
+                    label.setBackground(Color.WHITE);
+                    label.setBounds(610, 110, 60, 80);
+                    break;
+                case 24:
+                    label.setBackground(Color.RED);
+                    label.setBounds(690, 110, 60, 80);
+                    break;
+                case 25:
+                    label.setBackground(Color.BLUE);
+                    label.setBounds(770, 110, 60, 80);
+                    break;
+                case 26:
+                    label.setBackground(Color.GREEN);
+                    label.setBounds(850, 110, 60, 80);
+                    break;
+                case 27:
+                    label.setBackground(Color.YELLOW);
+                    label.setBounds(930, 110, 60, 80);
+                    break;
+                case 28:
+                    label.setBackground(Color.ORANGE);
+                    label.setBounds(1010, 110, 60, 80);
+                    break;
+                case 29:
+                    label.setBackground(Color.PINK);
+                    label.setBounds(1090, 110, 60, 80);
+                    break;
+                case 30:
+                    label.setBackground(Color.CYAN);
+                    label.setBounds(1200, 110, 80, 80);
+                    break;
+                case 31:
+                    label.setBackground(Color.MAGENTA);
+                    label.setBounds(1210, 250, 80, 60);
+                    break;
+                case 32:
+                    label.setBackground(Color.LIGHT_GRAY);
+                    label.setBounds(1210, 330, 80, 60);
+                    break;
+                case 33:
+                    label.setBackground(Color.RED);
+                    label.setBounds(1210, 410, 80, 60);
+                    break;
+                case 34:
+                    label.setBackground(Color.BLUE);
+                    label.setBounds(1210, 490, 80, 60);
+                    break;
+                case 35:
+                    label.setBackground(Color.GREEN);
+                    label.setBounds(1210, 570, 80, 60);
+                    break;
+                case 36:
+                    label.setBackground(Color.YELLOW);
+                    label.setBounds(1210, 650, 80, 60);
+                    break;
+                case 37:
+                    label.setBackground(Color.ORANGE);
+                    label.setBounds(1210, 730, 80, 60);
+                    break;
+                case 38:
+                    label.setBackground(Color.PINK);
+                    label.setBounds(1210, 810, 80, 60);
+                    break;
+                case 39:
+                    label.setBackground(Color.CYAN);
+                    label.setBounds(1210, 890, 80, 60);
+                    break;
+            }
+            i+=1;
         }
     }
     public Map<JLabel, Casilla> getTablero() {
