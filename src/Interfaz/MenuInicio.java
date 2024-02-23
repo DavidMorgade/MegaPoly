@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Interfaz.Componentes.Boton;
 import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
 
@@ -12,9 +13,9 @@ public class MenuInicio extends JFrame {
 
     private SonidoClick sonidoClick = new SonidoClick();
     private ImageIcon fondoMegaPoly;
-    private  JButton botonNuevaPartida;
-    private JButton botonCargarPartida;
-    private JButton botonSalir;
+    private  Boton botonNuevaPartida;
+    private Boton botonCargarPartida;
+    private Boton botonSalir;
     private JPanel panelFondo;
     private JLabel labelFondo;
     private JLabel labelTitulo;
@@ -70,10 +71,9 @@ public class MenuInicio extends JFrame {
         panelFondo.add(crearLabelFondo());
         return panelFondo;
     }
-    private JButton crearBotonNuevaPartida() {
-        botonNuevaPartida = new JButton("Nueva Partida");
+    private Boton crearBotonNuevaPartida() {
+        botonNuevaPartida = new Boton("Nueva Partida");
         botonNuevaPartida.setBounds(700, 700, 200, 50);
-        botonNuevaPartida.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonNuevaPartida.addActionListener(e -> {
             sonidoClick.reproducir();
             sonidoInicio.parar();
@@ -83,20 +83,18 @@ public class MenuInicio extends JFrame {
         });
         return botonNuevaPartida;
     }
-    private JButton crearBotonCargarPartida() {
-        botonCargarPartida = new JButton("Cargar Partida");
+    private Boton crearBotonCargarPartida() {
+        botonCargarPartida = new Boton("Cargar Partida");
         botonCargarPartida.setBounds(700, 800, 200, 50);
-        botonCargarPartida.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
             sonidoInicio.parar();
         });
         return botonCargarPartida;
     }
-    private JButton crearBotonSalir() {
-        botonSalir = new JButton("Salir");
+    private Boton crearBotonSalir() {
+        botonSalir = new Boton("Salir");
         botonSalir.setBounds(700, 900, 200, 50);
-        botonSalir.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonSalir.addActionListener(e -> {
             sonidoClick.reproducir();
             sonidoInicio.parar();

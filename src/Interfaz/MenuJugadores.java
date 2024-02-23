@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 import Sonido.SonidoClick;
@@ -22,7 +23,7 @@ public class MenuJugadores extends JFrame {
     private JTextField nombreJugador1;
     private JTextField nombreJugador2;
     private JLabel labelNombreJugador1;
-    private JButton botonJugar;
+    private Boton botonJugar;
 private JLabel labelNombreJugador2;
 
     public static void main(String[] args) {
@@ -110,8 +111,8 @@ private JLabel labelNombreJugador2;
         return labelNombreJugador2;
     }
 
-    private JButton crearBotonJugar() {
-        botonJugar = new JButton("Jugar");
+    private Boton crearBotonJugar() {
+        botonJugar = new Boton("Jugar");
         botonJugar.setBounds(700, 900, 200, 50);
         botonJugar.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonJugar.addActionListener(e -> {
