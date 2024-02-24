@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Casillas.Casilla;
+import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 
@@ -54,6 +55,7 @@ public class MenuJuego extends JFrame {
         labelFondo.add(crearMenu());
         labelFondo.add(crearNombreJugador1());
         labelFondo.add(crearNombreJugador2());
+        labelFondo.add(botonTirarDados());
         this.ponerTableroEnPantalla(labelFondo);
         return labelFondo;
     }
@@ -112,6 +114,15 @@ public class MenuJuego extends JFrame {
         for (JLabel label : valoresTablero.keySet()) {
             labelFondo.add(label);
         }
+    }
+
+    private Boton botonTirarDados() {
+        Boton botonTirarDados = new Boton("Tirar Dados");
+        botonTirarDados.setBounds(700, 700, 200, 50);
+        botonTirarDados.addActionListener(e -> {
+            // tirar dados
+        });
+        return botonTirarDados;
     }
 
 

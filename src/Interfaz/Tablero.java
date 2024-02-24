@@ -21,57 +21,59 @@ public class Tablero {
     // son 40 casillas
 
     private void CrearTablero() {
-        tablero.put(new JLabel("Salida"), new CasillaSalida('S', "Salida"));
-        tablero.put(new JLabel("Facebook Cadiz"), new CasillaPropiedad('F', "Facebook Cadiz"));
-        tablero.put(new JLabel("Suerte"), new CasillaSuerte('S', "Suerte"));
-        tablero.put(new JLabel("Facebook Sevilla"), new CasillaPropiedad('F', "Facebook Sevilla"));
+        tablero.put(new JLabel(""), new CasillaSalida('S', "Salida"));
+        tablero.put(new JLabel("<html>Facebook<br>Cadiz</html>"), new CasillaPropiedad('F', "Facebook Cadiz"));
+        tablero.put(new JLabel(""), new CasillaSuerte('S', "Suerte"));
+        tablero.put(new JLabel("<html>Facebook<br>Sevilla</html>"), new CasillaPropiedad('F', "Facebook Sevilla"));
         tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto"));
-        tablero.put(new JLabel("Startup Cadiz"), new CasillaPropiedad('S', "Startup Cadiz"));
-        tablero.put(new JLabel("Twitter Cadiz"), new CasillaPropiedad('T', "Twitter Cadiz"));
+        tablero.put(new JLabel("<html>StartUp<br>Cadiz</html>"), new CasillaPropiedad('S', "Startup Cadiz"));
+        tablero.put(new JLabel("<html>Twitter<br>Cadiz</html>"), new CasillaPropiedad('T', "Twitter Cadiz"));
         tablero.put(new JLabel("Suerte por definir"), new CasillaSuerte('S', "Suerte por definir"));
-        tablero.put(new JLabel("Twitter Sevilla"), new CasillaPropiedad('T', "Twitter Sevilla"));
-        tablero.put(new JLabel("Twitter Malaga"), new CasillaPropiedad('T', "Twitter Malaga"));
-        tablero.put(new JLabel("Carcel"), new Carcel('C', "Carcel"));
-        tablero.put(new JLabel("Instagram Cadiz"), new CasillaPropiedad('I', "Instagram Cadiz"));
-        tablero.put(new JLabel("Impuesto 2"), new Casilla('I', "Impuesto 2"));
-        tablero.put(new JLabel("Instagram Sevilla"), new CasillaPropiedad('I', "Instagram Sevilla"));
-        tablero.put(new JLabel("Instagram Malaga"), new CasillaPropiedad('I', "Instagram Malaga"));
-        tablero.put(new JLabel("Startup Sevilla"), new CasillaPropiedad('S', "Startup Sevilla"));
-        tablero.put(new JLabel("Google Cadiz"), new CasillaPropiedad('G', "Google Cadiz"));
-        tablero.put(new JLabel("Suerte 2"), new CasillaSuerte('S', "Suerte 2"));
-        tablero.put(new JLabel("Google Sevilla"), new CasillaPropiedad('G', "Google Sevilla"));
-        tablero.put(new JLabel("Google Malaga"), new CasillaPropiedad('G', "Google Malaga"));
-        tablero.put(new JLabel("Parking"), new CasillaParking('P', "Parking", "Parking"));
-        tablero.put(new JLabel("Amazon Cadiz"), new CasillaPropiedad('A', "Amazon Cadiz"));
+        tablero.put(new JLabel("<html>Twitter<br>Sevilla</html>"), new CasillaPropiedad('T', "Twitter Sevilla"));
+        tablero.put(new JLabel("<html>Twitter<br>Malaga</html>"), new CasillaPropiedad('T', "Twitter Malaga"));
+        tablero.put(new JLabel(), new Carcel('C', "Carcel"));
+        tablero.put(new JLabel("<html>Instagram<br>Cadiz</html>"), new CasillaPropiedad('I', "Instagram Cadiz"));
+        tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto 2"));
+        tablero.put(new JLabel("<html>Instagram<br>Sevilla</html>"), new CasillaPropiedad('I', "Instagram Sevilla"));
+        tablero.put(new JLabel("<html>Instagram<br>Malaga</html>"), new CasillaPropiedad('I', "Instagram Malaga"));
+        tablero.put(new JLabel("<html>Startup<br>Sevilla</html>"), new CasillaPropiedad('S', "Startup Sevilla"));
+        tablero.put(new JLabel("<html>Google<br>Cadiz</html>"), new CasillaPropiedad('G', "Google Cadiz"));
+        tablero.put(new JLabel(), new CasillaSuerte('S', "Suerte 2"));
+        tablero.put(new JLabel("<html>Google<br>Sevilla</html>"), new CasillaPropiedad('G', "Google Sevilla"));
+        tablero.put(new JLabel("<html>Google<br>Malaga</html>"), new CasillaPropiedad('G', "Google Malaga"));
+        tablero.put(new JLabel(), new CasillaParking('P', "Parking", "Parking"));
+        tablero.put(new JLabel("<html>Amazon<br>Cadiz</html>"), new CasillaPropiedad('A', "Amazon Cadiz"));
         tablero.put(new JLabel("Suerte por definir 2"), new CasillaSuerte('S', "Suerte por definir 2"));
-        tablero.put(new JLabel("Amazon Sevilla"), new CasillaPropiedad('A', "Amazon Sevilla"));
-        tablero.put(new JLabel("Amazon Malaga"), new CasillaPropiedad('A', "Amazon Malaga"));
-        tablero.put(new JLabel("Startup Malaga"), new CasillaPropiedad('S', "Startup Malaga"));
-        tablero.put(new JLabel("Netflix Cadiz"), new CasillaPropiedad('N', "Netflix Cadiz"));
-        tablero.put(new JLabel("Netflix Sevilla"), new CasillaPropiedad('N', "Netflix Sevilla"));
-        tablero.put(new JLabel("Impuesto 3"), new Casilla('I', "Impuesto 3"));
-        tablero.put(new JLabel("Netflix Malaga"), new CasillaPropiedad('N', "Netflix Malaga"));
-        tablero.put(new JLabel("Carcel 2"), new Carcel('C', "Carcel 2"));
-        tablero.put(new JLabel("Apple Cadiz"), new CasillaPropiedad('A', "Apple Cadiz"));
-        tablero.put(new JLabel("Apple Sevilla"), new CasillaPropiedad('A', "Apple Sevilla"));
-        tablero.put(new JLabel("Suerte 3"), new CasillaSuerte('S', "Suerte 3"));
-        tablero.put(new JLabel("Apple Malaga"), new CasillaPropiedad('A', "Apple Malaga"));
-        tablero.put(new JLabel("Startup Madrid"), new CasillaPropiedad('S', "Startup Madrid"));
+        tablero.put(new JLabel("<html>Amazon <br> Servilla</html>"), new CasillaPropiedad('A', "Amazon Sevilla"));
+        tablero.put(new JLabel("<html>Amazon<br>Malaga</html>"), new CasillaPropiedad('A', "Amazon Malaga"));
+        tablero.put(new JLabel("<html>Startup<br>Malaga</html>"), new CasillaPropiedad('S', "Startup Malaga"));
+        tablero.put(new JLabel("<html>Netflix<br>Cadiz</html>"), new CasillaPropiedad('N', "Netflix Cadiz"));
+        tablero.put(new JLabel("<html>Netflix<br>Sevilla</html>"), new CasillaPropiedad('N', "Netflix Sevilla"));
+        tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto 3"));
+        tablero.put(new JLabel("<html>Netflix<br>Malaga</html>"), new CasillaPropiedad('N', "Netflix Malaga"));
+        tablero.put(new JLabel(""), new Carcel('C', "Carcel 2"));
+        tablero.put(new JLabel("<html>Apple<br>Cadiz</html>"), new CasillaPropiedad('A', "Apple Cadiz"));
+        tablero.put(new JLabel("<html>Apple<br>Sevilla</html>"), new CasillaPropiedad('A', "Apple Sevilla"));
+        tablero.put(new JLabel(), new CasillaSuerte('S', "Suerte 3"));
+        tablero.put(new JLabel("<html>Apple<br>Malaga</html>"), new CasillaPropiedad('A', "Apple Malaga"));
+        tablero.put(new JLabel("<html>Startup<br>Madrid</html>"), new CasillaPropiedad('S', "Startup Madrid"));
         tablero.put(new JLabel("Suerte por definir 3"), new CasillaSuerte('S', "Suerte por definir 3"));
-        tablero.put(new JLabel("Microsoft Cadiz"), new CasillaPropiedad('M', "Microsoft Cadiz"));
+        tablero.put(new JLabel("<html>Microsoft<br>Cadiz</html>"), new CasillaPropiedad('M', "Microsoft Cadiz"));
         tablero.put(new JLabel("Impuesto 4"), new Casilla('I', "Impuesto 4"));
-        tablero.put(new JLabel("Microsoft Sevilla"), new CasillaPropiedad('M', "Microsoft Sevilla"));
+        tablero.put(new JLabel("<html>Micrososft<br>Sevilla</html>"), new CasillaPropiedad('M', "Microsoft Sevilla"));
     }
     private void StyleJLabels(){
         int i = 0;
         for (JLabel label : tablero.keySet()) {
             label.setSize(160, 120);
             label.setBounds(i, i, 160, 120);
-            label.setFont(new Font("Serif", Font.BOLD, 10));
+            label.setForeground(Color.GRAY);
+            label.setFont(new Font("Snap ITC Normal", Font.BOLD, 10));
             switch (i) {
                 case 0:
                     label.setBackground(new Color(250, 250, 250, 20));
                     label.setBounds(1200, 1000, 70, 80);
+
                     break;
                 case 1:
                     label.setBackground(Color.BLUE);
