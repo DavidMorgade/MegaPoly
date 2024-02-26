@@ -2,6 +2,8 @@ package Interfaz;
 
 import Casillas.*;
 import Comprables.Propiedad;
+import Jugadores.Jugador;
+import Materiales.Ficha;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +12,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Tablero {
-
+    Jugador jugador1;
+    Jugador jugador2;
     private Map<JLabel, Casilla> tablero = new LinkedHashMap<JLabel, Casilla>(40);
 
-    public Tablero() {
+    public Tablero(Jugador jugador1, Jugador jugador2) {
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
         this.CrearTablero();
         this.StyleJLabels();
     }
@@ -65,19 +70,21 @@ public class Tablero {
 
     private void StyleJLabels() {
         int i = 0;
+        Ficha fichaRoja = jugador1.getFicha();
+        Ficha fichaAzul = jugador2.getFicha();
         for (JLabel label : tablero.keySet()) {
             label.setSize(160, 120);
             label.setBounds(i, i, 160, 120);
             label.setForeground(Color.GRAY);
+            label.setOpaque(true);
             label.setFont(new Font("Snap ITC Normal", Font.BOLD, 10));
             switch (i) {
                 case 0:
                     label.setBackground(new Color(250, 250, 250, 20));
                     label.setBounds(1200, 1000, 70, 80);
-
+                    label.add(fichaRoja);
                     break;
                 case 1:
-                    label.setBackground(Color.BLUE);
                     label.setBounds(1090, 1000, 60, 80);
                     break;
                 case 2:

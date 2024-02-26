@@ -1,55 +1,67 @@
 package Materiales;
 
-import Acciones.RecompensaSalida;
 import Jugadores.Jugador;
-import java.io.IOException;
+
+import javax.swing.*;
+import java.awt.*;
 
 /*
  * Clase que se encarga de crear las fichas
  * @see Jugador
  */
-public class Ficha implements java.io.Serializable {
+public class Ficha extends JLabel implements java.io.Serializable {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  private int posicion;
+    private int posicion;
 
-  private String colorFicha;
+    private String colorFicha;
 
-  private Jugador jugador;
+    private Jugador jugador;
 
-  /*
-   * Constructor de la clase
-   * @param posicion Posición de la ficha
-   */
-  public Ficha(String colorFicha) {
-    this.posicion = 0;
-    this.colorFicha = colorFicha;
-  }
+    /*
+     * Constructor de la clase
+     * @param posicion Posición de la ficha
+     */
+    public Ficha(String colorFicha) {
+        this.posicion = 0;
+        this.colorFicha = colorFicha;
+        this.setPreferredSize(new Dimension(50, 50));
+        //TODO
+        // CONSEGUIR QUE SE PINTE LA FICHA EN EL TABLERO
+        this.setOpaque(true);
+    }
 
-  public Jugador getJugador() {
-    return this.jugador;
-  }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(this.colorFicha.equals("Rojo") ? Color.RED : Color.BLUE);
+        g.fillOval(0, 0, 50, 50);
+    }
 
-  public void setJugador(Jugador jugador) {
-    this.jugador = jugador;
-  }
+    public Jugador getJugador() {
+        return this.jugador;
+    }
 
-  public int getPosicion() {
-    return this.posicion;
-  }
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
 
-  public void setPosicion(int posicion) {
-    this.posicion = posicion;
-  }
+    public int getPosicion() {
+        return this.posicion;
+    }
 
-  public String getColorFicha() {
-    return this.colorFicha;
-  }
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
 
-  public void setColorFicha(String colorFicha) {
-    this.colorFicha = colorFicha;
-  }
+    public String getColorFicha() {
+        return this.colorFicha;
+    }
+
+    public void setColorFicha(String colorFicha) {
+        this.colorFicha = colorFicha;
+    }
 
 
 }

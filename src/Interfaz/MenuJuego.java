@@ -23,6 +23,7 @@ public class MenuJuego extends JFrame {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         initComponents();
+        this.comenzarPartida();
     }
 
     private void initComponents() {
@@ -87,13 +88,10 @@ public class MenuJuego extends JFrame {
         String nombreStringJugador1 = jugador1.getNombre();
         String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
         int megaMonedasJugador1 = jugador1.getMegaMonedas();
-        boolean esTurno = jugador1.getTurno();
         nombreJugador1 = new JLabel(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
         nombreJugador1.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         nombreJugador1.setForeground(Color.BLACK);
-        nombreJugador1.setBackground(esTurno ? Color.GREEN : Color.RED);
         nombreJugador1.setOpaque(true);
-
         nombreJugador1.setBounds(0, 50, 800, 50);
         return nombreJugador1;
     }
@@ -102,18 +100,21 @@ public class MenuJuego extends JFrame {
         String nombreStringJugador2 = jugador2.getNombre();
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
         int megaMonedasJugador2 = jugador2.getMegaMonedas();
-        boolean esTurno = jugador2.getTurno();
         nombreJugador2 = new JLabel(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
         nombreJugador2.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         nombreJugador2.setForeground(Color.BLACK);
-        nombreJugador2.setBackground(esTurno ? Color.GREEN : Color.RED);
         nombreJugador2.setOpaque(true);
         nombreJugador2.setBounds(800, 50, 800, 50);
         return nombreJugador2;
     }
 
+    private void colorFondoJugadorTurno() {
+        this.nombreJugador1.setBackground(jugador1.getTurno() ? Color.GREEN : Color.RED);
+        this.nombreJugador2.setBackground(jugador2.getTurno() ? Color.GREEN : Color.RED);
+    }
+
     private void ponerTableroEnPantalla(JLabel labelFondo) {
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador1, jugador2);
         Map<JLabel, Casilla> valoresTablero = tablero.getTablero();
         for (JLabel label : valoresTablero.keySet()) {
             labelFondo.add(label);
@@ -124,8 +125,15 @@ public class MenuJuego extends JFrame {
         Boton botonTirarDados = new Boton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
-            // tirar dados
         });
         return botonTirarDados;
+    }
+
+
+    // toda la logica del juego al comenzar partida
+    private void comenzarPartida() {
+        jugador1.setTurno(true);
+        this.colorFondoJugadorTurno();
+
     }
 }
