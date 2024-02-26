@@ -59,6 +59,7 @@ public class MenuJuego extends JFrame {
         this.ponerTableroEnPantalla(labelFondo);
         return labelFondo;
     }
+
     private JComboBox crearMenu() {
         String[] opciones = {"Menu", "Guardar Partida", "Cargar Partida", "Salir"};
         menu = new JComboBox(opciones);
@@ -69,6 +70,7 @@ public class MenuJuego extends JFrame {
         this.OpcionesComboBox();
         return menu;
     }
+
     private void OpcionesComboBox() {
         menu.addActionListener(e -> {
             if (menu.getSelectedItem().equals("Guardar Partida")) {
@@ -80,6 +82,7 @@ public class MenuJuego extends JFrame {
             }
         });
     }
+
     private JLabel crearNombreJugador1() {
         String nombreStringJugador1 = jugador1.getNombre();
         String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
@@ -94,6 +97,7 @@ public class MenuJuego extends JFrame {
         nombreJugador1.setBounds(0, 50, 800, 50);
         return nombreJugador1;
     }
+
     private JLabel crearNombreJugador2() {
         String nombreStringJugador2 = jugador2.getNombre();
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
@@ -108,7 +112,7 @@ public class MenuJuego extends JFrame {
         return nombreJugador2;
     }
 
-    private void ponerTableroEnPantalla(JLabel labelFondo){
+    private void ponerTableroEnPantalla(JLabel labelFondo) {
         Tablero tablero = new Tablero();
         Map<JLabel, Casilla> valoresTablero = tablero.getTablero();
         for (JLabel label : valoresTablero.keySet()) {
@@ -124,6 +128,4 @@ public class MenuJuego extends JFrame {
         });
         return botonTirarDados;
     }
-
-
 }

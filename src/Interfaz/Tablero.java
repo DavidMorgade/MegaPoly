@@ -13,7 +13,7 @@ public class Tablero {
 
     private Map<JLabel, Casilla> tablero = new LinkedHashMap<JLabel, Casilla>(40);
 
-    public Tablero(){
+    public Tablero() {
         this.CrearTablero();
         this.StyleJLabels();
     }
@@ -25,7 +25,7 @@ public class Tablero {
         tablero.put(new JLabel("<html>Facebook<br>Cadiz</html>"), new CasillaPropiedad('F', "Facebook Cadiz"));
         tablero.put(new JLabel(""), new CasillaSuerte('S', "Suerte"));
         tablero.put(new JLabel("<html>Facebook<br>Sevilla</html>"), new CasillaPropiedad('F', "Facebook Sevilla"));
-        tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto"));
+        tablero.put(new JLabel("Impuesto 1MM"), new CasillaImpuesto('I', "Impuesto", 1));
         tablero.put(new JLabel("<html>StartUp<br>Cadiz</html>"), new CasillaPropiedad('S', "Startup Cadiz"));
         tablero.put(new JLabel("<html>Twitter<br>Cadiz</html>"), new CasillaPropiedad('T', "Twitter Cadiz"));
         tablero.put(new JLabel("Suerte por definir"), new CasillaSuerte('S', "Suerte por definir"));
@@ -33,7 +33,7 @@ public class Tablero {
         tablero.put(new JLabel("<html>Twitter<br>Malaga</html>"), new CasillaPropiedad('T', "Twitter Malaga"));
         tablero.put(new JLabel(), new Carcel('C', "Carcel"));
         tablero.put(new JLabel("<html>Instagram<br>Cadiz</html>"), new CasillaPropiedad('I', "Instagram Cadiz"));
-        tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto 2"));
+        tablero.put(new JLabel("Impuesto 2MM"), new CasillaImpuesto('I', "Impuesto 2", 2));
         tablero.put(new JLabel("<html>Instagram<br>Sevilla</html>"), new CasillaPropiedad('I', "Instagram Sevilla"));
         tablero.put(new JLabel("<html>Instagram<br>Malaga</html>"), new CasillaPropiedad('I', "Instagram Malaga"));
         tablero.put(new JLabel("<html>Startup<br>Sevilla</html>"), new CasillaPropiedad('S', "Startup Sevilla"));
@@ -49,7 +49,7 @@ public class Tablero {
         tablero.put(new JLabel("<html>Startup<br>Malaga</html>"), new CasillaPropiedad('S', "Startup Malaga"));
         tablero.put(new JLabel("<html>Netflix<br>Cadiz</html>"), new CasillaPropiedad('N', "Netflix Cadiz"));
         tablero.put(new JLabel("<html>Netflix<br>Sevilla</html>"), new CasillaPropiedad('N', "Netflix Sevilla"));
-        tablero.put(new JLabel("Impuesto"), new Casilla('I', "Impuesto 3"));
+        tablero.put(new JLabel("Impuesto 3MM"), new CasillaImpuesto('I', "Impuesto 3", 3));
         tablero.put(new JLabel("<html>Netflix<br>Malaga</html>"), new CasillaPropiedad('N', "Netflix Malaga"));
         tablero.put(new JLabel(""), new Carcel('C', "Carcel 2"));
         tablero.put(new JLabel("<html>Apple<br>Cadiz</html>"), new CasillaPropiedad('A', "Apple Cadiz"));
@@ -59,10 +59,11 @@ public class Tablero {
         tablero.put(new JLabel("<html>Startup<br>Madrid</html>"), new CasillaPropiedad('S', "Startup Madrid"));
         tablero.put(new JLabel("Suerte por definir 3"), new CasillaSuerte('S', "Suerte por definir 3"));
         tablero.put(new JLabel("<html>Microsoft<br>Cadiz</html>"), new CasillaPropiedad('M', "Microsoft Cadiz"));
-        tablero.put(new JLabel("Impuesto 4"), new Casilla('I', "Impuesto 4"));
+        tablero.put(new JLabel("Impuesto 4MM"), new CasillaImpuesto('I', "Impuesto 4", 4));
         tablero.put(new JLabel("<html>Micrososft<br>Sevilla</html>"), new CasillaPropiedad('M', "Microsoft Sevilla"));
     }
-    private void StyleJLabels(){
+
+    private void StyleJLabels() {
         int i = 0;
         for (JLabel label : tablero.keySet()) {
             label.setSize(160, 120);
@@ -232,9 +233,10 @@ public class Tablero {
                     label.setBounds(1210, 890, 80, 60);
                     break;
             }
-            i+=1;
+            i += 1;
         }
     }
+
     public Map<JLabel, Casilla> getTablero() {
         return this.tablero;
     }
