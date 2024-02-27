@@ -102,4 +102,5 @@ public class MenuInicio extends JFrame {
         });
         return botonSalir;
     }
+
 }

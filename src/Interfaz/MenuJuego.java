@@ -3,6 +3,7 @@ package Interfaz;
 import Casillas.Casilla;
 import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
+import Materiales.Dado;
 import Materiales.Ficha;
 
 import javax.swing.*;
@@ -13,9 +14,11 @@ public class MenuJuego extends JFrame {
 
     Jugador jugador1;
     Jugador jugador2;
+    Dado dado = new Dado();
     private JComboBox menu;
     private JLabel nombreJugador1;
     private JLabel nombreJugador2;
+    private JLabel jugadorTurno;
 
     private JPanel panelFondo;
 
@@ -57,6 +60,8 @@ public class MenuJuego extends JFrame {
         labelFondo.add(crearNombreJugador1());
         labelFondo.add(crearNombreJugador2());
         labelFondo.add(botonTirarDados());
+        labelFondo.add(nombreJugadorActual());
+        labelFondo.add(botonCartasSuerte());
         this.ponerTableroEnPantalla(labelFondo);
         return labelFondo;
     }
@@ -125,8 +130,33 @@ public class MenuJuego extends JFrame {
         Boton botonTirarDados = new Boton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
+            dado.setNumeroAleatorio();
         });
         return botonTirarDados;
+    }
+    private Boton botonCartasSuerte() {
+        Boton botonCartasSuerte = new Boton("Cartas Suerte");
+        botonCartasSuerte.setBounds(700, 800, 200, 50);
+        botonCartasSuerte.addActionListener(e -> {
+            // TODO
+            // Añadir logica de cartas suerte
+        });
+        return botonCartasSuerte;
+    }
+    private JLabel nombreJugadorActual() {
+        Jugador jugador = this.determinarJugadorTurno();
+        jugadorTurno = new JLabel("Turno de: " + jugador.getNombre());
+        jugadorTurno.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        jugadorTurno.setForeground(Color.BLACK);
+        jugadorTurno.setOpaque(true);
+        jugadorTurno.setBounds(700, 600, 200, 50);
+        return jugadorTurno;
+    }
+    private Jugador determinarJugadorTurno() {
+        if(jugador1.getTurno()) {
+            return jugador1;
+        }
+        return jugador2;
     }
 
 
@@ -134,6 +164,5 @@ public class MenuJuego extends JFrame {
     private void comenzarPartida() {
         jugador1.setTurno(true);
         this.colorFondoJugadorTurno();
-
     }
 }
