@@ -76,13 +76,12 @@ public class Tablero {
             label.setSize(160, 120);
             label.setBounds(i, i, 160, 120);
             label.setForeground(Color.GRAY);
-            label.setOpaque(true);
             label.setFont(new Font("Snap ITC Normal", Font.BOLD, 10));
             switch (i) {
                 case 0:
-                    label.setBackground(new Color(250, 250, 250, 20));
                     label.setBounds(1200, 1000, 70, 80);
                     label.add(fichaRoja);
+                    label.add(fichaAzul);
                     break;
                 case 1:
                     label.setBounds(1090, 1000, 60, 80);

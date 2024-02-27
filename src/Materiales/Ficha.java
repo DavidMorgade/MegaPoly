@@ -29,14 +29,20 @@ public class Ficha extends JLabel implements java.io.Serializable {
         this.setPreferredSize(new Dimension(50, 50));
         //TODO
         // CONSEGUIR QUE SE PINTE LA FICHA EN EL TABLERO
+        if(this.colorFicha.equals("Rojo")) {
+            this.setBounds(0, 0, 20, 20);
+        } else {
+            this.setBounds(20, 20, 20, 20);
+        }
         this.setOpaque(true);
+        this.setVisible(true);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(this.colorFicha.equals("Rojo") ? Color.RED : Color.BLUE);
-        g.fillOval(0, 0, 50, 50);
+        g.fillOval(0, 0, 20, 20);
     }
 
     public Jugador getJugador() {
