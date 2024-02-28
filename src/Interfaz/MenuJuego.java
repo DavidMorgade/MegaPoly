@@ -21,6 +21,7 @@ public class MenuJuego extends JFrame {
     private JLabel nombreJugador1;
     private JLabel nombreJugador2;
     private JLabel jugadorTurno;
+    private JLabel resultadoDados;
     private JLabel labelFondo;
     private JPanel panelFondo;
 
@@ -154,24 +155,38 @@ public class MenuJuego extends JFrame {
 
     private JLabel nombreJugadorActual() {
         Jugador jugador = this.determinarJugadorTurno();
+        System.out.println(jugador.getNombre());
         jugadorTurno = new JLabel("Turno de: " + jugador.getNombre());
         jugadorTurno.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         jugadorTurno.setForeground(Color.BLACK);
-        jugadorTurno.setOpaque(true);
-        jugadorTurno.setBounds(600, 600, 400, 50);
+        jugadorTurno.setBounds(600, 450, 400, 50);
         return jugadorTurno;
+    }
+
+    private JLabel resultadoDados() {
+        resultadoDados = new JLabel("Resultado Dados: " + dado.getNumero());
+        resultadoDados.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        resultadoDados.setForeground(Color.BLACK);
+        resultadoDados.setBounds(600, 500, 400, 50);
+        return resultadoDados;
     }
 
     private Jugador determinarJugadorTurno() {
         if (jugador1.getTurno()) {
             return jugador1;
+        } else if (jugador2.getTurno()) {
+            return jugador2;
         }
-        return jugador2;
+        // Si es el primer turno, el jugador 1 comienza
+        jugador1.setTurno(true);
+        return jugador1;
     }
 
     private void cambiarTurno() {
         jugador1.setTurno(!jugador1.getTurno());
         jugador2.setTurno(!jugador2.getTurno());
+        Jugador jugadorActual = this.determinarJugadorTurno();
+        jugadorTurno.setText("Turno de: " + jugadorActual.getNombre());
         this.colorFondoJugadorTurno();
     }
 
@@ -204,8 +219,7 @@ public class MenuJuego extends JFrame {
         dado.setNumeroAleatorio();
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
-        System.out.println(numeroDado);
-        System.out.println(jugadorActual.getMegaMonedas());
+        labelFondo.add(resultadoDados());
         if (posicionActual + numeroDado > 39) {
             JOptionPane.showMessageDialog(null, "Has pasado por la casilla de salida, recibes 20 MegaMonedas");
             jugadorActual.setMegaMonedas(jugadorActual.getMegaMonedas() + 20);
@@ -214,11 +228,12 @@ public class MenuJuego extends JFrame {
             jugadorActual.getFicha().setPosicion(posicionActual + numeroDado);
         }
         this.fichaEnTablero();
+        this.cambiarTurno(); // funcion aparte
+        jugadorTurno.repaint();
     }
 
     // toda la logica del juego al comenzar partida
     private void comenzarPartida() {
-        jugador1.setTurno(true);
         this.colorFondoJugadorTurno();
     }
 }
