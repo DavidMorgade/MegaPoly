@@ -75,14 +75,7 @@ public class Tablero {
         int posicionFichaRoja = fichaRoja.getPosicion();
         int posicionFichaAzul = fichaAzul.getPosicion();
         for (JLabel label : tablero.keySet()) {
-            if(i == posicionFichaRoja && i == posicionFichaAzul) {
-                label.add(fichaRoja);
-                label.add(fichaAzul);
-            } else if(i == posicionFichaAzul) {
-                label.add(fichaAzul);
-            } else if(i == posicionFichaRoja) {
-                label.add(fichaRoja);
-            }
+
             label.setSize(160, 120);
             label.setBounds(i, i, 160, 120);
             label.setForeground(Color.GRAY);

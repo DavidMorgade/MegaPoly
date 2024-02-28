@@ -14,17 +14,20 @@ public class MenuJuego extends JFrame {
 
     Jugador jugador1;
     Jugador jugador2;
+    Tablero tablero;
+    Map<JLabel, Casilla> arrayTablero;
     Dado dado = new Dado();
     private JComboBox menu;
     private JLabel nombreJugador1;
     private JLabel nombreJugador2;
     private JLabel jugadorTurno;
-
+    private JLabel labelFondo;
     private JPanel panelFondo;
 
     public MenuJuego(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        this.tablero = new Tablero(jugador1, jugador2);
         initComponents();
         this.comenzarPartida();
     }
@@ -53,7 +56,7 @@ public class MenuJuego extends JFrame {
 
     private JLabel crearLabelFondo() {
         ImageIcon fondoMegaPoly = new ImageIcon(this.getClass().getResource("/Imagenes/Tablero.jpg"));
-        JLabel labelFondo = new JLabel(fondoMegaPoly);
+        this.labelFondo = new JLabel(fondoMegaPoly);
         labelFondo.setSize(1600, 1200);
         labelFondo.setBounds(0, 0, 1600, 1200);
         labelFondo.add(crearMenu());
@@ -119,10 +122,15 @@ public class MenuJuego extends JFrame {
     }
 
     private void ponerTableroEnPantalla(JLabel labelFondo) {
-        Tablero tablero = new Tablero(jugador1, jugador2);
-        Map<JLabel, Casilla> valoresTablero = tablero.getTablero();
-        for (JLabel label : valoresTablero.keySet()) {
+        arrayTablero = tablero.getTablero();
+        int i = 0;
+        for (JLabel label : arrayTablero.keySet()) {
             labelFondo.add(label);
+            if (i == 0) {
+                label.add(jugador1.getFicha());
+                label.add(jugador2.getFicha());
+            }
+            i++;
         }
     }
 
@@ -131,9 +139,12 @@ public class MenuJuego extends JFrame {
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             dado.setNumeroAleatorio();
+            jugador1.getFicha().setPosicion(6);
+            this.fichaEnTablero();
         });
         return botonTirarDados;
     }
+
     private Boton botonCartasSuerte() {
         Boton botonCartasSuerte = new Boton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
@@ -143,6 +154,7 @@ public class MenuJuego extends JFrame {
         });
         return botonCartasSuerte;
     }
+
     private JLabel nombreJugadorActual() {
         Jugador jugador = this.determinarJugadorTurno();
         jugadorTurno = new JLabel("Turno de: " + jugador.getNombre());
@@ -152,13 +164,38 @@ public class MenuJuego extends JFrame {
         jugadorTurno.setBounds(700, 600, 200, 50);
         return jugadorTurno;
     }
+
     private Jugador determinarJugadorTurno() {
-        if(jugador1.getTurno()) {
+        if (jugador1.getTurno()) {
             return jugador1;
         }
         return jugador2;
     }
 
+    private void fichaEnTablero() {
+        Ficha fichaRoja = jugador1.getFicha();
+        Ficha fichaAzul = jugador2.getFicha();
+        int posicionFichaRoja = jugador1.getFicha().getPosicion();
+        int posicionFichaAzul = jugador2.getFicha().getPosicion();
+        int i = 0;
+        for (JLabel label : arrayTablero.keySet()) {
+            if (i == posicionFichaRoja && i == posicionFichaAzul) {
+                label.add(fichaRoja);
+                label.add(fichaAzul);
+                label.repaint();
+            } else if (i == posicionFichaAzul) {
+                label.add(fichaAzul);
+                label.remove(fichaRoja);
+                label.repaint();
+            } else if (i == posicionFichaRoja) {
+                label.add(fichaRoja);
+                label.remove(fichaAzul);
+                label.repaint();
+            }
+            i++;
+        }
+
+    }
 
     // toda la logica del juego al comenzar partida
     private void comenzarPartida() {
