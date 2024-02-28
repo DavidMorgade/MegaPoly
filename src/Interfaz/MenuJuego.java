@@ -138,9 +138,7 @@ public class MenuJuego extends JFrame {
         Boton botonTirarDados = new Boton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
-            dado.setNumeroAleatorio();
-            jugador1.getFicha().setPosicion(6);
-            this.fichaEnTablero();
+            this.tirarDados(this.determinarJugadorTurno());
         });
         return botonTirarDados;
     }
@@ -149,8 +147,7 @@ public class MenuJuego extends JFrame {
         Boton botonCartasSuerte = new Boton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
-            // TODO
-            // Añadir logica de cartas suerte
+            this.cambiarTurno();
         });
         return botonCartasSuerte;
     }
@@ -161,7 +158,7 @@ public class MenuJuego extends JFrame {
         jugadorTurno.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         jugadorTurno.setForeground(Color.BLACK);
         jugadorTurno.setOpaque(true);
-        jugadorTurno.setBounds(700, 600, 200, 50);
+        jugadorTurno.setBounds(600, 600, 400, 50);
         return jugadorTurno;
     }
 
@@ -172,6 +169,12 @@ public class MenuJuego extends JFrame {
         return jugador2;
     }
 
+    private void cambiarTurno() {
+        jugador1.setTurno(!jugador1.getTurno());
+        jugador2.setTurno(!jugador2.getTurno());
+        this.colorFondoJugadorTurno();
+    }
+
     private void fichaEnTablero() {
         Ficha fichaRoja = jugador1.getFicha();
         Ficha fichaAzul = jugador2.getFicha();
@@ -179,22 +182,38 @@ public class MenuJuego extends JFrame {
         int posicionFichaAzul = jugador2.getFicha().getPosicion();
         int i = 0;
         for (JLabel label : arrayTablero.keySet()) {
+            label.remove(fichaRoja);
+            label.remove(fichaAzul);
+            label.repaint();
             if (i == posicionFichaRoja && i == posicionFichaAzul) {
                 label.add(fichaRoja);
                 label.add(fichaAzul);
                 label.repaint();
             } else if (i == posicionFichaAzul) {
                 label.add(fichaAzul);
-                label.remove(fichaRoja);
                 label.repaint();
             } else if (i == posicionFichaRoja) {
                 label.add(fichaRoja);
-                label.remove(fichaAzul);
                 label.repaint();
             }
             i++;
         }
+    }
 
+    private void tirarDados(Jugador jugadorActual) {
+        dado.setNumeroAleatorio();
+        int posicionActual = jugadorActual.getFicha().getPosicion();
+        int numeroDado = dado.getNumero();
+        System.out.println(numeroDado);
+        System.out.println(jugadorActual.getMegaMonedas());
+        if (posicionActual + numeroDado > 39) {
+            JOptionPane.showMessageDialog(null, "Has pasado por la casilla de salida, recibes 20 MegaMonedas");
+            jugadorActual.setMegaMonedas(jugadorActual.getMegaMonedas() + 20);
+            jugadorActual.getFicha().setPosicion(posicionActual + numeroDado - 40);
+        } else {
+            jugadorActual.getFicha().setPosicion(posicionActual + numeroDado);
+        }
+        this.fichaEnTablero();
     }
 
     // toda la logica del juego al comenzar partida
