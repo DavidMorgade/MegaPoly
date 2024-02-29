@@ -21,7 +21,7 @@ public class MenuJuego extends JFrame {
     private JLabel nombreJugador1;
     private JLabel nombreJugador2;
     private JLabel jugadorTurno;
-    private JLabel resultadoDados;
+    private JLabel resultadoDados = new JLabel();
     private JLabel labelFondo;
     private JPanel panelFondo;
 
@@ -66,6 +66,7 @@ public class MenuJuego extends JFrame {
         labelFondo.add(botonTirarDados());
         labelFondo.add(nombreJugadorActual());
         labelFondo.add(botonCartasSuerte());
+        labelFondo.add(resultadoDados);
         this.ponerTableroEnPantalla(labelFondo);
         return labelFondo;
     }
@@ -163,12 +164,11 @@ public class MenuJuego extends JFrame {
         return jugadorTurno;
     }
 
-    private JLabel resultadoDados() {
-        resultadoDados = new JLabel("Resultado Dados: " + dado.getNumero());
+    private void resultadoDados() {
+        resultadoDados.setText("Has sacado un : " + dado.getNumero());
         resultadoDados.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         resultadoDados.setForeground(Color.BLACK);
         resultadoDados.setBounds(600, 500, 400, 50);
-        return resultadoDados;
     }
 
     private Jugador determinarJugadorTurno() {
@@ -217,9 +217,9 @@ public class MenuJuego extends JFrame {
 
     private void tirarDados(Jugador jugadorActual) {
         dado.setNumeroAleatorio();
+        this.resultadoDados();
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
-        labelFondo.add(resultadoDados());
         if (posicionActual + numeroDado > 39) {
             JOptionPane.showMessageDialog(null, "Has pasado por la casilla de salida, recibes 20 MegaMonedas");
             jugadorActual.setMegaMonedas(jugadorActual.getMegaMonedas() + 20);
