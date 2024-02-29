@@ -1,6 +1,8 @@
 package Interfaz;
 
+import CartasSuerte.CartaSuerte;
 import Casillas.Casilla;
+import Casillas.CasillaSuerte;
 import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
 import Materiales.Dado;
@@ -149,7 +151,9 @@ public class MenuJuego extends JFrame {
         Boton botonCartasSuerte = new Boton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
-            this.cambiarTurno();
+            Jugador jugadorActual = this.determinarJugadorTurno();
+            Jugador jugadorNoTurno = this.determinarJugadorNoTurno();
+            jugadorActual.mostrarCartasSuerte(jugadorNoTurno);
         });
         return botonCartasSuerte;
     }
@@ -180,6 +184,15 @@ public class MenuJuego extends JFrame {
         // Si es el primer turno, el jugador 1 comienza
         jugador1.setTurno(true);
         return jugador1;
+    }
+
+    private Jugador determinarJugadorNoTurno() {
+        if (jugador1.getTurno()) {
+            return jugador2;
+        } else if (jugador2.getTurno()) {
+            return jugador1;
+        }
+        return null;
     }
 
     private void cambiarTurno() {
@@ -228,6 +241,7 @@ public class MenuJuego extends JFrame {
             jugadorActual.getFicha().setPosicion(posicionActual + numeroDado);
         }
         this.fichaEnTablero();
+        this.evaluarCasilla(jugadorActual);
         this.cambiarTurno(); // funcion aparte
         jugadorTurno.repaint();
     }
@@ -237,7 +251,12 @@ public class MenuJuego extends JFrame {
         int i = 0;
         for (Casilla casilla : arrayTablero.values()) {
             if (i == posicionFicha) {
-                //TODO: evaluar casilla modificar logica del if
+                if (casilla instanceof CasillaSuerte) {
+                    ((CasillaSuerte) casilla).setCarta();
+                    CartaSuerte carta = ((CasillaSuerte) casilla).getCarta();
+                    jugadorActual.setCartas(carta);
+                    JOptionPane.showMessageDialog(null, "Has caido en una casilla de suerte, has obtenido la carta: " + carta.getNombre());
+                }
             }
             i++;
         }
