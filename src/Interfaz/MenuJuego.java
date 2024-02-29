@@ -16,6 +16,8 @@ public class MenuJuego extends JFrame {
 
     Jugador jugador1;
     Jugador jugador2;
+    Jugador jugadorActual;
+    Jugador jugadorNoTurno;
     Tablero tablero;
     Map<JLabel, Casilla> arrayTablero;
     Dado dado = new Dado();
@@ -30,6 +32,8 @@ public class MenuJuego extends JFrame {
     public MenuJuego(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        jugadorActual = this.determinarJugadorTurno();
+        jugadorNoTurno = this.determinarJugadorNoTurno();
         this.tablero = new Tablero(jugador1, jugador2);
         initComponents();
         this.comenzarPartida();
@@ -151,9 +155,9 @@ public class MenuJuego extends JFrame {
         Boton botonCartasSuerte = new Boton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
-            Jugador jugadorActual = this.determinarJugadorTurno();
-            Jugador jugadorNoTurno = this.determinarJugadorNoTurno();
-            jugadorActual.mostrarCartasSuerte(jugadorNoTurno);
+            //TODO: no se pinta bien la ficha al volver a la posicion 0
+            this.jugadorActual.mostrarCartasSuerte(this.jugadorNoTurno);
+            this.repintarTablero();
         });
         return botonCartasSuerte;
     }
@@ -204,6 +208,10 @@ public class MenuJuego extends JFrame {
     }
 
     private void fichaEnTablero() {
+        this.repintarTablero();
+    }
+
+    private void repintarTablero() {
         Ficha fichaRoja = jugador1.getFicha();
         Ficha fichaAzul = jugador2.getFicha();
         int posicionFichaRoja = jugador1.getFicha().getPosicion();
@@ -255,6 +263,7 @@ public class MenuJuego extends JFrame {
                     ((CasillaSuerte) casilla).setCarta();
                     CartaSuerte carta = ((CasillaSuerte) casilla).getCarta();
                     jugadorActual.setCartas(carta);
+
                     JOptionPane.showMessageDialog(null, "Has caido en una casilla de suerte, has obtenido la carta: " + carta.getNombre());
                 }
             }
