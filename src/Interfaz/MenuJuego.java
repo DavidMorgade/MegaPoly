@@ -232,6 +232,17 @@ public class MenuJuego extends JFrame {
         jugadorTurno.repaint();
     }
 
+    private void evaluarCasilla(Jugador jugadorActual) {
+        int posicionFicha = jugadorActual.getFicha().getPosicion();
+        int i = 0;
+        for (Casilla casilla : arrayTablero.values()) {
+            if (i == posicionFicha) {
+                //TODO: evaluar casilla modificar logica del if
+            }
+            i++;
+        }
+    }
+
     // toda la logica del juego al comenzar partida
     private void comenzarPartida() {
         this.colorFondoJugadorTurno();
