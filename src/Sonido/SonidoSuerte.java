@@ -2,8 +2,8 @@ package Sonido;
 
 public class SonidoSuerte extends Sonidos {
 
-  public SonidoSuerte() {
-    super.ruta =
-      "C:/Users/david/Documents/DAM/MegaPoly/MegaPoly/sounds/SonidoSuerte.wav";
-  }
+    public SonidoSuerte() {
+        super.ruta =
+                getClass().getResource("/Sounds/SonidoSuerte.wav").getPath();
+    }
 }

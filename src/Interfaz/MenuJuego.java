@@ -8,6 +8,8 @@ import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
+import Sonido.SonidoSuerte;
+import Sonido.Sonidos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -264,6 +266,7 @@ public class MenuJuego extends JFrame {
                     ((CasillaSalida) casilla).mensajeCasillaSalida();
                 }
                 if (casilla instanceof CasillaSuerte) {
+                    ((CasillaSuerte) casilla).sonarSonido();
                     ((CasillaSuerte) casilla).setCarta();
                     CartaSuerte carta = ((CasillaSuerte) casilla).getCarta();
                     jugadorActual.setCartas(carta);
