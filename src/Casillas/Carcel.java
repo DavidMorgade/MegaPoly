@@ -25,7 +25,7 @@ public class Carcel extends Casilla {
     public Carcel(char tipo, String nombre) {
         super(tipo, nombre);
         this.nombre = "Carcel";
-        this.descripcion = "Necesitas sacar un 5 para salir de la carcel.";
+        this.descripcion = "Casilla de carcel, vas de visita y saludas al personal";
     }
 
     public String getNombre() {
@@ -37,9 +37,8 @@ public class Carcel extends Casilla {
         sonidoCarcel.reproducir();
     }
 
-    public CustomJDialog mensajeCasillaCarcel() {
-        CustomJDialog dialog = new CustomJDialog(null, "Casilla de carcel, vas de visita y saludas al personal");
-        return dialog;
+    public CustomJDialog mensajeCasillaCarcel(JFrame parent) {
+        return new CustomJDialog(parent, this.descripcion, this.nombre);
     }
 
 

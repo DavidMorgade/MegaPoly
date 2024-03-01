@@ -4,7 +4,10 @@ import CartasSuerte.CartaDonar;
 import CartasSuerte.CartaEvitarCarcel;
 import CartasSuerte.CartaSuerte;
 import CartasSuerte.CartaVolver;
+import Interfaz.Componentes.CustomJDialog;
 import Sonido.SonidoSuerte;
+
+import javax.swing.*;
 
 /*
  * Clase que se encarga de crear las casillas de suerte del tablero
@@ -38,6 +41,10 @@ public class CasillaSuerte extends Casilla {
     public void sonarSonido() {
         sonidoSuerte = new SonidoSuerte();
         sonidoSuerte.reproducir();
+    }
+
+    public CustomJDialog mensajeCasillaSuerte(JFrame parent) {
+        return new CustomJDialog(parent, "Consigues la carta " + this.carta, this.getNombre());
     }
 
     /*

@@ -144,7 +144,6 @@ public class MenuJuego extends JFrame {
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
-            System.out.println(jugadorActual.getNombre());
         });
         return botonTirarDados;
     }
@@ -238,7 +237,10 @@ public class MenuJuego extends JFrame {
         dado.setNumeroAleatorio();
         this.resultadoDados();
         // Si el jugador esta en la carcel, no puede moverse a menos que saque un 5
-        this.evaluarCarcel();
+        boolean siguesCarcel = this.evaluarCarcel();
+        if (siguesCarcel) {
+            return;
+        }
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
         // Si da la vuelta al tablero, recibe 20 MegaMonedas por pasar por la casilla de salida
@@ -255,17 +257,19 @@ public class MenuJuego extends JFrame {
         this.actualizarMegaMonedas();
     }
 
-    private void evaluarCarcel() {
+    private boolean evaluarCarcel() {
         if (jugadorActual.getCarcel()) {
             if (dado.getNumero() == 5) {
                 jugadorActual.setCarcel(false);
                 JOptionPane.showMessageDialog(null, "Has sacado un 5, sales de la carcel");
-            } else {
-                JOptionPane.showMessageDialog(null, "Has sacado un " + dado.getNumero() + " , sigues en la carcel");
-                this.cambiarTurno();
-                this.tirarDados();
+                return true;
             }
+            JOptionPane.showMessageDialog(null, "Has sacado un " + dado.getNumero() + " , sigues en la carcel");
+            this.fichaEnTablero();
+            this.cambiarTurno();
+            return false;
         }
+        return false;
     }
 
     private void evaluarCasilla() {
@@ -282,15 +286,16 @@ public class MenuJuego extends JFrame {
                     ((CasillaSuerte) casilla).setCarta();
                     CartaSuerte carta = ((CasillaSuerte) casilla).getCarta();
                     jugadorActual.setCartas(carta);
-                    JOptionPane.showMessageDialog(null, "Has caido en una casilla de suerte, has obtenido la carta: " + carta.getNombre());
+                    ((CasillaSuerte) casilla).mensajeCasillaSuerte(this);
+
                 }
                 if (casilla instanceof CasillaParking) {
                     ((CasillaParking) casilla).sonarSonido();
-                    JOptionPane.showMessageDialog(null, "Has caido en el parking, no ocurre nada");
+                    ((CasillaParking) casilla).mensajeCasillaParking(this);
                 }
                 if (casilla instanceof Carcel) {
                     ((Carcel) casilla).sonarSonido();
-                    ((Carcel) casilla).mensajeCasillaCarcel();
+                    ((Carcel) casilla).mensajeCasillaCarcel(this);
                 }
                 if (casilla instanceof CasillaPolicia) {
                     ((CasillaPolicia) casilla).enviarCarcel(jugadorActual);
