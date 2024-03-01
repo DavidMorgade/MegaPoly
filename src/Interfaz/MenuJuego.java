@@ -3,6 +3,7 @@ package Interfaz;
 import CartasSuerte.CartaSuerte;
 import Casillas.*;
 import Interfaz.Componentes.DiceButton;
+import Interfaz.Componentes.FancyPlayerLabel;
 import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Dado;
@@ -24,8 +25,8 @@ public class MenuJuego extends JFrame {
     Map<JLabel, Casilla> arrayTablero;
     Dado dado = new Dado();
     private JComboBox menu;
-    private JLabel nombreJugador1;
-    private JLabel nombreJugador2;
+    private FancyPlayerLabel nombreJugador1;
+    private FancyPlayerLabel nombreJugador2;
     private JLabel jugadorTurno;
     private JLabel resultadoDados = new JLabel();
     private JLabel labelFondo;
@@ -102,26 +103,20 @@ public class MenuJuego extends JFrame {
         });
     }
 
-    private JLabel crearNombreJugador1() {
+    private FancyPlayerLabel crearNombreJugador1() {
         String nombreStringJugador1 = jugador1.getNombre();
         String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
         int megaMonedasJugador1 = jugador1.getMegaMonedas();
-        nombreJugador1 = new JLabel(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
-        nombreJugador1.setFont(new Font("Kristen ITC", Font.BOLD, 18));
-        nombreJugador1.setForeground(Color.BLACK);
-        nombreJugador1.setOpaque(true);
+        nombreJugador1 = new FancyPlayerLabel(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
         nombreJugador1.setBounds(0, 50, 800, 50);
         return nombreJugador1;
     }
 
-    private JLabel crearNombreJugador2() {
+    private FancyPlayerLabel crearNombreJugador2() {
         String nombreStringJugador2 = jugador2.getNombre();
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
         int megaMonedasJugador2 = jugador2.getMegaMonedas();
-        nombreJugador2 = new JLabel(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
-        nombreJugador2.setFont(new Font("Kristen ITC", Font.BOLD, 18));
-        nombreJugador2.setForeground(Color.BLACK);
-        nombreJugador2.setOpaque(true);
+        nombreJugador2 = new FancyPlayerLabel(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
         nombreJugador2.setBounds(800, 50, 800, 50);
         return nombreJugador2;
     }
@@ -167,7 +162,6 @@ public class MenuJuego extends JFrame {
 
     private JLabel nombreJugadorActual() {
         Jugador jugador = this.determinarJugadorTurno();
-        System.out.println(jugador.getNombre());
         jugadorTurno = new JLabel("Turno de: " + jugador.getNombre());
         jugadorTurno.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         jugadorTurno.setForeground(Color.BLACK);

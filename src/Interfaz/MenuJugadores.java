@@ -1,9 +1,6 @@
 package Interfaz;
 
-import Interfaz.Componentes.Boton;
-import Interfaz.Componentes.PlayerLabel;
-import Interfaz.Componentes.PlayerTextField;
-import Interfaz.Componentes.RoundedButton;
+import Interfaz.Componentes.*;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 import Sonido.SonidoClick;
@@ -21,7 +18,7 @@ public class MenuJugadores extends JFrame {
     private final int[] sizes = {1600, 1200};
     private JPanel panelFondo;
     private JLabel labelFondo;
-    private JLabel labelTitulo;
+    private TituloMegapoly labelTitulo;
     private ImageIcon fondoMegaPoly;
     private PlayerTextField nombreJugador1;
     private PlayerTextField nombreJugador2;
@@ -74,12 +71,11 @@ public class MenuJugadores extends JFrame {
         return labelFondo;
     }
 
-    private JLabel crearLabelTitulo() {
+    private TituloMegapoly crearLabelTitulo() {
         int labelWidth = sizes[0] / 2;
-        labelTitulo = new JLabel("Megapoly");
-        labelTitulo.setFont(new java.awt.Font("Kristen ITC", Font.ITALIC, 124));
-        labelTitulo.setForeground(Color.BLACK);
-        labelTitulo.setBounds(500, 100, labelWidth, 200);
+        int frameWidth = sizes[0];
+        labelTitulo = new TituloMegapoly("Megapoly", labelWidth, 200);
+        labelTitulo.setBounds((frameWidth - labelWidth) / 2, 100, labelWidth, 200);
         return labelTitulo;
     }
 

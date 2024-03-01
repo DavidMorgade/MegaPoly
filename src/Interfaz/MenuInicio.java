@@ -2,6 +2,7 @@ package Interfaz;
 
 import Interfaz.Componentes.Boton;
 import Interfaz.Componentes.RoundedButton;
+import Interfaz.Componentes.TituloMegapoly;
 import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
 
@@ -19,7 +20,7 @@ public class MenuInicio extends JFrame {
     private RoundedButton botonSalir;
     private JPanel panelFondo;
     private JLabel labelFondo;
-    private JLabel labelTitulo;
+    private TituloMegapoly labelTitulo;
     private final int[] sizes = {1600, 1200};
 
 
@@ -59,13 +60,11 @@ public class MenuInicio extends JFrame {
         return labelFondo;
     }
 
-    private JLabel crearLabelTitulo() {
+    private TituloMegapoly crearLabelTitulo() {
         int labelWidth = sizes[0] / 2;
         int frameWidth = sizes[0];
-        labelTitulo = new JLabel("MegaPoly");
-        labelTitulo.setFont(new java.awt.Font("Kristen ITC", Font.ITALIC, 124));
-        labelTitulo.setForeground(Color.BLACK);
-        labelTitulo.setBounds(500, 100, labelWidth, 200);
+        labelTitulo = new TituloMegapoly("Megapoly", labelWidth, 200);
+        labelTitulo.setBounds((frameWidth - labelWidth) / 2, 100, labelWidth, 200);
         return labelTitulo;
     }
 
