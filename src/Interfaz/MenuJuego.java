@@ -2,6 +2,7 @@ package Interfaz;
 
 import CartasSuerte.CartaSuerte;
 import Casillas.Casilla;
+import Casillas.CasillaSalida;
 import Casillas.CasillaSuerte;
 import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
@@ -251,7 +252,7 @@ public class MenuJuego extends JFrame {
         this.fichaEnTablero();
         this.evaluarCasilla(jugadorActual);
         this.cambiarTurno(); // funcion aparte
-        jugadorTurno.repaint();
+        this.actualizarMegaMonedas();
     }
 
     private void evaluarCasilla(Jugador jugadorActual) {
@@ -259,16 +260,29 @@ public class MenuJuego extends JFrame {
         int i = 0;
         for (Casilla casilla : arrayTablero.values()) {
             if (i == posicionFicha) {
+                if (casilla instanceof CasillaSalida) {
+                    ((CasillaSalida) casilla).mensajeCasillaSalida();
+                }
                 if (casilla instanceof CasillaSuerte) {
                     ((CasillaSuerte) casilla).setCarta();
                     CartaSuerte carta = ((CasillaSuerte) casilla).getCarta();
                     jugadorActual.setCartas(carta);
-
                     JOptionPane.showMessageDialog(null, "Has caido en una casilla de suerte, has obtenido la carta: " + carta.getNombre());
                 }
             }
             i++;
         }
+    }
+
+    private void actualizarMegaMonedas() {
+        String nombreStringJugador1 = jugador1.getNombre();
+        String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
+        int megaMonedasJugador1 = jugador1.getMegaMonedas();
+        String nombreStringJugador2 = jugador2.getNombre();
+        String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
+        int megaMonedasJugador2 = jugador2.getMegaMonedas();
+        nombreJugador1.setText(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
+        nombreJugador2.setText(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
     }
 
     // toda la logica del juego al comenzar partida
