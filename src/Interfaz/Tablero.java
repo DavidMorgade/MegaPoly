@@ -56,7 +56,7 @@ public class Tablero {
         tablero.put(new JLabel("<html>Netflix<br>Sevilla</html>"), new CasillaPropiedad('N', "Netflix Sevilla"));
         tablero.put(new JLabel("Impuesto 3MM"), new CasillaImpuesto('I', "Impuesto 3", 3));
         tablero.put(new JLabel("<html>Netflix<br>Malaga</html>"), new CasillaPropiedad('N', "Netflix Malaga"));
-        tablero.put(new JLabel(""), new Carcel('C', "Carcel 2"));
+        tablero.put(new JLabel(""), new CasillaPolicia('P', "Policia"));
         tablero.put(new JLabel("<html>Apple<br>Cadiz</html>"), new CasillaPropiedad('A', "Apple Cadiz"));
         tablero.put(new JLabel("<html>Apple<br>Sevilla</html>"), new CasillaPropiedad('A', "Apple Sevilla"));
         tablero.put(new JLabel(), new CasillaSuerte('S', "Suerte 3"));

@@ -1,5 +1,8 @@
 package Casillas;
 
+import Sonido.SonidoParking;
+import Sonido.Sonidos;
+
 import javax.swing.*;
 
 /*
@@ -9,6 +12,7 @@ import javax.swing.*;
 public class CasillaSalida extends Casilla {
 
     private int recompensa;
+    private SonidoParking sonido;
 
     /*
      * Constructor de la clase
@@ -21,19 +25,9 @@ public class CasillaSalida extends Casilla {
         this.recompensa = 20;
     }
 
-    public JDialog mensajeCasillaSalida() {
-        JDialog dialog = new JDialog();
-        dialog.setAlwaysOnTop(true);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setSize(300, 200);
-        dialog.setLocationRelativeTo(null);
-        dialog.setLayout(null);
-        dialog.setResizable(false);
-        dialog.setTitle("Casilla de salida");
-        JLabel label = new JLabel("Estas en la casilla de salida, no ocurre nada");
-        label.setBounds(0, 0, 300, 200);
-        dialog.add(label);
-        dialog.setVisible(true);
-        return dialog;
+    public void sonarSonido() {
+        sonido = new SonidoParking();
+        sonido.reproducir();
     }
+
 }

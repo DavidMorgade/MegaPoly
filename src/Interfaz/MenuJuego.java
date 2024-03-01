@@ -1,9 +1,7 @@
 package Interfaz;
 
 import CartasSuerte.CartaSuerte;
-import Casillas.Casilla;
-import Casillas.CasillaSalida;
-import Casillas.CasillaSuerte;
+import Casillas.*;
 import Interfaz.Componentes.Boton;
 import Jugadores.Jugador;
 import Materiales.Dado;
@@ -263,7 +261,8 @@ public class MenuJuego extends JFrame {
         for (Casilla casilla : arrayTablero.values()) {
             if (i == posicionFicha) {
                 if (casilla instanceof CasillaSalida) {
-                    ((CasillaSalida) casilla).mensajeCasillaSalida();
+                    ((CasillaSalida) casilla).sonarSonido();
+                    JOptionPane.showMessageDialog(null, "Has pasado por la casilla de salida, recibes 20 MegaMonedas");
                 }
                 if (casilla instanceof CasillaSuerte) {
                     ((CasillaSuerte) casilla).sonarSonido();
@@ -272,6 +271,19 @@ public class MenuJuego extends JFrame {
                     jugadorActual.setCartas(carta);
                     JOptionPane.showMessageDialog(null, "Has caido en una casilla de suerte, has obtenido la carta: " + carta.getNombre());
                 }
+                if (casilla instanceof CasillaParking) {
+                    ((CasillaParking) casilla).sonarSonido();
+                    JOptionPane.showMessageDialog(null, "Has caido en el parking, no ocurre nada");
+                }
+                if (casilla instanceof Carcel) {
+                    ((Carcel) casilla).sonarSonido();
+                    ((Carcel) casilla).mensajeCasillaCarcel();
+                }
+                if (casilla instanceof CasillaPolicia) {
+                    ((CasillaPolicia) casilla).enviarCarcel(jugadorActual);
+                    ((CasillaPolicia) casilla).sonarSonido();
+                }
+
             }
             i++;
         }

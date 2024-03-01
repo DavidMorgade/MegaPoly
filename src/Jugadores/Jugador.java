@@ -231,6 +231,11 @@ public class Jugador implements java.io.Serializable {
 
     public void setCarcel(boolean carcel) {
         this.carcel = carcel;
+        if (carcel) {
+            JOptionPane.showMessageDialog(null, "Has caido en la carcel");
+        } else {
+            JOptionPane.showMessageDialog(null, "Has salido de la carcel");
+        }
     }
 
     public boolean getCarcel() {
