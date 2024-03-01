@@ -1,6 +1,9 @@
 package Interfaz;
 
 import Interfaz.Componentes.Boton;
+import Interfaz.Componentes.PlayerLabel;
+import Interfaz.Componentes.PlayerTextField;
+import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 import Sonido.SonidoClick;
@@ -20,11 +23,11 @@ public class MenuJugadores extends JFrame {
     private JLabel labelFondo;
     private JLabel labelTitulo;
     private ImageIcon fondoMegaPoly;
-    private JTextField nombreJugador1;
-    private JTextField nombreJugador2;
-    private JLabel labelNombreJugador1;
-    private Boton botonJugar;
-private JLabel labelNombreJugador2;
+    private PlayerTextField nombreJugador1;
+    private PlayerTextField nombreJugador2;
+    private PlayerLabel labelNombreJugador1;
+    private RoundedButton botonJugar;
+    private PlayerLabel labelNombreJugador2;
 
     public static void main(String[] args) {
         MenuJugadores menu = new MenuJugadores();
@@ -81,43 +84,36 @@ private JLabel labelNombreJugador2;
     }
 
 
-    private JTextField crearNombreJugador1() {
-        nombreJugador1 = new JTextField();
+    private PlayerTextField crearNombreJugador1() {
+        nombreJugador1 = new PlayerTextField();
         nombreJugador1.setBounds(700, 700, 200, 50);
-        nombreJugador1.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
         return nombreJugador1;
     }
 
-    private JTextField crearNombreJugador2() {
-        nombreJugador2 = new JTextField();
+    private PlayerTextField crearNombreJugador2() {
+        nombreJugador2 = new PlayerTextField();
         nombreJugador2.setBounds(700, 800, 200, 50);
-        nombreJugador2.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
         return nombreJugador2;
     }
 
-    private JLabel crearLabelNombreJugador1() {
-        labelNombreJugador1 = new JLabel("Nombre Jugador 1");
-        labelNombreJugador1.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
-        labelNombreJugador1.setForeground(Color.BLACK);
+    private PlayerLabel crearLabelNombreJugador1() {
+        labelNombreJugador1 = new PlayerLabel("Nombre Jugador 1");
         labelNombreJugador1.setBounds(700, 650, 200, 50);
         return labelNombreJugador1;
     }
 
-    private JLabel crearLabelNombreJugador2() {
-        labelNombreJugador2 = new JLabel("Nombre Jugador 2");
-        labelNombreJugador2.setFont(new java.awt.Font("Kristen ITC", Font.BOLD, 18));
-        labelNombreJugador2.setForeground(Color.BLACK);
+    private PlayerLabel crearLabelNombreJugador2() {
+        labelNombreJugador2 = new PlayerLabel("Nombre Jugador 2");
         labelNombreJugador2.setBounds(700, 750, 200, 50);
         return labelNombreJugador2;
     }
 
-    private Boton crearBotonJugar() {
-        botonJugar = new Boton("Jugar");
+    private RoundedButton crearBotonJugar() {
+        botonJugar = new RoundedButton("Jugar");
         botonJugar.setBounds(700, 900, 200, 50);
-        botonJugar.setFont(new Font("Kristen ITC", Font.BOLD, 18));
         botonJugar.addActionListener(e -> {
             sonidoClick.reproducir();
-            if(nombreJugador1.getText().isEmpty() || nombreJugador2.getText().isEmpty()){
+            if (nombreJugador1.getText().isEmpty() || nombreJugador2.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de ambos jugadores");
                 return;
             }

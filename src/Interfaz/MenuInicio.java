@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Interfaz.Componentes.Boton;
+import Interfaz.Componentes.RoundedButton;
 import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
 
@@ -13,9 +14,9 @@ public class MenuInicio extends JFrame {
 
     private SonidoClick sonidoClick = new SonidoClick();
     private ImageIcon fondoMegaPoly;
-    private  Boton botonNuevaPartida;
-    private Boton botonCargarPartida;
-    private Boton botonSalir;
+    private RoundedButton botonNuevaPartida;
+    private RoundedButton botonCargarPartida;
+    private RoundedButton botonSalir;
     private JPanel panelFondo;
     private JLabel labelFondo;
     private JLabel labelTitulo;
@@ -41,9 +42,11 @@ public class MenuInicio extends JFrame {
         sonidoInicio.reproducir();
         this.createUIComponents();
     }
+
     private void createUIComponents() {
         add(crearPanelFondo());
     }
+
     private JLabel crearLabelFondo() {
         fondoMegaPoly = new ImageIcon(this.getClass().getResource("/Imagenes/ImagenMenuInicio.jpg"));
         labelFondo = new JLabel(fondoMegaPoly);
@@ -55,8 +58,9 @@ public class MenuInicio extends JFrame {
         labelFondo.add(crearBotonSalir());
         return labelFondo;
     }
+
     private JLabel crearLabelTitulo() {
-        int labelWidth = sizes[0] /2;
+        int labelWidth = sizes[0] / 2;
         int frameWidth = sizes[0];
         labelTitulo = new JLabel("MegaPoly");
         labelTitulo.setFont(new java.awt.Font("Kristen ITC", Font.ITALIC, 124));
@@ -64,6 +68,7 @@ public class MenuInicio extends JFrame {
         labelTitulo.setBounds(500, 100, labelWidth, 200);
         return labelTitulo;
     }
+
     private JPanel crearPanelFondo() {
         panelFondo = new JPanel();
         panelFondo.setSize(sizes[0], sizes[1]);
@@ -71,8 +76,9 @@ public class MenuInicio extends JFrame {
         panelFondo.add(crearLabelFondo());
         return panelFondo;
     }
-    private Boton crearBotonNuevaPartida() {
-        botonNuevaPartida = new Boton("Nueva Partida");
+
+    private RoundedButton crearBotonNuevaPartida() {
+        botonNuevaPartida = new RoundedButton("Nueva Partida");
         botonNuevaPartida.setBounds(700, 700, 200, 50);
         botonNuevaPartida.addActionListener(e -> {
             sonidoClick.reproducir();
@@ -83,8 +89,9 @@ public class MenuInicio extends JFrame {
         });
         return botonNuevaPartida;
     }
-    private Boton crearBotonCargarPartida() {
-        botonCargarPartida = new Boton("Cargar Partida");
+
+    private RoundedButton crearBotonCargarPartida() {
+        botonCargarPartida = new RoundedButton("Cargar Partida");
         botonCargarPartida.setBounds(700, 800, 200, 50);
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
@@ -92,8 +99,9 @@ public class MenuInicio extends JFrame {
         });
         return botonCargarPartida;
     }
-    private Boton crearBotonSalir() {
-        botonSalir = new Boton("Salir");
+
+    private RoundedButton crearBotonSalir() {
+        botonSalir = new RoundedButton("Salir");
         botonSalir.setBounds(700, 900, 200, 50);
         botonSalir.addActionListener(e -> {
             sonidoClick.reproducir();

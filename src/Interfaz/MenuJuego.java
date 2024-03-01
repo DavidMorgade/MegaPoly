@@ -2,7 +2,8 @@ package Interfaz;
 
 import CartasSuerte.CartaSuerte;
 import Casillas.*;
-import Interfaz.Componentes.Boton;
+import Interfaz.Componentes.DiceButton;
+import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
@@ -143,8 +144,8 @@ public class MenuJuego extends JFrame {
         }
     }
 
-    private Boton botonTirarDados() {
-        Boton botonTirarDados = new Boton("Tirar Dados");
+    private DiceButton botonTirarDados() {
+        DiceButton botonTirarDados = new DiceButton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
@@ -153,8 +154,8 @@ public class MenuJuego extends JFrame {
         return botonTirarDados;
     }
 
-    private Boton botonCartasSuerte() {
-        Boton botonCartasSuerte = new Boton("Cartas Suerte");
+    private RoundedButton botonCartasSuerte() {
+        RoundedButton botonCartasSuerte = new RoundedButton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
             //TODO: no se pinta bien la ficha al volver a la posicion 0
@@ -236,6 +237,7 @@ public class MenuJuego extends JFrame {
             }
             i++;
         }
+        this.actualizarMegaMonedas();
     }
 
     private void tirarDados() {
