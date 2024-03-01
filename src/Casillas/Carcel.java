@@ -1,5 +1,6 @@
 package Casillas;
 
+import Interfaz.Componentes.CustomJDialog;
 import Sonido.SonidoCarcel;
 
 import javax.swing.*;
@@ -36,19 +37,8 @@ public class Carcel extends Casilla {
         sonidoCarcel.reproducir();
     }
 
-    public JDialog mensajeCasillaCarcel() {
-        JDialog dialog = new JDialog();
-        dialog.setAlwaysOnTop(true);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setSize(300, 200);
-        dialog.setLocationRelativeTo(null);
-        dialog.setLayout(null);
-        dialog.setResizable(false);
-        dialog.setTitle("Casilla de carcel");
-        JLabel label = new JLabel("Estas en la casilla de carcel, vas de visita y saludas al personal.");
-        label.setBounds(0, 0, 300, 200);
-        dialog.add(label);
-        dialog.setVisible(true);
+    public CustomJDialog mensajeCasillaCarcel() {
+        CustomJDialog dialog = new CustomJDialog(null, "Casilla de carcel, vas de visita y saludas al personal");
         return dialog;
     }
 
