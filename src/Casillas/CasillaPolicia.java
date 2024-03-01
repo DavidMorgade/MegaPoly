@@ -13,6 +13,7 @@ public class CasillaPolicia extends Casilla {
 
     public void enviarCarcel(Jugador jugador) {
         jugador.getFicha().setPosicion(10);
+        jugador.setCarcel(true);
     }
 
     public void sonarSonido() {

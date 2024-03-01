@@ -147,7 +147,8 @@ public class MenuJuego extends JFrame {
         Boton botonTirarDados = new Boton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
-            this.tirarDados(this.determinarJugadorTurno());
+            this.tirarDados();
+            System.out.println(jugadorActual.getNombre());
         });
         return botonTirarDados;
     }
@@ -203,7 +204,7 @@ public class MenuJuego extends JFrame {
     private void cambiarTurno() {
         jugador1.setTurno(!jugador1.getTurno());
         jugador2.setTurno(!jugador2.getTurno());
-        Jugador jugadorActual = this.determinarJugadorTurno();
+        jugadorActual = this.determinarJugadorTurno();
         jugadorTurno.setText("Turno de: " + jugadorActual.getNombre());
         this.colorFondoJugadorTurno();
     }
@@ -237,11 +238,14 @@ public class MenuJuego extends JFrame {
         }
     }
 
-    private void tirarDados(Jugador jugadorActual) {
+    private void tirarDados() {
         dado.setNumeroAleatorio();
         this.resultadoDados();
+        // Si el jugador esta en la carcel, no puede moverse a menos que saque un 5
+        this.evaluarCarcel();
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
+        // Si da la vuelta al tablero, recibe 20 MegaMonedas por pasar por la casilla de salida
         if (posicionActual + numeroDado > 39) {
             JOptionPane.showMessageDialog(null, "Has pasado por la casilla de salida, recibes 20 MegaMonedas");
             jugadorActual.setMegaMonedas(jugadorActual.getMegaMonedas() + 20);
@@ -250,12 +254,25 @@ public class MenuJuego extends JFrame {
             jugadorActual.getFicha().setPosicion(posicionActual + numeroDado);
         }
         this.fichaEnTablero();
-        this.evaluarCasilla(jugadorActual);
+        this.evaluarCasilla();
         this.cambiarTurno(); // funcion aparte
         this.actualizarMegaMonedas();
     }
 
-    private void evaluarCasilla(Jugador jugadorActual) {
+    private void evaluarCarcel() {
+        if (jugadorActual.getCarcel()) {
+            if (dado.getNumero() == 5) {
+                jugadorActual.setCarcel(false);
+                JOptionPane.showMessageDialog(null, "Has sacado un 5, sales de la carcel");
+            } else {
+                JOptionPane.showMessageDialog(null, "Has sacado un " + dado.getNumero() + " , sigues en la carcel");
+                this.cambiarTurno();
+                this.tirarDados();
+            }
+        }
+    }
+
+    private void evaluarCasilla() {
         int posicionFicha = jugadorActual.getFicha().getPosicion();
         int i = 0;
         for (Casilla casilla : arrayTablero.values()) {

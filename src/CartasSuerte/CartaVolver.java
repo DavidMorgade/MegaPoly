@@ -3,6 +3,8 @@ package CartasSuerte;
 
 import Jugadores.Jugador;
 
+import javax.swing.*;
+
 /*
  * Clase que se encarga de volver a la casilla de salida y recibir X MegaMonedas
  * @see CartaSuerte
@@ -33,5 +35,6 @@ public class CartaVolver extends CartaSuerte {
     public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
         jugadorEnPosesion.sumarMegaMonedas(this.recompensa);
         jugadorEnPosesion.getFicha().setPosicion(0);
+        JOptionPane.showMessageDialog(null, "Vuelves a la casilla de salida y ganas " + this.recompensa + " MegaMonedas");
     }
 }

@@ -3,6 +3,8 @@ package CartasSuerte;
 import Acciones.EntradaSalidaCarcel;
 import Jugadores.Jugador;
 
+import javax.swing.*;
+
 /*
  * Clase que se encarga de evitar la carcel al jugador
  * @see CartaSuerte
@@ -28,5 +30,6 @@ public class CartaEvitarCarcel extends CartaSuerte {
      */
     public void efecto(Jugador jugadorEnPosesion, Jugador jugadorEnemigo) {
         jugadorEnPosesion.setCarcel(false);
+        JOptionPane.showMessageDialog(null, "Sales de la carcel, ya puedes moverte libremente");
     }
 }
