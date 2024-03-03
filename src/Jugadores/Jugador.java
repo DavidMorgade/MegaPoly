@@ -3,6 +3,8 @@ package Jugadores;
 
 import CartasSuerte.CartaSuerte;
 import Comprables.Comprable;
+import Interfaces.CartaSuerteCallBack;
+import Interfaz.Componentes.CustomJDialog;
 import Materiales.Ficha;
 
 import javax.swing.*;
@@ -170,7 +172,7 @@ public class Jugador implements java.io.Serializable {
         this.cartas.remove(index);
     }
 
-    public JDialog mostrarCartasSuerte(Jugador jugadorEnemigo) {
+    public void mostrarCartasSuerte(Jugador jugadorEnemigo, CartaSuerteCallBack callBack) {
         JComboBox<CartaSuerte> boxCartas = new JComboBox<CartaSuerte>();
         JLabel descripcionCarta = new JLabel();
         JButton botonUsarCarta = new JButton("Usar carta");
@@ -187,7 +189,7 @@ public class Jugador implements java.io.Serializable {
         descripcionCarta.setBounds(50, 200, 500, 50);
         botonUsarCarta.setBounds(300, 100, 200, 50);
         if (this.cartas.size() == 0) {
-            descripcionCarta.setText("No tienes cartas de suerte");
+            new CustomJDialog(null, "No tienes cartas de suerte", "Cartas de suerte");
         } else {
             dialog.add(boxCartas);
             dialog.add(botonUsarCarta);
@@ -202,9 +204,9 @@ public class Jugador implements java.io.Serializable {
             carta.efecto(this, jugadorEnemigo);
             this.cartas.remove(carta);
             dialog.dispose();
+            callBack.onMostrarCartasSuerteFinalizado();
         });
         dialog.setVisible(true);
-        return dialog;
     }
 
     public void cambiarTurno() {

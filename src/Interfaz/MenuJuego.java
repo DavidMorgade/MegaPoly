@@ -2,14 +2,13 @@ package Interfaz;
 
 import CartasSuerte.CartaSuerte;
 import Casillas.*;
+import Interfaces.CartaSuerteCallBack;
 import Interfaz.Componentes.DiceButton;
 import Interfaz.Componentes.FancyPlayerLabel;
 import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
-import Sonido.SonidoSuerte;
-import Sonido.Sonidos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -153,8 +152,7 @@ public class MenuJuego extends JFrame {
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
             //TODO: no se pinta bien la ficha al volver a la posicion 0
-            this.jugadorActual.mostrarCartasSuerte(this.jugadorNoTurno);
-            this.repintarTablero();
+            this.jugadorActual.mostrarCartasSuerte(this.jugadorNoTurno, this.repintarTablero());
         });
         return botonCartasSuerte;
     }
@@ -207,7 +205,7 @@ public class MenuJuego extends JFrame {
         this.repintarTablero();
     }
 
-    private void repintarTablero() {
+    private CartaSuerteCallBack repintarTablero() {
         Ficha fichaRoja = jugador1.getFicha();
         Ficha fichaAzul = jugador2.getFicha();
         int posicionFichaRoja = jugador1.getFicha().getPosicion();
@@ -230,7 +228,16 @@ public class MenuJuego extends JFrame {
             }
             i++;
         }
-        this.actualizarMegaMonedas();
+        return new CartaSuerteCallBack() {
+            @Override
+            public void onMostrarCartasSuerteFinalizado() {
+                System.out.println("repinta tablero");
+                actualizarMegaMonedas();
+                nombreJugador1.repaint();
+                nombreJugador2.repaint();
+                //TODO: conseguir que el callback se ejecute al finalizar el metodo
+            }
+        };
     }
 
     private void tirarDados() {
@@ -316,6 +323,7 @@ public class MenuJuego extends JFrame {
         int megaMonedasJugador2 = jugador2.getMegaMonedas();
         nombreJugador1.setText(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
         nombreJugador2.setText(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
+
     }
 
     // toda la logica del juego al comenzar partida
