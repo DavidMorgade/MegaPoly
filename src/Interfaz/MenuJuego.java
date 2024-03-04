@@ -309,6 +309,10 @@ public class MenuJuego extends JFrame {
                     ((CasillaPolicia) casilla).sonarSonido();
                     ((CasillaPolicia) casilla).enviarCarcel(jugadorActual, this.repintarTablero());
                 }
+                if (casilla instanceof CasillaImpuesto) {
+                    ((CasillaImpuesto) casilla).sonarSonido();
+                    ((CasillaImpuesto) casilla).aplicarImpuesto(this.jugadorActual, this.repintarTablero());
+                }
 
             }
             i++;
