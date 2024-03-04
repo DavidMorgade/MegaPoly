@@ -151,7 +151,6 @@ public class MenuJuego extends JFrame {
         RoundedButton botonCartasSuerte = new RoundedButton("Cartas Suerte");
         botonCartasSuerte.setBounds(700, 800, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
-            //TODO: no se pinta bien la ficha al volver a la posicion 0
             this.jugadorActual.mostrarCartasSuerte(this.jugadorNoTurno, this.repintarTablero());
         });
         return botonCartasSuerte;
@@ -307,8 +306,8 @@ public class MenuJuego extends JFrame {
                     ((Carcel) casilla).mensajeCasillaCarcel(this);
                 }
                 if (casilla instanceof CasillaPolicia) {
-                    ((CasillaPolicia) casilla).enviarCarcel(jugadorActual);
                     ((CasillaPolicia) casilla).sonarSonido();
+                    ((CasillaPolicia) casilla).enviarCarcel(jugadorActual, this.repintarTablero());
                 }
 
             }
