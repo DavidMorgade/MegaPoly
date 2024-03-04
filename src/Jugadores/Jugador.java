@@ -3,7 +3,7 @@ package Jugadores;
 
 import CartasSuerte.CartaSuerte;
 import Comprables.Comprable;
-import Interfaces.CartaSuerteCallBack;
+import Interfaces.ActualizarPosicionCallBack;
 import Interfaz.Componentes.CustomJDialog;
 import Materiales.Ficha;
 
@@ -172,7 +172,7 @@ public class Jugador implements java.io.Serializable {
         this.cartas.remove(index);
     }
 
-    public void mostrarCartasSuerte(Jugador jugadorEnemigo, CartaSuerteCallBack callBack) {
+    public void mostrarCartasSuerte(Jugador jugadorEnemigo, ActualizarPosicionCallBack callBack) {
         JComboBox<CartaSuerte> boxCartas = new JComboBox<CartaSuerte>();
         JLabel descripcionCarta = new JLabel();
         JButton botonUsarCarta = new JButton("Usar carta");
@@ -204,7 +204,7 @@ public class Jugador implements java.io.Serializable {
             carta.efecto(this, jugadorEnemigo);
             this.cartas.remove(carta);
             dialog.dispose();
-            callBack.onMostrarCartasSuerteFinalizado();
+            callBack.onMostrarFinalizado();
         });
         dialog.setVisible(true);
     }

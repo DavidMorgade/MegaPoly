@@ -2,7 +2,7 @@ package Interfaz;
 
 import CartasSuerte.CartaSuerte;
 import Casillas.*;
-import Interfaces.CartaSuerteCallBack;
+import Interfaces.ActualizarPosicionCallBack;
 import Interfaz.Componentes.DiceButton;
 import Interfaz.Componentes.FancyPlayerLabel;
 import Interfaz.Componentes.RoundedButton;
@@ -205,7 +205,7 @@ public class MenuJuego extends JFrame {
         this.repintarTablero();
     }
 
-    private CartaSuerteCallBack repintarTablero() {
+    private ActualizarPosicionCallBack repintarTablero() {
         Ficha fichaRoja = jugador1.getFicha();
         Ficha fichaAzul = jugador2.getFicha();
         int posicionFichaRoja = jugador1.getFicha().getPosicion();
@@ -228,17 +228,42 @@ public class MenuJuego extends JFrame {
             }
             i++;
         }
-        return new CartaSuerteCallBack() {
-            @Override
-            public void onMostrarCartasSuerteFinalizado() {
-                System.out.println("repinta tablero");
-                actualizarMegaMonedas();
-                nombreJugador1.repaint();
-                nombreJugador2.repaint();
-                //TODO: conseguir que el callback se ejecute al finalizar el metodo
-            }
-        };
+        return this::actualizarPosicion;
     }
+
+    private void actualizarPosicion() {
+        Ficha fichaRoja = jugador1.getFicha();
+        Ficha fichaAzul = jugador2.getFicha();
+        int posicionFichaRojaActual = jugador1.getFicha().getPosicion();
+        int posicionFichaAzulActual = jugador2.getFicha().getPosicion();
+        System.out.println("repinta tablero");
+        actualizarMegaMonedas();
+        nombreJugador1.repaint();
+        nombreJugador2.repaint();
+        //TODO: conseguir que el callback se ejecute al finalizar el metodo
+        int j = 0;
+        for (JLabel label : arrayTablero.keySet()) {
+            label.remove(fichaRoja);
+            label.remove(fichaAzul);
+            label.repaint();
+            System.out.println(j);
+            if (j == posicionFichaRojaActual && j == posicionFichaAzulActual) {
+                label.add(fichaRoja);
+                label.add(fichaAzul);
+                label.repaint();
+            } else if (j == posicionFichaAzulActual) {
+                label.add(fichaAzul);
+                label.repaint();
+            } else if (j == posicionFichaRojaActual) {
+                label.add(fichaRoja);
+                label.repaint();
+            }
+            j++;
+        }
+    }
+
+    ;
+
 
     private void tirarDados() {
         dado.setNumeroAleatorio();
