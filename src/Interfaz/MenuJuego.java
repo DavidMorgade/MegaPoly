@@ -202,32 +202,10 @@ public class MenuJuego extends JFrame {
     }
 
     private void fichaEnTablero() {
-        this.repintarTablero();
+        this.actualizarPosicion();
     }
 
     private ActualizarPosicionCallBack repintarTablero() {
-        Ficha fichaRoja = jugador1.getFicha();
-        Ficha fichaAzul = jugador2.getFicha();
-        int posicionFichaRoja = jugador1.getFicha().getPosicion();
-        int posicionFichaAzul = jugador2.getFicha().getPosicion();
-        int i = 0;
-        for (JLabel label : arrayTablero.keySet()) {
-            label.remove(fichaRoja);
-            label.remove(fichaAzul);
-            label.repaint();
-            if (i == posicionFichaRoja && i == posicionFichaAzul) {
-                label.add(fichaRoja);
-                label.add(fichaAzul);
-                label.repaint();
-            } else if (i == posicionFichaAzul) {
-                label.add(fichaAzul);
-                label.repaint();
-            } else if (i == posicionFichaRoja) {
-                label.add(fichaRoja);
-                label.repaint();
-            }
-            i++;
-        }
         return this::actualizarPosicion;
     }
 
@@ -240,13 +218,11 @@ public class MenuJuego extends JFrame {
         actualizarMegaMonedas();
         nombreJugador1.repaint();
         nombreJugador2.repaint();
-        //TODO: conseguir que el callback se ejecute al finalizar el metodo
         int j = 0;
         for (JLabel label : arrayTablero.keySet()) {
             label.remove(fichaRoja);
             label.remove(fichaAzul);
             label.repaint();
-            System.out.println(j);
             if (j == posicionFichaRojaActual && j == posicionFichaAzulActual) {
                 label.add(fichaRoja);
                 label.add(fichaAzul);
@@ -273,6 +249,7 @@ public class MenuJuego extends JFrame {
         if (siguesCarcel) {
             return;
         }
+        System.out.println("la pela la carcel");
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
         // Si da la vuelta al tablero, recibe 20 MegaMonedas por pasar por la casilla de salida
@@ -294,12 +271,12 @@ public class MenuJuego extends JFrame {
             if (dado.getNumero() == 5) {
                 jugadorActual.setCarcel(false);
                 JOptionPane.showMessageDialog(null, "Has sacado un 5, sales de la carcel");
-                return true;
+                return false;
             }
             JOptionPane.showMessageDialog(null, "Has sacado un " + dado.getNumero() + " , sigues en la carcel");
             this.fichaEnTablero();
             this.cambiarTurno();
-            return false;
+            return true;
         }
         return false;
     }

@@ -235,8 +235,6 @@ public class Jugador implements java.io.Serializable {
         this.carcel = carcel;
         if (carcel) {
             JOptionPane.showMessageDialog(null, "Has caido en la carcel");
-        } else {
-            JOptionPane.showMessageDialog(null, "Has salido de la carcel");
         }
     }
 
