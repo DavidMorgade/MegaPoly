@@ -313,7 +313,10 @@ public class MenuJuego extends JFrame {
                     ((CasillaImpuesto) casilla).sonarSonido();
                     ((CasillaImpuesto) casilla).aplicarImpuesto(this.jugadorActual, this.repintarTablero());
                 }
-
+                if (casilla instanceof CasillaPropiedad) {
+                    ((CasillaPropiedad) casilla).sonarSonido();
+                    ((CasillaPropiedad) casilla).evaluarPropiedad(jugadorActual, this.repintarTablero());
+                }
             }
             i++;
         }

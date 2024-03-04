@@ -4,6 +4,6 @@ public class SonidoPropiedad extends Sonidos {
 
     public SonidoPropiedad() {
         super.ruta =
-                getClass().getResource("/Sounds/SonidoPropiedad.wav").getPath();
+                getClass().getResource("/Sounds/SonidoCaerPropiedad.wav").getPath();
     }
 }

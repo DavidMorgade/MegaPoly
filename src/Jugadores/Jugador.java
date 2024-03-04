@@ -68,6 +68,11 @@ public class Jugador implements java.io.Serializable {
         this.megaMonedas = 100;
     }
 
+    // Constructor del jugador banco
+    public Jugador() {
+        this.nombre = "Banco";
+    }
+
     public String getNombre() {
         return this.nombre;
     }
@@ -102,33 +107,6 @@ public class Jugador implements java.io.Serializable {
 
     public List<CartaSuerte> getCartas() {
         return this.cartas;
-    }
-
-    /*
-     * Metodo que se encarga de mostrar las cartas de suerte de cada jugador
-     * @see CartaSuerte
-     */
-    public void mostrarCartas() {
-//    if (this.cartas.isEmpty()) {
-//      System.out.println("");
-//      System.out.println(StringUtils.center("No tienes cartas de suerte", w));
-//      System.out.println("");
-//    } else {
-//      System.out.println(StringUtils.center("Tus cartas de suerte son: ", w));
-//      for (CartaSuerte carta : this.cartas) {
-//        int index = this.cartas.indexOf(carta);
-//        System.out.println(StringUtils.center("Carta " + index + ": ", w));
-//        System.out.println(" ");
-//        System.out.println(
-//          StringUtils.center("Nombre: " + carta.getNombre(), w)
-//        );
-//        System.out.println(" ");
-//        System.out.println(
-//          StringUtils.center("Descripcion: " + carta.getDescripcion(), w)
-//        );
-//        System.out.println(" ");
-//      }
-//    }
     }
 
     /*
