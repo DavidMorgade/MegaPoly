@@ -234,17 +234,19 @@ public class MenuJuego extends JFrame {
             }
             j++;
         }
-        for (Map.Entry<JLabel, Casilla> entry : arrayTablero.entrySet()) {
-            JLabel label = entry.getKey();
-            Casilla casilla = entry.getValue();
+        for (JLabel label : arrayTablero.keySet()) {
+            Casilla casilla = arrayTablero.get(label);
             if (casilla instanceof CasillaPropiedad) {
-                Jugador propietario = ((CasillaPropiedad) entry.getValue()).getPropietario();
+                Jugador propietario = ((CasillaPropiedad) casilla).getPropietario();
                 if (propietario.equals(jugador1)) {
-                    label.setBackground(new Color(255, 0, 0, 128));
+                    label.setBackground(new Color(94, 2, 2, 255));
                     label.setOpaque(true);
+                    label.repaint();
+                    System.out.println(label);
                 } else if (propietario.equals(jugador2)) {
-                    label.setBackground(new Color(0, 0, 255, 128));
+                    label.setBackground(new Color(0, 0, 151, 255));
                     label.setOpaque(true);
+                    label.repaint();
                 } else {
                     label.setOpaque(false);
                 }
@@ -329,8 +331,10 @@ public class MenuJuego extends JFrame {
                     ((CasillaImpuesto) casilla).aplicarImpuesto(this.jugadorActual, this.repintarTablero());
                 }
                 if (casilla instanceof CasillaPropiedad) {
-                    ((CasillaPropiedad) casilla).sonarSonido();
                     ((CasillaPropiedad) casilla).evaluarPropiedad(jugadorActual, this.repintarTablero());
+                }
+                if (casilla instanceof CasillaAleatoria) {
+                    ((CasillaAleatoria) casilla).efectoAleatorio(jugadorActual, jugadorNoTurno, this.repintarTablero());
                 }
             }
             i++;

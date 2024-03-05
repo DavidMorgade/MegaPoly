@@ -5,6 +5,7 @@ import Interfaz.Componentes.CustomJDialog;
 import Interfaz.Componentes.JDialogPropiedades;
 import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
+import Sonido.SonidoPagar;
 import Sonido.SonidoPropiedad;
 
 /*
@@ -14,6 +15,7 @@ import Sonido.SonidoPropiedad;
 public class CasillaPropiedad extends Casilla {
 
     private SonidoPropiedad sonidoPropiedad;
+    private SonidoPagar sonidoPagar;
     private final int precio;
     private int alquiler;
 
@@ -32,13 +34,10 @@ public class CasillaPropiedad extends Casilla {
         this.propietario = new Jugador();
     }
 
-    public void sonarSonido() {
-        sonidoPropiedad = new SonidoPropiedad();
-        sonidoPropiedad.reproducir();
-    }
-
     public void evaluarPropiedad(Jugador jugadorActual, ActualizarPosicionCallBack callBack) {
         if (this.propietario.getNombre().equals("Banco")) {
+            this.sonidoPropiedad = new SonidoPropiedad();
+            this.sonidoPropiedad.reproducir();
             JDialogPropiedades ventana = new JDialogPropiedades(null, "¿Deseas comprar la empresa " + this.getNombre() + "?", "Compra");
             ventana.setVisible(true);
             boolean resultado = ventana.getResult();
@@ -51,6 +50,8 @@ public class CasillaPropiedad extends Casilla {
         } else if (this.propietario.equals(jugadorActual)) {
             new CustomJDialog(null, "Ya eres el propietario de esta empresa " + this.getNombre(), this.getNombre());
         } else {
+            this.sonidoPagar = new SonidoPagar();
+            this.sonidoPagar.reproducir();
             jugadorActual.restarMegaMonedas(this.alquiler);
             this.propietario.sumarMegaMonedas(this.alquiler);
             new CustomJDialog(null, "Has pagado " + this.alquiler + " MM de alquiler a " + this.propietario.getNombre(), "Alquiler");

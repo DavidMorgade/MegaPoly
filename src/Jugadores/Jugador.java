@@ -168,6 +168,7 @@ public class Jugador implements java.io.Serializable {
         botonUsarCarta.setBounds(300, 100, 200, 50);
         if (this.cartas.size() == 0) {
             new CustomJDialog(null, "No tienes cartas de suerte", "Cartas de suerte");
+            return;
         } else {
             dialog.add(boxCartas);
             dialog.add(botonUsarCarta);

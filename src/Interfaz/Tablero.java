@@ -33,7 +33,7 @@ public class Tablero {
         tablero.put(new JLabel("Impuesto 1MM"), new CasillaImpuesto('I', "Impuesto", 1));
         tablero.put(new JLabel("<html>StartUp<br>Cadiz</html>"), new CasillaPropiedad('S', "Startup Cadiz", 5));
         tablero.put(new JLabel("<html>Twitter<br>Cadiz</html>"), new CasillaPropiedad('T', "Twitter Cadiz", 6));
-        tablero.put(new JLabel("Suerte por definir"), new CasillaSuerte('S', "Suerte por definir"));
+        tablero.put(new JLabel(""), new CasillaAleatoria('A', "Casilla Aleatoria"));
         tablero.put(new JLabel("<html>Twitter<br>Sevilla</html>"), new CasillaPropiedad('T', "Twitter Sevilla", 7));
         tablero.put(new JLabel("<html>Twitter<br>Malaga</html>"), new CasillaPropiedad('T', "Twitter Malaga", 8));
         tablero.put(new JLabel(), new Carcel('C', "Carcel"));
@@ -48,7 +48,7 @@ public class Tablero {
         tablero.put(new JLabel("<html>Google<br>Malaga</html>"), new CasillaPropiedad('G', "Google Malaga", 18));
         tablero.put(new JLabel(), new CasillaParking('P', "Parking", "Parking"));
         tablero.put(new JLabel("<html>Amazon<br>Cadiz</html>"), new CasillaPropiedad('A', "Amazon Cadiz", 18));
-        tablero.put(new JLabel("Suerte por definir 2"), new CasillaSuerte('S', "Suerte por definir 2"));
+        tablero.put(new JLabel(), new CasillaAleatoria('A', "Casilla Aleatoria"));
         tablero.put(new JLabel("<html>Amazon <br> Servilla</html>"), new CasillaPropiedad('A', "Amazon Sevilla", 22));
         tablero.put(new JLabel("<html>Amazon<br>Malaga</html>"), new CasillaPropiedad('A', "Amazon Malaga", 26));
         tablero.put(new JLabel("<html>Startup<br>Malaga</html>"), new CasillaPropiedad('S', "Startup Malaga", 5));
@@ -62,7 +62,7 @@ public class Tablero {
         tablero.put(new JLabel(), new CasillaSuerte('S', "Suerte 3"));
         tablero.put(new JLabel("<html>Apple<br>Malaga</html>"), new CasillaPropiedad('A', "Apple Malaga", 70));
         tablero.put(new JLabel("<html>Startup<br>Madrid</html>"), new CasillaPropiedad('S', "Startup Madrid", 5));
-        tablero.put(new JLabel("Suerte por definir 3"), new CasillaSuerte('S', "Suerte por definir 3"));
+        tablero.put(new JLabel(), new CasillaAleatoria('A', "Casilla Aleatoria"));
         tablero.put(new JLabel("<html>Microsoft<br>Cadiz</html>"), new CasillaPropiedad('M', "Microsoft Cadiz", 40));
         tablero.put(new JLabel("Impuesto 4MM"), new CasillaImpuesto('I', "Impuesto 4", 4));
         tablero.put(new JLabel("<html>Micrososft<br>Sevilla</html>"), new CasillaPropiedad('M', "Microsoft Sevilla", 80));
