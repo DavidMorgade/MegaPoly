@@ -213,7 +213,6 @@ public class MenuJuego extends JFrame {
         Ficha fichaAzul = jugador2.getFicha();
         int posicionFichaRojaActual = jugador1.getFicha().getPosicion();
         int posicionFichaAzulActual = jugador2.getFicha().getPosicion();
-        System.out.println("repinta tablero");
         actualizarMegaMonedas();
         nombreJugador1.repaint();
         nombreJugador2.repaint();
@@ -234,6 +233,22 @@ public class MenuJuego extends JFrame {
                 label.repaint();
             }
             j++;
+        }
+        for (Map.Entry<JLabel, Casilla> entry : arrayTablero.entrySet()) {
+            JLabel label = entry.getKey();
+            Casilla casilla = entry.getValue();
+            if (casilla instanceof CasillaPropiedad) {
+                Jugador propietario = ((CasillaPropiedad) entry.getValue()).getPropietario();
+                if (propietario.equals(jugador1)) {
+                    label.setBackground(new Color(255, 0, 0, 128));
+                    label.setOpaque(true);
+                } else if (propietario.equals(jugador2)) {
+                    label.setBackground(new Color(0, 0, 255, 128));
+                    label.setOpaque(true);
+                } else {
+                    label.setOpaque(false);
+                }
+            }
         }
     }
 

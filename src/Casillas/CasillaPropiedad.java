@@ -14,6 +14,8 @@ import Sonido.SonidoPropiedad;
 public class CasillaPropiedad extends Casilla {
 
     private SonidoPropiedad sonidoPropiedad;
+    private final int precio;
+    private int alquiler;
 
     private Jugador propietario;
 
@@ -23,8 +25,10 @@ public class CasillaPropiedad extends Casilla {
      * @param nombre Nombre de la casilla
      * @param propiedad Propiedad que se va a crear
      */
-    public CasillaPropiedad(char tipo, String nombre) {
+    public CasillaPropiedad(char tipo, String nombre, int precio) {
         super(tipo, nombre);
+        this.precio = precio;
+        this.alquiler = Math.round(precio / 2);
         this.propietario = new Jugador();
     }
 
@@ -35,10 +39,26 @@ public class CasillaPropiedad extends Casilla {
 
     public void evaluarPropiedad(Jugador jugadorActual, ActualizarPosicionCallBack callBack) {
         if (this.propietario.getNombre().equals("Banco")) {
-            JDialogPropiedades ventana = new JDialogPropiedades(null, "¿Deseas comprar la propiedad " + this.getNombre() + "?", "Compra");
+            JDialogPropiedades ventana = new JDialogPropiedades(null, "¿Deseas comprar la empresa " + this.getNombre() + "?", "Compra");
             ventana.setVisible(true);
             boolean resultado = ventana.getResult();
-            // TODO: evaluar compra y resto de condiciones
+            if (resultado) {
+                this.propietario = jugadorActual;
+                jugadorActual.restarMegaMonedas(this.precio);
+                new CustomJDialog(null, "Has comprado la propiedad " + this.getNombre() + " por " + this.precio + " MM", "Compra");
+                callBack.onMostrarFinalizado();
+            }
+        } else if (this.propietario.equals(jugadorActual)) {
+            new CustomJDialog(null, "Ya eres el propietario de esta empresa " + this.getNombre(), this.getNombre());
+        } else {
+            jugadorActual.restarMegaMonedas(this.alquiler);
+            this.propietario.sumarMegaMonedas(this.alquiler);
+            new CustomJDialog(null, "Has pagado " + this.alquiler + " MM de alquiler a " + this.propietario.getNombre(), "Alquiler");
+            callBack.onMostrarFinalizado();
         }
+    }
+
+    public Jugador getPropietario() {
+        return propietario;
     }
 }
