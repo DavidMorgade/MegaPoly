@@ -96,6 +96,10 @@ public class MenuJuego extends JFrame {
             if (menu.getSelectedItem().equals("Guardar Partida")) {
                 // guardar partida con fecha y hora
                 Partidas.guardarPartida(jugadorActual, jugadorNoTurno, tablero, "partida1" + System.currentTimeMillis());
+                String[] partidas = Partidas.listarPartidas();
+                for (String partida : partidas) {
+                    System.out.println(partida);
+                }
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
 

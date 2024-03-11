@@ -1,15 +1,17 @@
 package Partidas;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Partidas {
 
-    private static final String DIRECTORIO = "/Partidas/";
+    private static final String DIRECTORIO = "partidas/";
 
     public static void guardarPartida(Serializable JugadorActual, Serializable JugadorSegundo, Serializable Tablero, String nombrePartida) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(
-                    new FileOutputStream(nombrePartida + ".dat"));
+                    Files.newOutputStream(Paths.get("partidas/" + nombrePartida + ".dat")));
             oos.writeObject(JugadorActual);
             oos.writeObject(JugadorSegundo);
             oos.writeObject(Tablero);
