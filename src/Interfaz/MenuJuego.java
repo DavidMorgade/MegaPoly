@@ -5,6 +5,7 @@ import Casillas.*;
 import Interfaces.ActualizarPosicionCallBack;
 import Interfaz.Componentes.DiceButton;
 import Interfaz.Componentes.FancyPlayerLabel;
+import Interfaz.Componentes.ListaPartidasFrame;
 import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Dado;
@@ -102,6 +103,7 @@ public class MenuJuego extends JFrame {
                 }
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
+                new ListaPartidasFrame(Partidas.listarPartidas());
 
             } else if (menu.getSelectedItem().equals("Salir")) {
                 System.exit(0);

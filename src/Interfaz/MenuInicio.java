@@ -1,8 +1,10 @@
 package Interfaz;
 
 import Interfaz.Componentes.Boton;
+import Interfaz.Componentes.ListaPartidasFrame;
 import Interfaz.Componentes.RoundedButton;
 import Interfaz.Componentes.TituloMegapoly;
+import Partidas.Partidas;
 import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
 
@@ -95,6 +97,8 @@ public class MenuInicio extends JFrame {
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
             sonidoInicio.parar();
+            String partidas[] = Partidas.listarPartidas(); // Reemplaza con el resultado de listarPartidas()
+            new ListaPartidasFrame(partidas);
         });
         return botonCargarPartida;
     }
