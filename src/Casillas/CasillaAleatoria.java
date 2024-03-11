@@ -8,8 +8,8 @@ import Sonido.SonidoSuerte;
 
 public class CasillaAleatoria extends Casilla {
 
-    private SonidoPagar sonidoPagar;
-    private SonidoSuerte sonidoSuerte;
+    private transient SonidoPagar sonidoPagar;
+    private transient SonidoSuerte sonidoSuerte;
 
     public CasillaAleatoria(char tipo, String nombre) {
         super(tipo, nombre);

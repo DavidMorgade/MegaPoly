@@ -7,11 +7,14 @@ import Materiales.Ficha;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Tablero {
+public class Tablero implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     Jugador jugador1;
     Jugador jugador2;
     private Map<JLabel, Casilla> tablero = new LinkedHashMap<JLabel, Casilla>(40);

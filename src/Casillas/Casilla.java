@@ -1,37 +1,40 @@
 package Casillas;
 
+import java.io.Serializable;
+
 /*
  * Clase que se encarga de crear las casillas del tablero, sirve de modelo para las casillas
  */
-public class Casilla {
+public class Casilla implements Serializable {
 
-  private char tipo;
+    private static final long serialVersionUID = 1L;
+    private char tipo;
 
-  private String nombre;
+    private String nombre;
 
-  /*
-   * Constructor de la clase
-   * @param tipo Tipo de casilla
-   * @param nombre Nombre de la casilla
-   */
-  public Casilla(char tipo, String nombre) {
-    this.tipo = tipo;
-    this.nombre = nombre;
-  }
+    /*
+     * Constructor de la clase
+     * @param tipo Tipo de casilla
+     * @param nombre Nombre de la casilla
+     */
+    public Casilla(char tipo, String nombre) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+    }
 
-  public char getTipo() {
-    return this.tipo;
-  }
+    public char getTipo() {
+        return this.tipo;
+    }
 
-  public void setTipo(char tipo) {
-    this.tipo = tipo;
-  }
+    public void setTipo(char tipo) {
+        this.tipo = tipo;
+    }
 
-  public String getNombre() {
-    return this.nombre;
-  }
+    public String getNombre() {
+        return this.nombre;
+    }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

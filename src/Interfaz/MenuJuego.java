@@ -9,6 +9,7 @@ import Interfaz.Componentes.RoundedButton;
 import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
+import Partidas.Partidas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -93,9 +94,11 @@ public class MenuJuego extends JFrame {
     private void OpcionesComboBox() {
         menu.addActionListener(e -> {
             if (menu.getSelectedItem().equals("Guardar Partida")) {
-                // guardar partida
+                // guardar partida con fecha y hora
+                Partidas.guardarPartida(jugadorActual, jugadorNoTurno, tablero, "partida1" + System.currentTimeMillis());
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
+
             } else if (menu.getSelectedItem().equals("Salir")) {
                 System.exit(0);
             }

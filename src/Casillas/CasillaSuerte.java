@@ -18,7 +18,7 @@ public class CasillaSuerte extends Casilla {
     // Numero total de cartas de suerte
     final int NUMERO_TOTAL_CARTAS = 3;
 
-    SonidoSuerte sonidoSuerte;
+    private transient SonidoSuerte sonidoSuerte;
     private CartaSuerte carta;
 
     /*

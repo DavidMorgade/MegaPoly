@@ -8,7 +8,7 @@ import Sonido.SonidoPagar;
 public class CasillaImpuesto extends Casilla {
     private int cantidad;
 
-    private SonidoPagar sonidoPagar;
+    private transient SonidoPagar sonidoPagar;
 
     public CasillaImpuesto(char tipo, String nombre, int cantidad) {
         super(tipo, nombre);

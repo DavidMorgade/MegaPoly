@@ -12,7 +12,7 @@ import javax.swing.*;
 public class CasillaSalida extends Casilla {
 
     private int recompensa;
-    private SonidoParking sonido;
+    private transient SonidoParking sonido;
 
     /*
      * Constructor de la clase

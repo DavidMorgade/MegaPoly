@@ -14,8 +14,8 @@ import Sonido.SonidoPropiedad;
  */
 public class CasillaPropiedad extends Casilla {
 
-    private SonidoPropiedad sonidoPropiedad;
-    private SonidoPagar sonidoPagar;
+    private transient SonidoPropiedad sonidoPropiedad;
+    private transient SonidoPagar sonidoPagar;
     private final int precio;
     private int alquiler;
 

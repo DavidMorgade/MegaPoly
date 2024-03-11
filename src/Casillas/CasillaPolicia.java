@@ -6,7 +6,7 @@ import Sonido.SonidoCarcel;
 
 public class CasillaPolicia extends Casilla {
 
-    private SonidoCarcel sonidoCarcel;
+    private transient SonidoCarcel sonidoCarcel;
 
     public CasillaPolicia(char tipo, String nombre) {
         super(tipo, nombre);
