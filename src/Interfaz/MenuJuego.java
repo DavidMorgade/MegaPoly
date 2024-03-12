@@ -3,6 +3,7 @@ package Interfaz;
 import CartasSuerte.CartaSuerte;
 import Casillas.*;
 import Interfaces.ActualizarPosicionCallBack;
+import Interfaces.CerrarVentanaCallback;
 import Interfaz.Componentes.DiceButton;
 import Interfaz.Componentes.FancyPlayerLabel;
 import Interfaz.Componentes.ListaPartidasFrame;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 public class MenuJuego extends JFrame {
 
+    boolean partidaCargada = false;
     Jugador jugador1;
     Jugador jugador2;
     Jugador jugadorActual;
@@ -39,6 +41,15 @@ public class MenuJuego extends JFrame {
         jugadorActual = this.determinarJugadorTurno();
         jugadorNoTurno = this.determinarJugadorNoTurno();
         this.tablero = new Tablero(jugador1, jugador2);
+        initComponents();
+        this.comenzarPartida();
+    }
+
+    public MenuJuego(Jugador jugadorActual, Jugador jugadorNoTurno, Tablero tablero) {
+        this.tablero = tablero;
+        this.jugadorActual = jugadorActual;
+        this.jugadorNoTurno = jugadorNoTurno;
+        this.partidaCargada = true;
         initComponents();
         this.comenzarPartida();
     }
@@ -103,7 +114,7 @@ public class MenuJuego extends JFrame {
                 }
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
-                new ListaPartidasFrame(Partidas.listarPartidas());
+                new ListaPartidasFrame(Partidas.listarPartidas(), this.cerrarVentana());
 
             } else if (menu.getSelectedItem().equals("Salir")) {
                 System.exit(0);
@@ -111,7 +122,14 @@ public class MenuJuego extends JFrame {
         });
     }
 
+    private CerrarVentanaCallback cerrarVentana() {
+        return this::dispose;
+    }
+
     private FancyPlayerLabel crearNombreJugador1() {
+        if (partidaCargada) {
+            this.jugador1 = jugadorActual.getFicha().getColorFicha().equals("Rojo") ? jugadorActual : jugadorNoTurno;
+        }
         String nombreStringJugador1 = jugador1.getNombre();
         String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
         int megaMonedasJugador1 = jugador1.getMegaMonedas();
@@ -121,6 +139,10 @@ public class MenuJuego extends JFrame {
     }
 
     private FancyPlayerLabel crearNombreJugador2() {
+        // Si la partida esta cargada, buscamos que le tiene la ficha azul
+        if (partidaCargada) {
+            this.jugador2 = jugadorActual.getFicha().getColorFicha().equals("Azul") ? jugadorActual : jugadorNoTurno;
+        }
         String nombreStringJugador2 = jugador2.getNombre();
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
         int megaMonedasJugador2 = jugador2.getMegaMonedas();
@@ -216,6 +238,7 @@ public class MenuJuego extends JFrame {
     private ActualizarPosicionCallBack repintarTablero() {
         return this::actualizarPosicion;
     }
+
 
     private void actualizarPosicion() {
         Ficha fichaRoja = jugador1.getFicha();

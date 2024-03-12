@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Interfaces.CerrarVentanaCallback;
 import Interfaz.Componentes.Boton;
 import Interfaz.Componentes.ListaPartidasFrame;
 import Interfaz.Componentes.RoundedButton;
@@ -98,7 +99,7 @@ public class MenuInicio extends JFrame {
             sonidoClick.reproducir();
             sonidoInicio.parar();
             String partidas[] = Partidas.listarPartidas(); // Reemplaza con el resultado de listarPartidas()
-            new ListaPartidasFrame(partidas);
+            new ListaPartidasFrame(partidas, this.cerrarVentana());
         });
         return botonCargarPartida;
     }
@@ -112,6 +113,10 @@ public class MenuInicio extends JFrame {
             System.exit(0);
         });
         return botonSalir;
+    }
+
+    private CerrarVentanaCallback cerrarVentana() {
+        return this::dispose;
     }
 
 }

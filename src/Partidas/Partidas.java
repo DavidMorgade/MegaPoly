@@ -28,7 +28,7 @@ public class Partidas {
     public static Object[] cargarPartida(String nombrePartida) {
         try {
             ObjectInputStream ois = new ObjectInputStream(
-                    new FileInputStream(nombrePartida));
+                    Files.newInputStream(Paths.get("partidas/" + nombrePartida)));
             Serializable jugadorActual = (Serializable) ois.readObject();
             Serializable jugadorSegundo = (Serializable) ois.readObject();
             Serializable tablero = (Serializable) ois.readObject();

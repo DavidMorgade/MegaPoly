@@ -1,5 +1,12 @@
 package Interfaz.Componentes;
 
+import Interfaces.CerrarVentanaCallback;
+import Interfaz.MenuInicio;
+import Interfaz.MenuJuego;
+import Interfaz.Tablero;
+import Jugadores.Jugador;
+import Partidas.Partidas;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,9 +14,11 @@ import java.awt.event.ActionListener;
 
 public class ListaPartidasFrame extends JFrame {
     private JComboBox<String> comboBox;
+    private CerrarVentanaCallback callback;
 
-    public ListaPartidasFrame(String[] partidas) {
+    public ListaPartidasFrame(String[] partidas, CerrarVentanaCallback callback) {
         super("Lista de Partidas");
+        this.callback = callback;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 150);
         setLocationRelativeTo(null);
@@ -54,14 +63,18 @@ public class ListaPartidasFrame extends JFrame {
     private void cargarPartida(String nombrePartida) {
         // Aquí puedes agregar la lógica para cargar la partida seleccionada
         System.out.println("Cargando partida: " + nombrePartida);
+        Object[] datosPartida = Partidas.cargarPartida(nombrePartida);
+        if (datosPartida != null) {
+            Jugador jugador1 = (Jugador) datosPartida[0];
+            Jugador jugador2 = (Jugador) datosPartida[1];
+            Tablero tablero = (Tablero) datosPartida[2];
+            MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, tablero);
+            menuJuego.setVisible(true);
+            callback.onCargarPartida();
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al cargar la partida.");
+        }
     }
 
-    public static void main(String[] args) {
-        String[] partidas = {"Partida1", "Partida2", "Partida3"}; // Reemplaza con el resultado de listarPartidas()
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new ListaPartidasFrame(partidas);
-            }
-        });
-    }
 }

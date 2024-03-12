@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class Carcel extends Casilla {
 
-    private SonidoCarcel sonidoCarcel;
+    private transient SonidoCarcel sonidoCarcel;
     private String nombre;
 
     private String descripcion;
