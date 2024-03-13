@@ -108,10 +108,6 @@ public class MenuJuego extends JFrame {
             if (menu.getSelectedItem().equals("Guardar Partida")) {
                 // guardar partida con fecha y hora
                 Partidas.guardarPartida(jugadorActual, jugadorNoTurno, tablero, "partida1" + System.currentTimeMillis());
-                String[] partidas = Partidas.listarPartidas();
-                for (String partida : partidas) {
-                    System.out.println(partida);
-                }
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
                 new ListaPartidasFrame(Partidas.listarPartidas(), this.cerrarVentana());
@@ -142,6 +138,7 @@ public class MenuJuego extends JFrame {
         // Si la partida esta cargada, buscamos que le tiene la ficha azul
         if (partidaCargada) {
             this.jugador2 = jugadorActual.getFicha().getColorFicha().equals("Azul") ? jugadorActual : jugadorNoTurno;
+
         }
         String nombreStringJugador2 = jugador2.getNombre();
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
@@ -388,5 +385,6 @@ public class MenuJuego extends JFrame {
     // toda la logica del juego al comenzar partida
     private void comenzarPartida() {
         this.colorFondoJugadorTurno();
+        this.actualizarPosicion();
     }
 }

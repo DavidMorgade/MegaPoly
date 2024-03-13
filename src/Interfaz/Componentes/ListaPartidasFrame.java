@@ -61,7 +61,6 @@ public class ListaPartidasFrame extends JFrame {
     }
 
     private void cargarPartida(String nombrePartida) {
-        // Aquí puedes agregar la lógica para cargar la partida seleccionada
         System.out.println("Cargando partida: " + nombrePartida);
         Object[] datosPartida = Partidas.cargarPartida(nombrePartida);
         if (datosPartida != null) {
