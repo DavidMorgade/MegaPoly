@@ -224,6 +224,7 @@ public class MenuJuego extends JFrame {
         jugador1.setTurno(!jugador1.getTurno());
         jugador2.setTurno(!jugador2.getTurno());
         jugadorActual = this.determinarJugadorTurno();
+        this.jugadorNoTurno = this.determinarJugadorNoTurno();
         jugadorTurno.setText("Turno de: " + jugadorActual.getNombre());
         this.colorFondoJugadorTurno();
     }
