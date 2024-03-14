@@ -1,6 +1,5 @@
 package CartasSuerte;
 
-import Acciones.EntradaSalidaCarcel;
 import Jugadores.Jugador;
 
 import javax.swing.*;

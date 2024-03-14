@@ -4,10 +4,7 @@ import CartasSuerte.CartaSuerte;
 import Casillas.*;
 import Interfaces.ActualizarPosicionCallBack;
 import Interfaces.CerrarVentanaCallback;
-import Interfaz.Componentes.DiceButton;
-import Interfaz.Componentes.FancyPlayerLabel;
-import Interfaz.Componentes.ListaPartidasFrame;
-import Interfaz.Componentes.RoundedButton;
+import Interfaz.Componentes.*;
 import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
@@ -198,12 +195,6 @@ public class MenuJuego extends JFrame {
         return jugadorTurno;
     }
 
-    private void resultadoDados() {
-        resultadoDados.setText("Has sacado un : " + dado.getNumero());
-        resultadoDados.setFont(new Font("Kristen ITC", Font.BOLD, 18));
-        resultadoDados.setForeground(Color.BLACK);
-        resultadoDados.setBounds(600, 500, 400, 50);
-    }
 
     private Jugador determinarJugadorTurno() {
         if (jugador1.getTurno()) {
@@ -294,7 +285,9 @@ public class MenuJuego extends JFrame {
 
     private void tirarDados() {
         dado.setNumeroAleatorio();
-        this.resultadoDados();
+
+        AnimacionDado animacionDado = new AnimacionDado(dado.getNumero());
+
         // Si el jugador esta en la carcel, no puede moverse a menos que saque un 5
         boolean siguesCarcel = this.evaluarCarcel();
         if (siguesCarcel) {
@@ -316,6 +309,7 @@ public class MenuJuego extends JFrame {
         this.cambiarTurno(); // funcion aparte
         this.actualizarMegaMonedas();
     }
+
 
     private boolean evaluarCarcel() {
         if (jugadorActual.getCarcel()) {
