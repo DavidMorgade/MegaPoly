@@ -84,8 +84,7 @@ public class MenuInicio extends JFrame {
         botonNuevaPartida.setBounds(700, 700, 200, 50);
         botonNuevaPartida.addActionListener(e -> {
             sonidoClick.reproducir();
-            sonidoInicio.parar();
-            MenuJugadores menuJugadores = new MenuJugadores();
+            MenuJugadores menuJugadores = new MenuJugadores(sonidoInicio);
             menuJugadores.setVisible(true);
             dispose();
         });
@@ -97,9 +96,8 @@ public class MenuInicio extends JFrame {
         botonCargarPartida.setBounds(700, 800, 200, 50);
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
-            sonidoInicio.parar();
             String partidas[] = Partidas.listarPartidas(); // Reemplaza con el resultado de listarPartidas()
-            new ListaPartidasFrame(partidas, this.cerrarVentana());
+            new ListaPartidasFrame(partidas, this.cerrarVentana(), sonidoInicio);
         });
         return botonCargarPartida;
     }
@@ -109,7 +107,6 @@ public class MenuInicio extends JFrame {
         botonSalir.setBounds(700, 900, 200, 50);
         botonSalir.addActionListener(e -> {
             sonidoClick.reproducir();
-            sonidoInicio.parar();
             System.exit(0);
         });
         return botonSalir;

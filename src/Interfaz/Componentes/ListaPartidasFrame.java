@@ -6,6 +6,7 @@ import Interfaz.MenuJuego;
 import Interfaz.Tablero;
 import Jugadores.Jugador;
 import Partidas.Partidas;
+import Sonido.SonidoInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,28 +15,37 @@ import java.awt.event.ActionListener;
 
 public class ListaPartidasFrame extends JFrame {
     private JComboBox<String> comboBox;
+    private SonidoInicio sonidoInicio;
     private CerrarVentanaCallback callback;
 
-    public ListaPartidasFrame(String[] partidas, CerrarVentanaCallback callback) {
+    public ListaPartidasFrame(String[] partidas, CerrarVentanaCallback callback, SonidoInicio sonidoInicio) {
         super("Lista de Partidas");
+        this.sonidoInicio = sonidoInicio;
         this.callback = callback;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 150);
+        setSize(400, 200);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(panel);
 
-        panel.setLayout(new BorderLayout());
-
+        // Panel para el combobox
+        JPanel comboPanel = new JPanel();
+        comboPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         comboBox = new JComboBox<>(partidas);
-        panel.add(comboBox, BorderLayout.CENTER);
+        comboPanel.add(comboBox);
 
+        // Panel para los botones
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0));
         JButton cargarButton = new JButton("Cargar");
+        JButton salirButton = new JButton("Salir");
+
         cargarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String partidaSeleccionada = (String) comboBox.getSelectedItem();
                 if (partidaSeleccionada != null) {
+                    sonidoInicio.parar();
                     cargarPartida(partidaSeleccionada);
                 } else {
                     JOptionPane.showMessageDialog(ListaPartidasFrame.this, "No se ha seleccionado ninguna partida.");
@@ -43,7 +53,6 @@ public class ListaPartidasFrame extends JFrame {
             }
         });
 
-        JButton salirButton = new JButton("Salir");
         salirButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // cerrar esta ventana
@@ -51,10 +60,10 @@ public class ListaPartidasFrame extends JFrame {
             }
         });
 
-        JPanel buttonPanel = new JPanel();
         buttonPanel.add(cargarButton);
         buttonPanel.add(salirButton);
 
+        panel.add(comboPanel, BorderLayout.CENTER);
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);

@@ -12,6 +12,8 @@ import Jugadores.Jugador;
 import Materiales.Dado;
 import Materiales.Ficha;
 import Partidas.Partidas;
+import Sonido.SonidoClick;
+import Sonido.SonidoInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +21,7 @@ import java.util.Map;
 
 public class MenuJuego extends JFrame {
 
+    private SonidoInicio sonidoInicio;
     boolean partidaCargada = false;
     Jugador jugador1;
     Jugador jugador2;
@@ -35,9 +38,11 @@ public class MenuJuego extends JFrame {
     private JLabel labelFondo;
     private JPanel panelFondo;
 
-    public MenuJuego(Jugador jugador1, Jugador jugador2) {
+    public MenuJuego(Jugador jugador1, Jugador jugador2, SonidoInicio sonidoInicio) {
+        this.sonidoInicio = sonidoInicio;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        sonidoInicio.parar();
         jugadorActual = this.determinarJugadorTurno();
         jugadorNoTurno = this.determinarJugadorNoTurno();
         this.tablero = new Tablero(jugador1, jugador2);
@@ -110,7 +115,7 @@ public class MenuJuego extends JFrame {
                 Partidas.guardarPartida(jugadorActual, jugadorNoTurno, tablero, "partida1" + System.currentTimeMillis());
             } else if (menu.getSelectedItem().equals("Cargar Partida")) {
                 // cargar partida
-                new ListaPartidasFrame(Partidas.listarPartidas(), this.cerrarVentana());
+                new ListaPartidasFrame(Partidas.listarPartidas(), this.cerrarVentana(), this.sonidoInicio);
 
             } else if (menu.getSelectedItem().equals("Salir")) {
                 System.exit(0);

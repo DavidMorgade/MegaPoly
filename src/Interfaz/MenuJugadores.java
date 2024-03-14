@@ -4,6 +4,7 @@ import Interfaz.Componentes.*;
 import Jugadores.Jugador;
 import Materiales.Ficha;
 import Sonido.SonidoClick;
+import Sonido.SonidoInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.awt.*;
 public class MenuJugadores extends JFrame {
 
     private SonidoClick sonidoClick = new SonidoClick();
+    private SonidoInicio sonidoInicio;
     private Ficha fichaRoja = new Ficha("Rojo");
     private Ficha fichaAzul = new Ficha("Azul");
     private Jugador jugador1;
@@ -26,12 +28,8 @@ public class MenuJugadores extends JFrame {
     private RoundedButton botonJugar;
     private PlayerLabel labelNombreJugador2;
 
-    public static void main(String[] args) {
-        MenuJugadores menu = new MenuJugadores();
-        menu.setVisible(true);
-    }
-
-    public MenuJugadores() {
+    public MenuJugadores(SonidoInicio sonidoInicio) {
+        this.sonidoInicio = sonidoInicio;
         initComponents();
     }
 
@@ -115,7 +113,7 @@ public class MenuJugadores extends JFrame {
             }
             jugador1 = new Jugador(nombreJugador1.getText(), fichaRoja);
             jugador2 = new Jugador(nombreJugador2.getText(), fichaAzul);
-            MenuJuego menuJuego = new MenuJuego(jugador1, jugador2);
+            MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, sonidoInicio);
             menuJuego.setVisible(true);
             dispose();
         });
