@@ -10,7 +10,7 @@ public class AnimacionDado extends JDialog {
     private JLabel dadoLabel;
     private Timer timer;
     private int contador;
-    private JButton okButton;
+    private RoundedButton okButton;
     private int resultadoReal;
 
     public AnimacionDado(int resultadoReal) {
@@ -25,7 +25,7 @@ public class AnimacionDado extends JDialog {
         dadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(dadoLabel, BorderLayout.CENTER);
 
-        okButton = new JButton("OK");
+        okButton = new RoundedButton("OK");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

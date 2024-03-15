@@ -48,7 +48,7 @@ public class JDialogPropiedades extends JDialog {
         mainPanel.add(messagePanel, BorderLayout.CENTER);
 
         // Crear botones de "Sí" y "No"
-        JButton yesButton = new JButton("Sí");
+        RoundedButton yesButton = new RoundedButton("Sí");
         yesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 result = true;
@@ -56,7 +56,7 @@ public class JDialogPropiedades extends JDialog {
             }
         });
 
-        JButton noButton = new JButton("No");
+        RoundedButton noButton = new RoundedButton("No");
         noButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 result = false;

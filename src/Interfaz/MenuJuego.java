@@ -168,8 +168,8 @@ public class MenuJuego extends JFrame {
         }
     }
 
-    private DiceButton botonTirarDados() {
-        DiceButton botonTirarDados = new DiceButton("Tirar Dados");
+    private RoundedButton botonTirarDados() {
+        RoundedButton botonTirarDados = new RoundedButton("Tirar Dados");
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
