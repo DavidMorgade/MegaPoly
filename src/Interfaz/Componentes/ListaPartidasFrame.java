@@ -44,7 +44,7 @@ public class ListaPartidasFrame extends JFrame {
         cargarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String partidaSeleccionada = (String) comboBox.getSelectedItem();
-                if (partidaSeleccionada != null) {
+                if (partidaSeleccionada != null && sonidoInicio != null) {
                     sonidoInicio.parar();
                     cargarPartida(partidaSeleccionada);
                 } else {
