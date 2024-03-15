@@ -286,9 +286,7 @@ public class MenuJuego extends JFrame {
     private void tirarDados() {
         dado.setNumeroAleatorio();
 
-        AnimacionDado animacionDado = new AnimacionDado(dado.getNumero());
-
-        // Si el jugador esta en la carcel, no puede moverse a menos que saque un 5
+        new AnimacionDado(dado.getNumero());
         boolean siguesCarcel = this.evaluarCarcel();
         if (siguesCarcel) {
             return;

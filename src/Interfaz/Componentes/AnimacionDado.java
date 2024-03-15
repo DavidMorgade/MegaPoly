@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AnimacionDado extends JFrame {
+public class AnimacionDado extends JDialog {
 
     private JLabel dadoLabel;
     private Timer timer;
@@ -14,7 +14,7 @@ public class AnimacionDado extends JFrame {
     private int resultadoReal;
 
     public AnimacionDado(int resultadoReal) {
-        super("El resultado del dado es....");
+        super((JFrame) null, "Lanzando dado", true);
         this.resultadoReal = resultadoReal;
         contador = 0;
         setSize(400, 200);
@@ -32,6 +32,9 @@ public class AnimacionDado extends JFrame {
             }
         });
 
+        // Agregar el botón OK debajo del JLabel en el BorderLayout
+        add(okButton, BorderLayout.SOUTH);
+
         timer = new Timer(100, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 contador++;
@@ -41,8 +44,6 @@ public class AnimacionDado extends JFrame {
                     dadoLabel.setText(Integer.toString(resultadoReal));
                     timer.stop();
                 }
-
-
             }
         });
 
