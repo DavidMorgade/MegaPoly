@@ -173,6 +173,8 @@ public class MenuJuego extends JFrame {
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
+            this.evaluarPartidaTerminada();
+            
         });
         return botonTirarDados;
     }
@@ -365,6 +367,18 @@ public class MenuJuego extends JFrame {
                 }
             }
             i++;
+        }
+    }
+
+    private void evaluarPartidaTerminada() {
+        if (jugador1.getMegaMonedas() <= 0) {
+            new JDialogFinPartida(this, "El jugador " + jugadorActual.getNombre() + " ha ganado la partida", "Fin de la partida", this.cerrarVentana());
+            System.out.println(jugadorActual.getMegaMonedas());
+
+        }
+        if (jugador2.getMegaMonedas() <= 0) {
+            new JDialogFinPartida(this, "El jugador " + jugadorNoTurno.getNombre() + " ha ganado la partida", "Fin de la partida", this.cerrarVentana());
+            System.out.println(jugadorNoTurno.getMegaMonedas());
         }
     }
 
