@@ -173,8 +173,9 @@ public class MenuJuego extends JFrame {
         botonTirarDados.setBounds(700, 700, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
-            this.evaluarPartidaTerminada();
-            
+            SwingUtilities.invokeLater(() -> {
+                this.evaluarPartidaTerminada();
+            });
         });
         return botonTirarDados;
     }
@@ -270,7 +271,6 @@ public class MenuJuego extends JFrame {
                     label.setBackground(new Color(94, 2, 2, 255));
                     label.setOpaque(true);
                     label.repaint();
-                    System.out.println(label);
                 } else if (propietario.equals(jugador2)) {
                     label.setBackground(new Color(0, 0, 151, 255));
                     label.setOpaque(true);
@@ -293,7 +293,6 @@ public class MenuJuego extends JFrame {
         if (siguesCarcel) {
             return;
         }
-        System.out.println("la pela la carcel");
         int posicionActual = jugadorActual.getFicha().getPosicion();
         int numeroDado = dado.getNumero();
         // Si da la vuelta al tablero, recibe 20 MegaMonedas por pasar por la casilla de salida
@@ -373,12 +372,10 @@ public class MenuJuego extends JFrame {
     private void evaluarPartidaTerminada() {
         if (jugador1.getMegaMonedas() <= 0) {
             new JDialogFinPartida(this, "El jugador " + jugadorActual.getNombre() + " ha ganado la partida", "Fin de la partida", this.cerrarVentana());
-            System.out.println(jugadorActual.getMegaMonedas());
 
         }
         if (jugador2.getMegaMonedas() <= 0) {
             new JDialogFinPartida(this, "El jugador " + jugadorNoTurno.getNombre() + " ha ganado la partida", "Fin de la partida", this.cerrarVentana());
-            System.out.println(jugadorNoTurno.getMegaMonedas());
         }
     }
 

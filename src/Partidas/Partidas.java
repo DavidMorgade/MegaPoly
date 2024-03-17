@@ -17,10 +17,6 @@ public class Partidas {
             oos.writeObject(JugadorActual);
             oos.writeObject(JugadorSegundo);
             oos.writeObject(Tablero);
-            System.out.println("Partida guardada");
-            System.out.println(JugadorActual.toString());
-            System.out.println(JugadorSegundo.toString());
-            System.out.println(Tablero.toString());
         } catch (Exception e) {
             System.out.println("Error al guardar la partida");
             System.out.println(e.toString());

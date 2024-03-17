@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class JDialogFinPartida extends JDialog {
@@ -56,13 +58,21 @@ public class JDialogFinPartida extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 callback.onCargarPartida();
-                new MenuInicio();
+                MenuInicio menuInicio = new MenuInicio();
+                menuInicio.setVisible(true); // Mostrar la instancia de MenuInicio
             }
         });
 
         RoundedButton noButton = new RoundedButton("Salir");
         noButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
         });
@@ -78,5 +88,8 @@ public class JDialogFinPartida extends JDialog {
 
         // Añadir panel principal al diálogo
         add(mainPanel);
+
+        setVisible(true);
+
     }
 }
