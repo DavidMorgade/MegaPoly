@@ -11,6 +11,7 @@ import Sonido.SonidoInicio;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class MenuInicio extends JFrame {
 
@@ -45,10 +46,24 @@ public class MenuInicio extends JFrame {
         getContentPane().setLayout(null);
         sonidoInicio.reproducir();
         this.createUIComponents();
+        crearCarpetaPartidas();
     }
 
     private void createUIComponents() {
         add(crearPanelFondo());
+    }
+
+    private void crearCarpetaPartidas() {
+        // Crear la carpeta 'partidas' si no existe
+        File partidasFolder = new File("partidas");
+        if (!partidasFolder.exists()) {
+            boolean created = partidasFolder.mkdirs();
+            if (created) {
+                System.out.println("Carpeta 'partidas' creada con éxito.");
+            } else {
+                System.err.println("Error al crear la carpeta 'partidas'.");
+            }
+        }
     }
 
     private JLabel crearLabelFondo() {
