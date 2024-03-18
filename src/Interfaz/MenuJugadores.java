@@ -40,7 +40,13 @@ public class MenuJugadores extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         getContentPane().setLayout(null);
+        crearIconoDeVentana();
         this.createUIComponents();
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 
     private void createUIComponents() {

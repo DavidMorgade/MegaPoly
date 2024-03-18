@@ -73,6 +73,13 @@ public class CustomDialogGuardarPartida extends JDialog {
 
         add(mainPanel);
 
+        crearIconoDeVentana();
+
         setVisible(true);
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 }

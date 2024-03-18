@@ -67,7 +67,15 @@ public class CustomJDialog extends JDialog {
         // Añadir panel principal al diálogo
         add(mainPanel);
 
+        // Crear icono de la ventana
+        crearIconoDeVentana();
+
         // Hacer visible el diálogo después de agregar todos los componentes
         setVisible(true);
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 }

@@ -73,6 +73,8 @@ public class JDialogPropiedades extends JDialog {
         // Añadir panel de botones al panel principal
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
+        crearIconoDeVentana();
+
         // Añadir panel principal al diálogo
         add(mainPanel);
     }
@@ -80,5 +82,10 @@ public class JDialogPropiedades extends JDialog {
     // Método para obtener el resultado de la elección del usuario
     public boolean getResult() {
         return result;
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 }

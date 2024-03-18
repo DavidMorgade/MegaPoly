@@ -44,9 +44,15 @@ public class MenuInicio extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         getContentPane().setLayout(null);
+        crearIconoDeVentana();
         sonidoInicio.reproducir();
         this.createUIComponents();
         crearCarpetaPartidas();
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 
     private void createUIComponents() {

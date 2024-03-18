@@ -89,7 +89,14 @@ public class JDialogFinPartida extends JDialog {
         // Añadir panel principal al diálogo
         add(mainPanel);
 
+        crearIconoDeVentana();
+
         setVisible(true);
 
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 }

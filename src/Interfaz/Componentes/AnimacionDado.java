@@ -25,6 +25,8 @@ public class AnimacionDado extends JDialog {
         dadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(dadoLabel, BorderLayout.CENTER);
 
+        this.crearIconoDeVentana();
+
         okButton = new RoundedButton("OK");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -49,6 +51,11 @@ public class AnimacionDado extends JDialog {
 
         timer.start();
         setVisible(true);
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 
 }

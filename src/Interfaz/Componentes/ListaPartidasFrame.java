@@ -66,6 +66,8 @@ public class ListaPartidasFrame extends JFrame {
         panel.add(comboPanel, BorderLayout.CENTER);
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
+        crearIconoDeVentana();
+
         setVisible(true);
     }
 
@@ -83,6 +85,11 @@ public class ListaPartidasFrame extends JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Error al cargar la partida.");
         }
+    }
+
+    private void crearIconoDeVentana() {
+        ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/Megapoly-icon.png"));
+        setIconImage(icono.getImage());
     }
 
 }
