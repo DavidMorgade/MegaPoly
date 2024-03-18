@@ -30,7 +30,7 @@ public class MenuJuego extends JFrame {
     private JComboBox menu;
     private FancyPlayerLabel nombreJugador1;
     private FancyPlayerLabel nombreJugador2;
-    private JLabel jugadorTurno;
+    private PlayerLabel jugadorTurno;
     private JLabel resultadoDados = new JLabel();
     private JLabel labelFondo;
     private JPanel panelFondo;
@@ -105,7 +105,7 @@ public class MenuJuego extends JFrame {
         menu = new JComboBox(opciones);
         // position the menu at top left os the screen
         menu.setBounds(0, 0, 200, 30);
-        menu.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        menu.setFont(new Font("Arial", Font.BOLD, 18));
         menu.setBackground(Color.ORANGE);
         this.OpcionesComboBox();
         return menu;
@@ -195,12 +195,13 @@ public class MenuJuego extends JFrame {
         return botonCartasSuerte;
     }
 
-    private JLabel nombreJugadorActual() {
+    private PlayerLabel nombreJugadorActual() {
         Jugador jugador = this.determinarJugadorTurno();
-        jugadorTurno = new JLabel("Turno de: " + jugador.getNombre());
-        jugadorTurno.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        jugadorTurno = new PlayerLabel("Turno de: " + jugador.getNombre());
+        jugadorTurno.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         jugadorTurno.setForeground(Color.BLACK);
         jugadorTurno.setBounds(600, 450, 400, 50);
+        jugadorTurno.setFont(new Font("Arial", Font.BOLD, 20));
         return jugadorTurno;
     }
 

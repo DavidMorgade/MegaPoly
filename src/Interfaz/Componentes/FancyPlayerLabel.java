@@ -12,7 +12,7 @@ public class FancyPlayerLabel extends JLabel {
         setOpaque(true);
         setForeground(Color.BLACK);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(new Font("Kristen ITC", Font.BOLD, 18));
+        setFont(new Font("Arial", Font.BOLD, 18));
         setBackground(color);
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Añade un poco de espacio alrededor del texto
     }
