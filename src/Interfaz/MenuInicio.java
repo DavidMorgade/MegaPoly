@@ -1,10 +1,7 @@
 package Interfaz;
 
 import Interfaces.CerrarVentanaCallback;
-import Interfaz.Componentes.Boton;
-import Interfaz.Componentes.ListaPartidasFrame;
-import Interfaz.Componentes.RoundedButton;
-import Interfaz.Componentes.TituloMegapoly;
+import Interfaz.Componentes.*;
 import Partidas.Partidas;
 import Sonido.SonidoClick;
 import Sonido.SonidoInicio;
@@ -81,6 +78,8 @@ public class MenuInicio extends JFrame {
         labelFondo.add(crearBotonNuevaPartida());
         labelFondo.add(crearBotonCargarPartida());
         labelFondo.add(crearBotonSalir());
+        labelFondo.add(nombreCreador());
+        labelFondo.add(versionEnlace());
         return labelFondo;
     }
 
@@ -90,6 +89,18 @@ public class MenuInicio extends JFrame {
         labelTitulo = new TituloMegapoly("Megapoly", labelWidth, 200);
         labelTitulo.setBounds((frameWidth - labelWidth) / 2, 100, labelWidth, 200);
         return labelTitulo;
+    }
+
+    private PlayerLabel nombreCreador() {
+        PlayerLabel nombreCreado = new PlayerLabel("Desarrolado por: David Morgade - Programación MEDAC");
+        nombreCreado.setBounds(10, 50, 500, 50);
+        return nombreCreado;
+    }
+
+    private PlayerLabel versionEnlace() {
+        PlayerLabel versionEnlace = new PlayerLabel("Versión 0.1 - MegaPoly");
+        versionEnlace.setBounds(10, 10, 500, 50);
+        return versionEnlace;
     }
 
     private JPanel crearPanelFondo() {
