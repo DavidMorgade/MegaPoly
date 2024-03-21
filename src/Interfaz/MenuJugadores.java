@@ -17,7 +17,7 @@ public class MenuJugadores extends JFrame {
     private Ficha fichaAzul = new Ficha("Azul");
     private Jugador jugador1;
     private Jugador jugador2;
-    private final int[] sizes = {1600, 1200};
+    private final int[] sizes = {1200, 1080};
     private JPanel panelFondo;
     private JLabel labelFondo;
     private TituloMegapoly labelTitulo;
@@ -76,7 +76,7 @@ public class MenuJugadores extends JFrame {
     }
 
     private TituloMegapoly crearLabelTitulo() {
-        int labelWidth = sizes[0] / 2;
+        int labelWidth = sizes[0] / 2 + 100;
         int frameWidth = sizes[0];
         labelTitulo = new TituloMegapoly("Megapoly", labelWidth, 200);
         labelTitulo.setBounds((frameWidth - labelWidth) / 2, 100, labelWidth, 200);
@@ -86,31 +86,31 @@ public class MenuJugadores extends JFrame {
 
     private PlayerTextField crearNombreJugador1() {
         nombreJugador1 = new PlayerTextField();
-        nombreJugador1.setBounds(700, 700, 200, 50);
+        nombreJugador1.setBounds(500, 700, 200, 50);
         return nombreJugador1;
     }
 
     private PlayerTextField crearNombreJugador2() {
         nombreJugador2 = new PlayerTextField();
-        nombreJugador2.setBounds(700, 800, 200, 50);
+        nombreJugador2.setBounds(500, 800, 200, 50);
         return nombreJugador2;
     }
 
     private PlayerLabel crearLabelNombreJugador1() {
         labelNombreJugador1 = new PlayerLabel("Nombre Jugador 1");
-        labelNombreJugador1.setBounds(700, 650, 200, 50);
+        labelNombreJugador1.setBounds(500, 650, 200, 50);
         return labelNombreJugador1;
     }
 
     private PlayerLabel crearLabelNombreJugador2() {
         labelNombreJugador2 = new PlayerLabel("Nombre Jugador 2");
-        labelNombreJugador2.setBounds(700, 750, 200, 50);
+        labelNombreJugador2.setBounds(500, 750, 200, 50);
         return labelNombreJugador2;
     }
 
     private RoundedButton crearBotonJugar() {
         botonJugar = new RoundedButton("Jugar");
-        botonJugar.setBounds(700, 900, 200, 50);
+        botonJugar.setBounds(500, 900, 200, 50);
         botonJugar.addActionListener(e -> {
             sonidoClick.reproducir();
             if (nombreJugador1.getText().isEmpty() || nombreJugador2.getText().isEmpty()) {

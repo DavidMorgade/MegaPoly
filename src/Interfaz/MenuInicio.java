@@ -22,7 +22,7 @@ public class MenuInicio extends JFrame {
     private JPanel panelFondo;
     private JLabel labelFondo;
     private TituloMegapoly labelTitulo;
-    private final int[] sizes = {1600, 1200};
+    private final int[] sizes = {1200, 1080};
 
 
     public static void main(String[] args) {
@@ -84,7 +84,7 @@ public class MenuInicio extends JFrame {
     }
 
     private TituloMegapoly crearLabelTitulo() {
-        int labelWidth = sizes[0] / 2;
+        int labelWidth = sizes[0] / 2 + 100;
         int frameWidth = sizes[0];
         labelTitulo = new TituloMegapoly("Megapoly", labelWidth, 200);
         labelTitulo.setBounds((frameWidth - labelWidth) / 2, 100, labelWidth, 200);
@@ -113,7 +113,7 @@ public class MenuInicio extends JFrame {
 
     private RoundedButton crearBotonNuevaPartida() {
         botonNuevaPartida = new RoundedButton("Nueva Partida");
-        botonNuevaPartida.setBounds(700, 700, 200, 50);
+        botonNuevaPartida.setBounds(500, 700, 200, 50);
         botonNuevaPartida.addActionListener(e -> {
             sonidoClick.reproducir();
             MenuJugadores menuJugadores = new MenuJugadores(sonidoInicio);
@@ -125,7 +125,7 @@ public class MenuInicio extends JFrame {
 
     private RoundedButton crearBotonCargarPartida() {
         botonCargarPartida = new RoundedButton("Cargar Partida");
-        botonCargarPartida.setBounds(700, 800, 200, 50);
+        botonCargarPartida.setBounds(500, 800, 200, 50);
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
             String partidas[] = Partidas.listarPartidas(); // Reemplaza con el resultado de listarPartidas()
@@ -136,7 +136,7 @@ public class MenuInicio extends JFrame {
 
     private RoundedButton crearBotonSalir() {
         botonSalir = new RoundedButton("Salir");
-        botonSalir.setBounds(700, 900, 200, 50);
+        botonSalir.setBounds(500, 900, 200, 50);
         botonSalir.addActionListener(e -> {
             sonidoClick.reproducir();
             System.exit(0);
