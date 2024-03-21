@@ -33,7 +33,12 @@ public class ListaPartidasFrame extends JFrame {
         // Panel para el combobox
         JPanel comboPanel = new JPanel();
         comboPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        comboBox = new JComboBox<>(partidas);
+        if (partidas.length == 0) {
+            partidas = new String[]{"No hay partidas guardadas"};
+            comboBox = new JComboBox<>(partidas);
+        } else {
+            comboBox = new JComboBox<>(partidas);
+        }
         comboPanel.add(comboBox);
 
         // Panel para los botones

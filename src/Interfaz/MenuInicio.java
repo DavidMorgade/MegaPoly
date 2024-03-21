@@ -128,7 +128,7 @@ public class MenuInicio extends JFrame {
         botonCargarPartida.setBounds(500, 800, 200, 50);
         botonCargarPartida.addActionListener(e -> {
             sonidoClick.reproducir();
-            String partidas[] = Partidas.listarPartidas(); // Reemplaza con el resultado de listarPartidas()
+            String partidas[] = Partidas.listarPartidas();
             new ListaPartidasFrame(partidas, this.cerrarVentana(), sonidoInicio);
         });
         return botonCargarPartida;
