@@ -58,7 +58,7 @@ public class MenuJuego extends JFrame {
 
     private void initComponents() {
         setTitle("Megapoly - Menu Juego");
-        setSize(1600, 1200);
+        setSize(1200, 1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -76,19 +76,26 @@ public class MenuJuego extends JFrame {
         add(crearPanelFondo());
     }
 
+    public static void main(String[] args) {
+        Jugador jugador1 = new Jugador("Jugador 1", new Ficha("Rojo"));
+        Jugador jugador2 = new Jugador("Jugador 2", new Ficha("Azul"));
+        SonidoInicio sonidoInicio = new SonidoInicio();
+        MenuJuego menuJuego = new MenuJuego(jugador1, jugador2, sonidoInicio);
+        menuJuego.setVisible(true);
+    }
+
     private JPanel crearPanelFondo() {
         JPanel panelFondo = new JPanel();
-        panelFondo.setSize(1600, 1200);
+        panelFondo.setSize(1200, 1080);
         panelFondo.setLayout(null);
         panelFondo.add(crearLabelFondo());
         return panelFondo;
     }
 
     private JLabel crearLabelFondo() {
-        ImageIcon fondoMegaPoly = new ImageIcon(this.getClass().getResource("/Imagenes/Tablero.jpg"));
+        ImageIcon fondoMegaPoly = new ImageIcon(this.getClass().getResource("/Imagenes/Tablero3.jpg"));
         this.labelFondo = new JLabel(fondoMegaPoly);
-        labelFondo.setSize(1600, 1200);
-        labelFondo.setBounds(0, 0, 1600, 1200);
+        labelFondo.setBounds(0, 0, 1200, 1140);
         labelFondo.add(crearMenu());
         labelFondo.add(crearNombreJugador1());
         labelFondo.add(crearNombreJugador2());
@@ -138,7 +145,7 @@ public class MenuJuego extends JFrame {
         String colorFichaJugador1 = jugador1.getFicha().getColorFicha();
         int megaMonedasJugador1 = jugador1.getMegaMonedas();
         nombreJugador1 = new FancyPlayerLabel(nombreStringJugador1 + " (Jugador 1) Ficha: " + colorFichaJugador1 + " MegaMonedas: " + megaMonedasJugador1);
-        nombreJugador1.setBounds(0, 50, 800, 50);
+        nombreJugador1.setBounds(0, 50, 600, 50);
         return nombreJugador1;
     }
 
@@ -152,7 +159,7 @@ public class MenuJuego extends JFrame {
         String colorFichaJugador2 = jugador2.getFicha().getColorFicha();
         int megaMonedasJugador2 = jugador2.getMegaMonedas();
         nombreJugador2 = new FancyPlayerLabel(nombreStringJugador2 + " (Jugador 2) Ficha: " + colorFichaJugador2 + " MegaMonedas: " + megaMonedasJugador2);
-        nombreJugador2.setBounds(800, 50, 800, 50);
+        nombreJugador2.setBounds(600, 50, 600, 50);
         return nombreJugador2;
     }
 
@@ -176,7 +183,7 @@ public class MenuJuego extends JFrame {
 
     private RoundedButton botonTirarDados() {
         RoundedButton botonTirarDados = new RoundedButton("Tirar Dados");
-        botonTirarDados.setBounds(700, 700, 200, 50);
+        botonTirarDados.setBounds(500, 500, 200, 50);
         botonTirarDados.addActionListener(e -> {
             this.tirarDados();
             SwingUtilities.invokeLater(() -> {
@@ -188,7 +195,7 @@ public class MenuJuego extends JFrame {
 
     private RoundedButton botonCartasSuerte() {
         RoundedButton botonCartasSuerte = new RoundedButton("Cartas Suerte");
-        botonCartasSuerte.setBounds(700, 800, 200, 50);
+        botonCartasSuerte.setBounds(500, 600, 200, 50);
         botonCartasSuerte.addActionListener(e -> {
             this.jugadorActual.mostrarCartasSuerte(this.jugadorNoTurno, this.repintarTablero());
         });
@@ -200,7 +207,7 @@ public class MenuJuego extends JFrame {
         jugadorTurno = new PlayerLabel("Turno de: " + jugador.getNombre());
         jugadorTurno.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         jugadorTurno.setForeground(Color.BLACK);
-        jugadorTurno.setBounds(600, 450, 400, 50);
+        jugadorTurno.setBounds(400, 400, 400, 50);
         jugadorTurno.setFont(new Font("Arial", Font.BOLD, 20));
         return jugadorTurno;
     }

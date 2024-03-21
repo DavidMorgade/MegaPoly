@@ -80,124 +80,127 @@ public class Tablero implements Serializable {
             label.setFont(new Font("Snap ITC Normal", Font.BOLD, 10));
             switch (i) {
                 case 0:
-                    label.setBounds(1200, 1000, 70, 80);
+                    label.setBounds(1000, 930, 70, 80);
+                    label.setBackground(Color.RED);
                     break;
                 case 1:
-                    label.setBounds(1090, 1000, 60, 80);
+                    label.setBounds(882, 910, 80, 130);
                     break;
                 case 2:
-                    label.setBounds(1010, 1000, 60, 80);
+                    label.setBounds(800, 910, 80, 130);
                     break;
                 case 3:
-                    label.setBounds(930, 1000, 60, 80);
+                    label.setBounds(720, 910, 80, 130);
                     break;
                 case 4:
-                    label.setBounds(850, 1000, 60, 80);
+                    label.setBounds(640, 910, 80, 130);
                     break;
                 case 5:
-                    label.setBounds(770, 1000, 60, 80);
+                    label.setBounds(560, 910, 80, 130);
                     break;
                 case 6:
-                    label.setBounds(690, 1000, 60, 80);
+                    label.setBounds(480, 910, 80, 130);
                     break;
                 case 7:
-                    label.setBounds(610, 1000, 60, 80);
+                    label.setBounds(400, 910, 80, 130);
                     break;
                 case 8:
-                    label.setBounds(530, 1000, 60, 80);
+                    label.setBounds(320, 910, 80, 130);
                     break;
                 case 9:
-                    label.setBounds(450, 1000, 60, 80);
+                    label.setBounds(240, 910, 80, 130);
                     break;
                 case 10:
-                    label.setBounds(320, 1000, 80, 80);
+                    label.setBounds(140, 940, 70, 80);
                     break;
                 case 11:
-                    label.setBounds(320, 890, 100, 60);
+                    label.setBounds(110, 835, 130, 75);
                     break;
                 case 12:
-                    label.setBounds(320, 810, 100, 60);
+                    label.setBounds(110, 758, 130, 75);
                     break;
                 case 13:
-                    label.setBounds(320, 730, 100, 60);
+                    label.setBounds(110, 682, 130, 75);
                     break;
                 case 14:
-                    label.setBounds(320, 650, 100, 60);
+                    label.setBounds(110, 605, 130, 75);
                     break;
                 case 15:
-                    label.setBounds(320, 570, 100, 60);
+                    label.setBounds(110, 528, 130, 75);
                     break;
                 case 16:
-                    label.setBounds(320, 490, 100, 60);
+                    label.setBounds(110, 451, 130, 75);
                     break;
                 case 17:
-                    label.setBounds(320, 410, 100, 60);
+                    label.setBounds(110, 374, 130, 75);
                     break;
                 case 18:
-                    label.setBounds(320, 330, 100, 60);
+                    label.setBounds(110, 305, 130, 75);
                     break;
                 case 19:
-                    label.setBounds(320, 250, 100, 60);
+                    label.setBounds(110, 230, 130, 75);
                     break;
                 case 20:
-                    label.setBounds(320, 130, 100, 80);
+                    //parking
+                    label.setBounds(110, 150, 100, 60);
                     break;
                 case 21:
-                    label.setBounds(450, 110, 60, 80);
+                    label.setBounds(237, 100, 80, 120);
                     break;
                 case 22:
-                    label.setBounds(530, 110, 60, 80);
+                    label.setBounds(317, 100, 80, 120);
                     break;
                 case 23:
-                    label.setBounds(610, 110, 60, 80);
+                    label.setBounds(397, 100, 80, 120);
                     break;
                 case 24:
-                    label.setBounds(690, 110, 60, 80);
+                    label.setBounds(477, 100, 80, 120);
                     break;
                 case 25:
-                    label.setBounds(770, 110, 60, 80);
+                    label.setBounds(557, 100, 80, 120);
                     break;
                 case 26:
-                    label.setBounds(850, 110, 60, 80);
+                    label.setBounds(637, 100, 80, 120);
                     break;
                 case 27:
-                    label.setBounds(930, 110, 60, 80);
+                    label.setBounds(717, 100, 80, 120);
                     break;
                 case 28:
-                    label.setBounds(1010, 110, 60, 80);
+                    label.setBounds(797, 100, 80, 120);
                     break;
                 case 29:
-                    label.setBounds(1090, 110, 60, 80);
+                    label.setBounds(877, 100, 80, 120);
                     break;
                 case 30:
-                    label.setBounds(1200, 110, 80, 80);
+                    // ve a la carcel
+                    label.setBounds(990, 100, 80, 120);
                     break;
                 case 31:
-                    label.setBounds(1210, 250, 80, 60);
+                    label.setBounds(970, 230, 130, 70);
                     break;
                 case 32:
-                    label.setBounds(1210, 330, 80, 60);
+                    label.setBounds(970, 305, 130, 70);
                     break;
                 case 33:
-                    label.setBounds(1210, 410, 80, 60);
+                    label.setBounds(970, 380, 130, 70);
                     break;
                 case 34:
-                    label.setBounds(1210, 490, 80, 60);
+                    label.setBounds(970, 455, 130, 70);
                     break;
                 case 35:
-                    label.setBounds(1210, 570, 80, 60);
+                    label.setBounds(970, 535, 130, 70);
                     break;
                 case 36:
-                    label.setBounds(1210, 650, 80, 60);
+                    label.setBounds(970, 610, 130, 70);
                     break;
                 case 37:
-                    label.setBounds(1210, 730, 80, 60);
+                    label.setBounds(970, 685, 130, 70);
                     break;
                 case 38:
-                    label.setBounds(1210, 810, 80, 60);
+                    label.setBounds(970, 760, 130, 70);
                     break;
                 case 39:
-                    label.setBounds(1210, 890, 80, 60);
+                    label.setBounds(970, 835, 130, 70);
                     break;
             }
             i += 1;
