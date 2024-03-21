@@ -2,14 +2,21 @@ package Interfaz.Componentes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TituloMegapoly extends JLabel {
 
     private Color startColor;
     private Color endColor;
+    private Timer typewriterTimer;
+    private int currentIndex;
+    private String text;
 
     public TituloMegapoly(String text, int width, int height) {
-        super(text);
+        super("");
+        this.text = text;
+        startTypewriterAnimation();
         setForeground(Color.BLACK);
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
@@ -17,6 +24,22 @@ public class TituloMegapoly extends JLabel {
         setPreferredSize(new Dimension(width, height));
         startColor = new Color(255, 215, 0); // Color oro
         endColor = new Color(255, 140, 0); // Color naranja oscuro
+    }
+
+    private void startTypewriterAnimation() {
+        currentIndex = 0;
+        typewriterTimer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (currentIndex <= text.length()) {
+                    setText(text.substring(0, currentIndex));
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+            }
+        });
+        typewriterTimer.start();
     }
 
     @Override
