@@ -18,7 +18,7 @@ MegaPoly is a Java-based application that replicates the classic Monopoly game u
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/yourusername/megapoly.git
+   git clone https://github.com/DavidMorgade/megapoly.git
    cd megapoly
    ```
 
