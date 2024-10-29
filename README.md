@@ -59,4 +59,10 @@ The game board features various types of casillas:
 - **Free Parking**: A safe space with no actions required.
 - **Go**: Collect $200 as you pass.
 
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
 Enjoy playing MegaPoly!
